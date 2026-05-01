@@ -1,0 +1,190 @@
+diff --git a/tests/subsys/secure_storage/psa/crypto/CMakeLists.txt b/tests/subsys/secure_storage/psa/crypto/CMakeLists.txt
+new file mode 100644
+index 0000000000..892a40102d
+--- /dev/null
++++ b/tests/subsys/secure_storage/psa/crypto/CMakeLists.txt
+@@ -0,0 +1,5 @@
++cmake_minimum_required(VERSION 3.20.0)
++find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
++project(app)
++
++target_sources(app PRIVATE src/main.c)
+diff --git a/tests/subsys/secure_storage/psa/crypto/overlay-secure_storage.conf b/tests/subsys/secure_storage/psa/crypto/overlay-secure_storage.conf
+new file mode 100644
+index 0000000000..84d933c233
+--- /dev/null
++++ b/tests/subsys/secure_storage/psa/crypto/overlay-secure_storage.conf
+@@ -0,0 +1,12 @@
++CONFIG_ZTEST_STACK_SIZE=3072
++CONFIG_MAIN_STACK_SIZE=2048
++
++CONFIG_MBEDTLS=y
++CONFIG_TEST_RANDOM_GENERATOR=y
++CONFIG_TIMER_RANDOM_GENERATOR=y
++CONFIG_MBEDTLS_ENTROPY_POLL_ZEPHYR=y
++CONFIG_MBEDTLS_PSA_CRYPTO_C=y
++
++CONFIG_SECURE_STORAGE=y
++# For testing isolation between the different callers of the ITS.
++CONFIG_SECURE_STORAGE_PS_IMPLEMENTATION_ITS=y
+diff --git a/tests/subsys/secure_storage/psa/crypto/prj.conf b/tests/subsys/secure_storage/psa/crypto/prj.conf
+new file mode 100644
+index 0000000000..d512b2fd70
+--- /dev/null
++++ b/tests/subsys/secure_storage/psa/crypto/prj.conf
+@@ -0,0 +1,4 @@
++CONFIG_ZTEST=y
++
++CONFIG_PSA_WANT_KEY_TYPE_AES=y
++CONFIG_PSA_WANT_ALG_CBC_NO_PADDING=y
+diff --git a/tests/subsys/secure_storage/psa/crypto/src/main.c b/tests/subsys/secure_storage/psa/crypto/src/main.c
+new file mode 100644
+index 0000000000..d41fbadc9f
+--- /dev/null
++++ b/tests/subsys/secure_storage/psa/crypto/src/main.c
+@@ -0,0 +1,125 @@
++/* Copyright (c) 2024 Nordic Semiconductor
++ * SPDX-License-Identifier: Apache-2.0
++ */
++#include <zephyr/ztest.h>
++#include <psa/crypto.h>
++#include <psa/internal_trusted_storage.h>
++#include <psa/protected_storage.h>
++
++ZTEST_SUITE(secure_storage_psa_crypto, NULL, NULL, NULL, NULL, NULL);
++
++#define ID       PSA_KEY_ID_USER_MIN
++#define KEY_TYPE PSA_KEY_TYPE_AES
++#define ALG      PSA_ALG_CBC_NO_PADDING
++#define KEY_BITS 256
++
++static void fill_key_attributes(psa_key_attributes_t *key_attributes)
++{
++	*key_attributes = psa_key_attributes_init();
++	psa_set_key_lifetime(key_attributes, PSA_KEY_LIFETIME_PERSISTENT);
++	psa_set_key_usage_flags(key_attributes, PSA_KEY_USAGE_ENCRYPT | PSA_KEY_USAGE_DECRYPT);
++	psa_set_key_id(key_attributes, ID);
++	psa_set_key_type(key_attributes, KEY_TYPE);
++	psa_set_key_algorithm(key_attributes, ALG);
++	psa_set_key_bits(key_attributes, KEY_BITS);
++}
++
++static void fill_data(uint8_t *data, size_t size)
++{
++	zassert_equal(psa_generate_random(data, size), PSA_SUCCESS);
++}
++
++ZTEST(secure_storage_psa_crypto, test_its_caller_isolation)
++{
++	psa_status_t ret;
++	psa_key_attributes_t key_attributes;
++	psa_key_attributes_t retrieved_key_attributes;
++	psa_key_id_t key_id;
++	uint8_t data[32];
++	size_t data_length;
++	uint8_t its_data[sizeof(data)];
++	uint8_t ps_data[sizeof(data)];
++
++	fill_data(its_data, sizeof(its_data));
++	fill_data(ps_data, sizeof(ps_data));
++	zassert_true(memcmp(its_data, ps_data, sizeof(data)));
++	ret = psa_its_set(ID, sizeof(its_data), its_data, PSA_STORAGE_FLAG_NONE);
++	zassert_equal(ret, PSA_SUCCESS);
++	ret = psa_ps_set(ID, sizeof(ps_data), ps_data, PSA_STORAGE_FLAG_NONE);
++	zassert_equal(ret, PSA_SUCCESS);
++
++	fill_key_attributes(&key_attributes);
++	ret = psa_generate_key(&key_attributes, &key_id);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(key_id, ID);
++	ret = psa_purge_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++
++	ret = psa_its_get(ID, 0, sizeof(data), data, &data_length);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(data_length, sizeof(data));
++	zassert_mem_equal(data, its_data, sizeof(data));
++	ret = psa_its_remove(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++	ret = psa_its_remove(ID);
++	zassert_equal(ret, PSA_ERROR_DOES_NOT_EXIST);
++
++	ret = psa_ps_get(ID, 0, sizeof(data), data, &data_length);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(data_length, sizeof(data));
++	zassert_mem_equal(data, ps_data, sizeof(data));
++	ret = psa_ps_remove(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++	ret = psa_ps_remove(ID);
++	zassert_equal(ret, PSA_ERROR_DOES_NOT_EXIST);
++
++	ret = psa_get_key_attributes(ID, &retrieved_key_attributes);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_mem_equal(&retrieved_key_attributes, &key_attributes, sizeof(key_attributes));
++	ret = psa_destroy_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++	ret = psa_get_key_attributes(ID, &retrieved_key_attributes);
++	zassert_equal(ret, PSA_ERROR_INVALID_HANDLE);
++}
++
++ZTEST(secure_storage_psa_crypto, test_persistent_key_usage)
++{
++	psa_status_t ret;
++	psa_key_attributes_t key_attributes;
++	psa_key_id_t key_id;
++	uint8_t key_material[KEY_BITS / 8];
++
++	fill_key_attributes(&key_attributes);
++	fill_data(key_material, sizeof(key_material));
++	ret = psa_import_key(&key_attributes, key_material, sizeof(key_material), &key_id);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(key_id, ID);
++	ret = psa_purge_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++
++	static uint8_t plaintext[1024];
++	static uint8_t ciphertext[PSA_CIPHER_ENCRYPT_OUTPUT_SIZE(KEY_TYPE, ALG, sizeof(plaintext))];
++	static uint8_t decrypted_text[sizeof(plaintext)];
++	size_t output_length;
++
++	fill_data(plaintext, sizeof(plaintext));
++	ret = psa_cipher_encrypt(ID, ALG, plaintext, sizeof(plaintext),
++				 ciphertext, sizeof(ciphertext), &output_length);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(output_length, sizeof(ciphertext));
++	ret = psa_purge_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++
++	ret = psa_cipher_decrypt(ID, ALG, ciphertext, output_length,
++				 decrypted_text, sizeof(decrypted_text), &output_length);
++	zassert_equal(ret, PSA_SUCCESS);
++	zassert_equal(output_length, sizeof(plaintext));
++	zassert_mem_equal(plaintext, decrypted_text, sizeof(plaintext));
++	ret = psa_purge_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++
++	ret = psa_destroy_key(ID);
++	zassert_equal(ret, PSA_SUCCESS);
++	ret = psa_destroy_key(ID);
++	zassert_equal(ret, PSA_ERROR_INVALID_HANDLE);
++}
+diff --git a/tests/subsys/secure_storage/psa/crypto/testcase.yaml b/tests/subsys/secure_storage/psa/crypto/testcase.yaml
+new file mode 100644
+index 0000000000..1d1878650e
+--- /dev/null
++++ b/tests/subsys/secure_storage/psa/crypto/testcase.yaml
+@@ -0,0 +1,14 @@
++common:
++  tags:
++    - psa.secure_storage
++tests:
++  secure_storage.psa.crypto.secure_storage:
++    filter: CONFIG_SECURE_STORAGE and not CONFIG_SECURE_STORAGE_ITS_STORE_IMPLEMENTATION_NONE
++    extra_args: EXTRA_CONF_FILE=overlay-secure_storage.conf
++    integration_platforms:
++      - native_sim
++      - nrf9151dk/nrf9151
++  secure_storage.psa.crypto.tfm:
++    filter: CONFIG_BUILD_WITH_TFM
++    integration_platforms:
++      - nrf5340dk/nrf5340/cpuapp/ns

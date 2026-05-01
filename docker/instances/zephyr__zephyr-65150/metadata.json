@@ -1,0 +1,20 @@
+{
+    "instance_id": "zephyr__zephyr-65150",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "4fe2605160fd535980924a7ea09080c5984fe896",
+    "fix_commit": "aa71ed4a1f556c03c4b1f5a8ffd1c8b0685881d1",
+    "test_commit": "aa71ed4a1f556c03c4b1f5a8ffd1c8b0685881d1",
+    "problem_statement": "PR #65150: logging: backend: uart: improve compatibility, increase test coverage and minor ROM optimizations. Fixes issue: tests: logging: uart: `log_core_additional/logging.async` failing. - Fixes CI and improves the UART log backend compatibility with out-of-tree applications post #64917. - Increases test coverage of `subsys/logging/log_backend_uart`. - Optimized `log_backend_uart` to save 1 pointer size in ROM. - Changes `struct device *device` to `struct device *uart_dev` fixes #65",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/logging/log_backend_uart",
+    "test_scenario": "logging.backend.uart.single",
+    "build_command": "west build -b qemu_x86 tests/subsys/logging/log_backend_uart",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-65150",
+    "fail_to_pass": [],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "subsys/logging/backends/log_backend_uart.c"
+    ]
+}

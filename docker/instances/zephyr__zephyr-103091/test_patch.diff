@@ -1,0 +1,36 @@
+diff --git a/tests/posix/xsi_single_process/prj.conf b/tests/posix/xsi_single_process/prj.conf
+index 71998704aa..9b1752661d 100644
+--- a/tests/posix/xsi_single_process/prj.conf
++++ b/tests/posix/xsi_single_process/prj.conf
+@@ -1,4 +1,4 @@
+ CONFIG_ZTEST=y
+ 
+-CONFIG_POSIX_API=y
++CONFIG_POSIX_AEP_CHOICE_BASE=y
+ CONFIG_XSI_SINGLE_PROCESS=y
+diff --git a/tests/posix/xsi_single_process/src/putenv.c b/tests/posix/xsi_single_process/src/putenv.c
+index 2b05eeca6e..f1cffa2090 100644
+--- a/tests/posix/xsi_single_process/src/putenv.c
++++ b/tests/posix/xsi_single_process/src/putenv.c
+@@ -8,6 +8,9 @@
+ 
+ #include <zephyr/ztest.h>
+ 
++/* declare locally until #97855 is merged, as some C libraries do not declare it in stdlib.h */
++int putenv(char *s);
++
+ ZTEST(xsi_single_process, test_putenv)
+ {
+ 	char buf[64];
+diff --git a/tests/posix/xsi_single_process/testcase.yaml b/tests/posix/xsi_single_process/testcase.yaml
+index 523d717cb2..4c5793ec6e 100644
+--- a/tests/posix/xsi_single_process/testcase.yaml
++++ b/tests/posix/xsi_single_process/testcase.yaml
+@@ -10,7 +10,6 @@ common:
+     - simulation
+   integration_platforms:
+     - qemu_cortex_m0
+-  min_ram: 16
+ tests:
+   portability.xsi.single_process:
+     extra_configs:

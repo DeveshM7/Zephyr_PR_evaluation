@@ -1,0 +1,30 @@
+{
+    "instance_id": "zephyr__zephyr-33690",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "8c1e75c0ed43dfefab05e13905ab11449d8628ba",
+    "fix_commit": "3b6294ab9e47a4c48150acf28033a29adb1d9591",
+    "test_commit": "3b6294ab9e47a4c48150acf28033a29adb1d9591",
+    "problem_statement": "PR #33690: Fix return code for unimplemented functions in driver APIs (ENOSYS vs ENOTSUP). Fixes issue: RFC: clarification and standardization of ENOTSUP/ENOSYS error returns. Fix wrong usage of return codes in driver APIs and remove bogus checkpatch warning. It turn out, majority of usage of ENOTSUP (~1000) in drivers is correct and we are just using the wrong return code in a few places mostly on the the APIs level and in a few headers only. This resolves #23727",
+    "platform": "qemu_x86",
+    "test_path": "tests/drivers/sensor/generic",
+    "test_scenario": "driver.sensor",
+    "build_command": "west build -b qemu_x86 tests/drivers/sensor/generic",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-33690",
+    "fail_to_pass": [],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        ".checkpatch.conf",
+        "include/drivers/clock_control.h",
+        "include/drivers/i2c.h",
+        "include/drivers/kscan.h",
+        "include/drivers/led.h",
+        "include/drivers/lora.h",
+        "include/drivers/ps2.h",
+        "include/drivers/pwm.h",
+        "include/drivers/sensor.h",
+        "include/drivers/uart.h",
+        "include/drivers/video.h"
+    ]
+}

@@ -1,0 +1,472 @@
+[
+  {
+    "pr_number": 98755,
+    "title": "kernel: `Z_HEAP_MIN_SIZE` for runtime stats",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/98755",
+    "merged_at": "2025-11-05T09:34:01Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #98754"
+    ],
+    "testcase_yamls": [
+      "tests/lib/heap_min/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/98754"
+    ]
+  },
+  {
+    "pr_number": 90060,
+    "title": "sys: timeutil: add utility functions for struct timespec",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/90060",
+    "merged_at": "2025-05-22T21:57:17Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #88115"
+    ],
+    "testcase_yamls": [
+      "tests/lib/timespec_util/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/88115"
+    ]
+  },
+  {
+    "pr_number": 98142,
+    "title": "zbus: Introduce Async Listener",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/98142",
+    "merged_at": "2025-11-21T16:42:57Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #88499"
+    ],
+    "testcase_yamls": [
+      "tests/subsys/zbus/async_listeners/testcase.yaml",
+      "tests/subsys/zbus/integration/testcase.yaml",
+      "tests/subsys/zbus/publish_stats/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/88499"
+    ]
+  },
+  {
+    "pr_number": 97357,
+    "title": "posix: multi process: add support for times()",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/97357",
+    "merged_at": "2025-10-14T21:27:09Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #51978"
+    ],
+    "testcase_yamls": [
+      "tests/posix/multi_process/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/51978"
+    ]
+  },
+  {
+    "pr_number": 66762,
+    "title": "posix: env: support for environ, getenv(), setenv(), unsetenv()",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/66762",
+    "merged_at": "2024-03-08T09:28:47Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #66861, #66862, #66863, #66864"
+    ],
+    "testcase_yamls": [
+      "tests/posix/env/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/66861",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/66862",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/66863",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/66864"
+    ]
+  },
+  {
+    "pr_number": 66753,
+    "title": "Lib: SMF: Add initial transitions to HSMs and add smf_set_handled()",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/66753",
+    "merged_at": "2024-03-04T21:16:40Z",
+    "score": 6,
+    "confidence": "VERY HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #55344, #66341"
+    ],
+    "testcase_yamls": [
+      "tests/lib/smf/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/55344",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/66341"
+    ]
+  },
+  {
+    "pr_number": 95615,
+    "title": "fs: zms: fix no-cache + no-double-write",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/95615",
+    "merged_at": "2025-09-22T17:28:28Z",
+    "score": 6,
+    "confidence": "HIGH",
+    "fail_type": "runtime assertion",
+    "source": "v2",
+    "reasons": [
+      "targets QEMU: {'qemu_x86'}",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #95614"
+    ],
+    "testcase_yamls": [
+      "tests/subsys/fs/zms/testcase.yaml"
+    ],
+    "platform_allow": [
+      "qemu_x86",
+      "native_sim"
+    ],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/95614"
+    ]
+  },
+  {
+    "pr_number": 90096,
+    "title": "sys: clock: add sys_clock api and remove posix from iso c time",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/90096",
+    "merged_at": "2025-06-24T12:18:53Z",
+    "score": 6,
+    "confidence": "HIGH",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #88882, #88555"
+    ],
+    "testcase_yamls": [
+      "tests/lib/c_lib/time/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/88882",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/88555"
+    ]
+  },
+  {
+    "pr_number": 73799,
+    "title": "posix: add support for mmap, memlock, shared memory, and mprotect",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/73799",
+    "merged_at": "2024-06-14T18:01:05Z",
+    "score": 6,
+    "confidence": "HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #59950, #59951, #59952, #59953"
+    ],
+    "testcase_yamls": [
+      "tests/posix/shm/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/59950",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/59951",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/59952",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/59953"
+    ]
+  },
+  {
+    "pr_number": 33690,
+    "title": "Fix return code for unimplemented functions in driver APIs (ENOSYS vs ENOTSUP)",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/33690",
+    "merged_at": "2021-03-30T15:50:15Z",
+    "score": 6,
+    "confidence": "HIGH",
+    "fail_type": "runtime assertion",
+    "source": "v1",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #23727"
+    ],
+    "testcase_yamls": [
+      "tests/drivers/sensor/generic/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/23727"
+    ]
+  },
+  {
+    "pr_number": 74435,
+    "title": "sensor: fix: decouple Sensor Async API request from its execution",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/74435",
+    "merged_at": "2024-07-09T21:21:05Z",
+    "score": 6,
+    "confidence": "MEDIUM-HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #73676"
+    ],
+    "testcase_yamls": [
+      "tests/subsys/rtio/workq/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/73676"
+    ]
+  },
+  {
+    "pr_number": 58030,
+    "title": "tests: mgmt: mcumgr: Add smp_version test",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/58030",
+    "merged_at": "2023-05-26T13:05:30Z",
+    "score": 6,
+    "confidence": "MEDIUM-HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #58003"
+    ],
+    "testcase_yamls": [
+      "tests/subsys/mgmt/mcumgr/smp_version/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/58003"
+    ]
+  },
+  {
+    "pr_number": 46101,
+    "title": "minimal libc + posix: add strerror and perror functions",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/46101",
+    "merged_at": "2022-07-04T20:53:36Z",
+    "score": 6,
+    "confidence": "MEDIUM-HIGH",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #46099, #46100"
+    ],
+    "testcase_yamls": [
+      "tests/lib/c_lib/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/46099",
+      "https://github.com/zephyrproject-rtos/zephyr/issues/46100"
+    ]
+  },
+  {
+    "pr_number": 103091,
+    "title": "tests: posix: xsi_single_process: ensure tests pass in CI",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/103091",
+    "merged_at": "2026-02-03T14:22:49Z",
+    "score": 6,
+    "confidence": "MEDIUM",
+    "fail_type": "runtime assertion",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #102558"
+    ],
+    "testcase_yamls": [
+      "tests/posix/xsi_single_process/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/102558"
+    ]
+  },
+  {
+    "pr_number": 76573,
+    "title": "LE Audio: Make CCID public",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/76573",
+    "merged_at": "2024-10-15T08:10:29Z",
+    "score": 6,
+    "confidence": "MEDIUM",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #76105"
+    ],
+    "testcase_yamls": [
+      "tests/bluetooth/audio/ccid/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/76105"
+    ]
+  },
+  {
+    "pr_number": 76222,
+    "title": "secure_storage: introduce the secure storage subsystem",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/76222",
+    "merged_at": "2024-10-07T11:38:44Z",
+    "score": 6,
+    "confidence": "MEDIUM",
+    "fail_type": "compile error",
+    "source": "v2",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #75275"
+    ],
+    "testcase_yamls": [
+      "tests/subsys/secure_storage/psa/crypto/testcase.yaml",
+      "tests/subsys/secure_storage/psa/its/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/75275"
+    ]
+  },
+  {
+    "pr_number": 51809,
+    "title": "Bluetooth: Move crypto toolbox functions from `smp.c` into their own file",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/51809",
+    "merged_at": "2022-11-10T08:28:29Z",
+    "score": 6,
+    "confidence": "MEDIUM",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "targets QEMU: {'qemu_cortex_m3', 'qemu_x86'}",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #51297"
+    ],
+    "testcase_yamls": [
+      "tests/bluetooth/bt_crypto/testcase.yaml"
+    ],
+    "platform_allow": [
+      "native_posix_64",
+      "native_posix",
+      "qemu_cortex_m3",
+      "qemu_x86"
+    ],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/51297"
+    ]
+  },
+  {
+    "pr_number": 64123,
+    "title": "Bluetooth: BAP: Refactor bt_bap_base",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/pull/64123",
+    "merged_at": "2023-12-06T17:51:47Z",
+    "score": 6,
+    "confidence": "MEDIUM",
+    "fail_type": "compile error",
+    "source": "v3",
+    "reasons": [
+      "platform agnostic",
+      "no depends_on",
+      "includes test source .c",
+      "modifies non-test source",
+      "linked issue(s): #44113"
+    ],
+    "testcase_yamls": [
+      "tests/bluetooth/audio/bap_base/testcase.yaml"
+    ],
+    "platform_allow": [],
+    "depends_on": [],
+    "linked_issues": [
+      "https://github.com/zephyrproject-rtos/zephyr/issues/44113"
+    ]
+  }
+]

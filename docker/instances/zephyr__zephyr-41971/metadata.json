@@ -1,0 +1,26 @@
+{
+    "instance_id": "zephyr__zephyr-41971",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "e9d012cc6c44a2f15fe8277976901a6d68fba230",
+    "fix_commit": "c5989c21aa909878a8e4f2300e7464cb2e13a3fb",
+    "test_commit": "c5989c21aa909878a8e4f2300e7464cb2e13a3fb",
+    "problem_statement": "PR #41971: logging: printk: Fix LOG_PRINTK option and added test for it. Fixes issue: regression: Build fails after switching logging to V2. Removed logging dependency from printk.h and did cleanup in printk.c regarding logging (and userspace). Extended `log_api` testsuite to check `CONFIG_LOG_PRINTK=y` option. ~~PR is based on #41969.~~ Fixes #41915. Signed-off-by: Krzysztof Chruscinski <krzysztof.chruscinski@nordicsemi.no>",
+    "platform": "qemu_cortex_m3",
+    "test_path": "tests/subsys/logging/log_api",
+    "test_scenario": "logging.log_api_deferred_overflow_rt_filter",
+    "build_command": "west build -b qemu_cortex_m3 tests/subsys/logging/log_api",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-41971",
+    "fail_to_pass": [],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/logging/log.h",
+        "include/sys/printk.h",
+        "lib/os/printk.c",
+        "subsys/logging/log_core.c",
+        "subsys/logging/log_output.c",
+        "subsys/testsuite/include/tc_util.h",
+        "subsys/testsuite/ztest/src/ztest_new.c"
+    ]
+}

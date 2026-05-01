@@ -1,0 +1,32 @@
+{
+    "instance_id": "zephyr__zephyr-90060",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "610a7e2241004314950991d8308d2952ce73f8e7",
+    "fix_commit": "8a5c74421366d12809842e30c043a8f2596a6d3d",
+    "test_commit": "8a5c74421366d12809842e30c043a8f2596a6d3d",
+    "problem_statement": "PR #90060: sys: timeutil: add utility functions for struct timespec. Fixes issue: lib: posix: clock: Incorrect normalization when setting time lower than current uptime. Add a number of utility functions for manipulating struct timespec. * timespec_add() * timespec_compare() * timespec_equal() * timespec_is_valid() * timespec_negate() * timespec_normalize() * timespec_sub() * timespec_from_timeout() * timespec_to_timeout() If the `__builtin_add_overflow()` function ",
+    "platform": "qemu_x86",
+    "test_path": "tests/lib/timespec_util",
+    "test_scenario": "libraries.timespec_utils.speed",
+    "build_command": "west build -b qemu_x86 tests/lib/timespec_util",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-90060",
+    "fail_to_pass": [
+        "test_timespec_is_valid",
+        "test_timespec_normalize",
+        "test_timespec_add",
+        "test_timespec_negate",
+        "test_timespec_sub",
+        "test_timespec_compare",
+        "test_timespec_equal",
+        "test_timespec_from_timeout",
+        "test_timespec_to_timeout"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/sys/timeutil.h",
+        "lib/posix/options/clock_common.c",
+        "lib/posix/options/posix_clock.h"
+    ]
+}

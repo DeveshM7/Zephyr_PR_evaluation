@@ -1,0 +1,12 @@
+diff --git a/tests/drivers/build_all/modem/testcase.yaml b/tests/drivers/build_all/modem/testcase.yaml
+index 08a9027d80..26182940d9 100644
+--- a/tests/drivers/build_all/modem/testcase.yaml
++++ b/tests/drivers/build_all/modem/testcase.yaml
+@@ -1,6 +1,6 @@
+ common:
+   build_only: true
+-  tags: drivers net
++  tags: drivers net modem
+ tests:
+   drivers.modem.build:
+     extra_args: CONF_FILE=modem.conf

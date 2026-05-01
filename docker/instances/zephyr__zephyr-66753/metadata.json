@@ -1,0 +1,24 @@
+{
+    "instance_id": "zephyr__zephyr-66753",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "d93693082abac606df1add7bc6b9c689b5c46e83",
+    "fix_commit": "3203bd660c6c8968e3047fb16b5721645f7ca696",
+    "test_commit": "3203bd660c6c8968e3047fb16b5721645f7ca696",
+    "problem_statement": "PR #66753: Lib: SMF: Add initial transitions to HSMs and add smf_set_handled(). Fixes issue: smf: support initial transition to nested states. Brings SMF framework closer into alignment with accepted Hierarchical State Machine operation by: 1. Allowing 'programming by difference' by having some child states handle events and prevent propagation up to the parent run actions while others propagate events up to a common handler in a parent st",
+    "platform": "qemu_x86",
+    "test_path": "tests/lib/smf",
+    "test_scenario": "libraries.smf.hierarchical",
+    "build_command": "west build -b qemu_x86 tests/lib/smf",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-66753",
+    "fail_to_pass": [
+        "test_smf_initial_transitions"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/smf.h",
+        "lib/smf/Kconfig",
+        "lib/smf/smf.c"
+    ]
+}

@@ -1,0 +1,18 @@
+diff --git a/tests/net/ipv6/testcase.yaml b/tests/net/ipv6/testcase.yaml
+index e92430af22..804ec02fb8 100644
+--- a/tests/net/ipv6/testcase.yaml
++++ b/tests/net/ipv6/testcase.yaml
+@@ -1,4 +1,11 @@
++common:
++  tags: net ipv6
++  depends_on: netif
+ tests:
+   net.ipv6:
+-    tags: net ipv6
+-    depends_on: netif
++    extra_configs:
++      - CONFIG_NET_BUF_FIXED_DATA_SIZE=y
++  net.ipv6.variable_buf_size:
++    extra_configs:
++      - CONFIG_NET_BUF_VARIABLE_DATA_SIZE=y
++      - CONFIG_NET_BUF_DATA_POOL_SIZE=4096

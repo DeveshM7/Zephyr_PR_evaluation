@@ -1,0 +1,22 @@
+{
+    "instance_id": "zephyr__zephyr-82272",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "6f26952828b037e46934a5b98d7d1d05eab45aaf",
+    "fix_commit": "1bb5c34f98b5717bf482bf6b45acf4b345886e26",
+    "test_commit": "1bb5c34f98b5717bf482bf6b45acf4b345886e26",
+    "problem_statement": "PR #82272: kernel/sched: Correct k_sleep() return value when a 32-bit tick wraparound occurs. Fixes #79863 The `expected_wakeup_ticks` and `sys_clock_tick_get_32()` are uint32_t values, and may wrap around individually. If the `expected_wakeup_ticks` has a wraparound and `sys_clock_tick_get_32()` doesn't, so `expected_wakeup_ticks < sys_clock_tick_get_32()`, the API return value will be corr",
+    "platform": "qemu_x86",
+    "test_path": "tests/kernel/sched/wraparound",
+    "test_scenario": "kernel.scheduler.wraparound",
+    "build_command": "west build -b qemu_x86 tests/kernel/sched/wraparound",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-82272",
+    "fail_to_pass": [
+        "test_tick_wraparound_in_sleep"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "kernel/sched.c"
+    ]
+}

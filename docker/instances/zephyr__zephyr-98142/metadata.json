@@ -1,0 +1,25 @@
+{
+    "instance_id": "zephyr__zephyr-98142",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "2baee8af6d9f26a3c1b121725a488d4608ccc970",
+    "fix_commit": "9463d9a51d9cb1094bf98ef437a39850a7b5705d",
+    "test_commit": "9463d9a51d9cb1094bf98ef437a39850a7b5705d",
+    "problem_statement": "PR #98142: zbus: Introduce Async Listener. Fixes issue: ZBus Async Listeners. There is no easy way to offload the listener execution to a separate thread. So, when the pub function is called from an ISR, the publication process can take a long time to execute, increasing interrupt latency. Based on that, a new kind of listener emerged. Introducing the Async Listeners. They lo",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/zbus/async_listeners",
+    "test_scenario": "message_bus.zbus.async_listeners",
+    "build_command": "west build -b qemu_x86 tests/subsys/zbus/async_listeners",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-98142",
+    "fail_to_pass": [
+        "test_01_specification",
+        "test_02_isolated_wqueue"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/zbus/zbus.h",
+        "subsys/zbus/Kconfig",
+        "subsys/zbus/zbus.c"
+    ]
+}

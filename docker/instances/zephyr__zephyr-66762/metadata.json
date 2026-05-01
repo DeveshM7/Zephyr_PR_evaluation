@@ -1,0 +1,34 @@
+{
+    "instance_id": "zephyr__zephyr-66762",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "9fa4cd8226ced9ecfcfb34bf0aa5e86d1abceb1f",
+    "fix_commit": "6ef6cf54b4ab48fe38696dccce20c29f1dc80940",
+    "test_commit": "6ef6cf54b4ab48fe38696dccce20c29f1dc80940",
+    "problem_statement": "PR #66762: posix: env: support for environ, getenv(), setenv(), unsetenv(). Fixes issue: posix: implement `environ`. **Note: Coding Guidelines failures are false positives** Support getting and setting POSIX environment variables. Additionally, the thread-safe BSD variant `getenv_r()` is provided. `environ`, `getenv()`, `setenv()`, and `unsetenv()` are required by the `POSIX_SINGLE_PROCESS` Option Group as detaile",
+    "platform": "qemu_x86",
+    "test_path": "tests/posix/env",
+    "test_scenario": "portability.posix.env.armclang_std_libc",
+    "build_command": "west build -b qemu_x86 tests/posix/env",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-66762",
+    "fail_to_pass": [
+        "test_getenv",
+        "test_getenv_r",
+        "test_setenv",
+        "test_unsetenv",
+        "test_watertight"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "lib/libc/minimal/include/stdlib.h",
+        "lib/posix/options/CMakeLists.txt",
+        "lib/posix/options/Kconfig",
+        "lib/posix/options/Kconfig.env",
+        "lib/posix/options/env.c",
+        "lib/posix/shell/CMakeLists.txt",
+        "lib/posix/shell/Kconfig",
+        "lib/posix/shell/Kconfig.env",
+        "lib/posix/shell/env.c"
+    ]
+}

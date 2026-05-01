@@ -1,0 +1,29 @@
+{
+    "instance_id": "zephyr__zephyr-58030",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "9efd52fb90e21b8c6f3a0d671c003801c22ead76",
+    "fix_commit": "d2eed56f4f03e2c12232bc4b0abf05facf1ed836",
+    "test_commit": "d2eed56f4f03e2c12232bc4b0abf05facf1ed836",
+    "problem_statement": "PR #58030: tests: mgmt: mcumgr: Add smp_version test. Fixes issue: tests: mgmt: mcumgr: Add test for protocol version. Adds a test that checks various conditions of header/responses for MCUmgr with different protocol versions. Plus some misc. fixes Fixes #58003",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/mgmt/mcumgr/smp_version",
+    "test_scenario": "smp.version",
+    "build_command": "west build -b qemu_x86 tests/subsys/mgmt/mcumgr/smp_version",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-58030",
+    "fail_to_pass": [
+        "test_legacy_command",
+        "test_current_command",
+        "test_new_command"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "subsys/mgmt/mcumgr/Kconfig",
+        "subsys/mgmt/mcumgr/grp/os_mgmt/Kconfig",
+        "subsys/mgmt/mcumgr/grp/os_mgmt/include/os_mgmt_processor.h",
+        "subsys/mgmt/mcumgr/smp/Kconfig",
+        "subsys/mgmt/mcumgr/smp/src/smp.c",
+        "subsys/mgmt/mcumgr/transport/include/mgmt/mcumgr/transport/smp_internal.h"
+    ]
+}

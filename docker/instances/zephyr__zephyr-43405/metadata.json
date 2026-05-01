@@ -1,0 +1,21 @@
+{
+    "instance_id": "zephyr__zephyr-43405",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "af0158d693d581678429d10ffbd9da8adecf95df",
+    "fix_commit": "23c3449780ca67bd99f6bcd2db2ec6363ed814cc",
+    "test_commit": "23c3449780ca67bd99f6bcd2db2ec6363ed814cc",
+    "problem_statement": "PR #43405: logging: Add option for prolonged backend initialization. Extended logging backend API with log_backend_is_ready call which returns 0 is backend is ready. Logging core will make sure that all autostarted backends are ready before they are enabled. This option allows to handle backends which are not yet ready after init function is called (e.g. usb backend ",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/logging/log_backend_init",
+    "test_scenario": "logging.log_backend_initialization",
+    "build_command": "west build -b qemu_x86 tests/subsys/logging/log_backend_init",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-43405",
+    "fail_to_pass": [],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/logging/log_backend.h",
+        "subsys/logging/log_core.c"
+    ]
+}

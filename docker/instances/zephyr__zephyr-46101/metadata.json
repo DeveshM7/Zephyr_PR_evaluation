@@ -1,0 +1,30 @@
+{
+    "instance_id": "zephyr__zephyr-46101",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "a6a9a35d0ab1f68fe4b660c7a6948f5c261d01cc",
+    "fix_commit": "b4d7b1c56bffd95808a596e5ee4a4c02fd28fa57",
+    "test_commit": "b4d7b1c56bffd95808a596e5ee4a4c02fd28fa57",
+    "problem_statement": "PR #46101: minimal libc + posix: add strerror and perror functions. Fixes issue: libc: minimal: add strerror() function. Add basic `strerror()` and `perror()` implementations to the minimal C library. Also add myself as collaborator in that area. With a simple change to `samples/hello_world`, we observe the following size differences on cortex-m3: Before change: ``` Memory region Used Size Region Size %age Used FLASH:",
+    "platform": "qemu_x86",
+    "test_path": "tests/lib/c_lib",
+    "test_scenario": "libraries.libc",
+    "build_command": "west build -b qemu_x86 tests/lib/c_lib",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-46101",
+    "fail_to_pass": [
+        "test_strerror",
+        "test_strerror_r"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "MAINTAINERS.yml",
+        "lib/libc/Kconfig",
+        "lib/libc/minimal/CMakeLists.txt",
+        "lib/libc/minimal/include/stdio.h",
+        "lib/libc/minimal/include/string.h",
+        "lib/libc/minimal/source/string/strerror.c",
+        "lib/posix/CMakeLists.txt",
+        "lib/posix/perror.c"
+    ]
+}

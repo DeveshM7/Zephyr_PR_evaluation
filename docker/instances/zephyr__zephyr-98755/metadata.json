@@ -1,0 +1,23 @@
+{
+    "instance_id": "zephyr__zephyr-98755",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "bf0e0b3cad2b317a055712fdb304443857108216",
+    "fix_commit": "faa2101d4e30e6567058f8830eae9ad4648cc486",
+    "test_commit": "faa2101d4e30e6567058f8830eae9ad4648cc486",
+    "problem_statement": "PR #98755: kernel: `Z_HEAP_MIN_SIZE` for runtime stats. Fixes issue: kernel: `Z_HEAP_MIN_SIZE` incorrect for `CONFIG_SYS_HEAP_RUNTIME_STATS=y`. Increase `Z_HEAP_MIN_SIZE` values to successfully allocate a 1 byte chunk when `CONFIG_SYS_HEAP_RUNTIME_STATS=y`. Validate that `Z_HEAP_MIN_SIZE` is the minimum required size. Fixes #98754",
+    "platform": "qemu_x86",
+    "test_path": "tests/lib/heap_min",
+    "test_scenario": "libraries.heap_min.runtime_stats",
+    "build_command": "west build -b qemu_x86 tests/lib/heap_min",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-98755",
+    "fail_to_pass": [
+        "test_heap_min_size_assert",
+        "test_heap_min_size"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/kernel.h"
+    ]
+}

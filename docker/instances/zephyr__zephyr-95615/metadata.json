@@ -1,0 +1,36 @@
+{
+    "instance_id": "zephyr__zephyr-95615",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "8bb976ad126af98de30f68e2fd6515616a7e97a8",
+    "fix_commit": "9b8f68a35042d326d3c3443e907837ce83439726",
+    "test_commit": "9b8f68a35042d326d3c3443e907837ce83439726",
+    "problem_statement": "PR #95615: fs: zms: fix no-cache + no-double-write. Fixes issue: zms: unable to compile with `CONFIG_ZMS_LOOKUP_CACHE=n`. Fix a compiler error when `CONFIG_ZMS_NO_DOUBLE_WRITE=y` and `CONFIG_ZMS_LOOKUP_CACHE=n`. Fixes #95614",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/fs/zms",
+    "test_scenario": "filesystem.zms",
+    "build_command": "west build -b qemu_x86 tests/subsys/fs/zms",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-95615",
+    "fail_to_pass": [
+        "test_zms_mount",
+        "test_zms_write",
+        "test_zms_corrupted_write",
+        "test_zms_gc",
+        "test_zms_gc_3sectors",
+        "test_zms_corrupted_sector_close_operation",
+        "test_zms_full_sector",
+        "test_delete",
+        "test_zms_gc_corrupt_close_ate",
+        "test_zms_gc_corrupt_ate",
+        "test_zms_cache_init",
+        "test_zms_cache_collision",
+        "test_zms_cache_gc",
+        "test_zms_cache_hash_quality",
+        "test_zms_input_validation"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "subsys/fs/zms/zms.c"
+    ]
+}

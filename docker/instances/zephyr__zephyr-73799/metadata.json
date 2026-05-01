@@ -1,0 +1,38 @@
+{
+    "instance_id": "zephyr__zephyr-73799",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "c98760df44b0bceabc49fce16fb7cca48dcab642",
+    "fix_commit": "0af0187095c7b4a6d7bcd9d72d44ce85baa36adf",
+    "test_commit": "0af0187095c7b4a6d7bcd9d72d44ce85baa36adf",
+    "problem_statement": "PR #73799: posix: add support for mmap, memlock, shared memory, and mprotect. Fixes issue: posix: implement `mmap()`. * add support for `_POSIX_MAPPED_FILES` * add support for `_POSIX_MEMLOCK_RANGE` * add support for `_POSIX_MEMLOCK` (currently unimplemented / fails with `ENOSYS`) * add support for `_POSIX_SHARED_MEMORY_OBJECTS` * add support for `_POSIX_MEMORY_PROTECTION` (currently unimplemented / fails with `ENO",
+    "platform": "qemu_x86",
+    "test_path": "tests/posix/shm",
+    "test_scenario": null,
+    "build_command": "west build -b qemu_x86 tests/posix/shm",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-73799",
+    "fail_to_pass": [
+        "test_shm_open",
+        "test_shm_unlink",
+        "test_shm_read_write",
+        "test_shm_mmap"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/posix/posix_features.h",
+        "include/zephyr/posix/sys/mman.h",
+        "include/zephyr/posix/sys/sysconf.h",
+        "include/zephyr/sys/fdtable.h",
+        "lib/os/fdtable.c",
+        "lib/posix/options/CMakeLists.txt",
+        "lib/posix/options/Kconfig.mem",
+        "lib/posix/options/fs.c",
+        "lib/posix/options/mlock.c",
+        "lib/posix/options/mlockall.c",
+        "lib/posix/options/mmap.c",
+        "lib/posix/options/mprotect.c",
+        "lib/posix/options/shm.c",
+        "lib/posix/options/stropts.c"
+    ]
+}

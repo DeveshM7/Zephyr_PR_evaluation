@@ -1,0 +1,40 @@
+{
+    "instance_id": "zephyr__zephyr-74435",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "901a8f7efbb47aebbbf6c498d5bc47215ca937a7",
+    "fix_commit": "00a3be90d73094fd1f52d17364dea34fae16cc7d",
+    "test_commit": "00a3be90d73094fd1f52d17364dea34fae16cc7d",
+    "problem_statement": "PR #74435: sensor: fix: decouple Sensor Async API request from its execution . Fixes issue: Sensor Async Read API implementation is synchronous/blocking.",
+    "platform": "qemu_x86",
+    "test_path": "tests/subsys/rtio/workq",
+    "test_scenario": "rtio.workq",
+    "build_command": "west build -b qemu_x86 tests/subsys/rtio/workq",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-74435",
+    "fail_to_pass": [
+        "test_work_decouples_submission",
+        "test_work_supports_batching_submissions",
+        "test_work_supports_preempting_on_higher_prio_submissions",
+        "test_used_count_keeps_track_of_alloc_items"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "drivers/sensor/Kconfig",
+        "drivers/sensor/asahi_kasei/akm09918c/Kconfig",
+        "drivers/sensor/asahi_kasei/akm09918c/akm09918c_async.c",
+        "drivers/sensor/bosch/bma4xx/Kconfig",
+        "drivers/sensor/bosch/bma4xx/bma4xx.c",
+        "drivers/sensor/bosch/bme280/Kconfig",
+        "drivers/sensor/bosch/bme280/bme280_async.c",
+        "drivers/sensor/default_rtio_sensor.c",
+        "drivers/sensor/tdk/icm42688/Kconfig",
+        "drivers/sensor/tdk/icm42688/icm42688_rtio.c",
+        "include/zephyr/drivers/sensor.h",
+        "include/zephyr/rtio/work.h",
+        "subsys/rtio/CMakeLists.txt",
+        "subsys/rtio/Kconfig",
+        "subsys/rtio/Kconfig.workq",
+        "subsys/rtio/rtio_workq.c"
+    ]
+}

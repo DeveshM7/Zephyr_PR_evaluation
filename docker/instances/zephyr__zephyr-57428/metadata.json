@@ -1,0 +1,34 @@
+{
+    "instance_id": "zephyr__zephyr-57428",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "ef3d01d16fd462805565d83443db7a7bd38d306d",
+    "fix_commit": "0cd7fa31d311d1731e8f9e75c2a07b21e53aae6f",
+    "test_commit": "0cd7fa31d311d1731e8f9e75c2a07b21e53aae6f",
+    "problem_statement": "PR #57428: nrf52_bsim: twister yaml: Reduce filtering & fix nrf_rtc_timer driver test for it. Fixes issue: tests/drivers/build_all/modem/drivers.modem.simcom_sim7080.build fails on main. nrf52_bsim: twister yaml: Reduce filtering Two parts: 1) The nrf52_bsim has had an overall driver filter since the begining. But nowadays it supports most of the nrf drivers, so it can be used to run these drives' tests. It is actually the only platform which allows running these drivers in CI witho",
+    "platform": "qemu_x86",
+    "test_path": "tests/drivers/build_all/modem",
+    "test_scenario": "drivers.modem.build",
+    "build_command": "west build -b qemu_x86 tests/drivers/build_all/modem",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-57428",
+    "fail_to_pass": [
+        "test_basic",
+        "test_z_nrf_rtc_timer_compare_evt_address_get",
+        "test_int_disable_enabled",
+        "test_get_ticks",
+        "test_absolute_scheduling",
+        "test_alloc_free",
+        "test_stress",
+        "test_resetting_cc",
+        "test_overflow",
+        "test_next_cycle_timeouts",
+        "test_tight_rescheduling"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "boards/posix/nrf52_bsim/nrf52_bsim.yaml",
+        "drivers/modem/simcom-sim7080.c",
+        "drivers/modem/ublox-sara-r4.c"
+    ]
+}

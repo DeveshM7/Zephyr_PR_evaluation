@@ -1,0 +1,37 @@
+{
+    "instance_id": "zephyr__zephyr-51809",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "6401682dd3092027e7c19039f3d46c893a9d413f",
+    "fix_commit": "e9c542ab5b48c6acfc9f8b57c48ac204d39d8a98",
+    "test_commit": "e9c542ab5b48c6acfc9f8b57c48ac204d39d8a98",
+    "problem_statement": "PR #51809: Bluetooth: Move crypto toolbox functions from `smp.c` into their own file. Fixes issue: Bluetooth: Implement H8 function from cryptographic toolbox. Fix #51297",
+    "platform": "qemu_x86",
+    "test_path": "tests/bluetooth/bt_crypto",
+    "test_scenario": "bluetooth.bt_crypto",
+    "build_command": "west build -b qemu_x86 tests/bluetooth/bt_crypto",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-51809",
+    "fail_to_pass": [
+        "test_result_aes_cmac",
+        "test_result_f4",
+        "test_result_f5",
+        "test_result_f6",
+        "test_result_g2",
+        "test_result_h6",
+        "test_result_h7",
+        "test_result_h8"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "drivers/bluetooth/CMakeLists.txt",
+        "subsys/bluetooth/CMakeLists.txt",
+        "subsys/bluetooth/Kconfig",
+        "subsys/bluetooth/bt_crypto/CMakeLists.txt",
+        "subsys/bluetooth/bt_crypto/Kconfig",
+        "subsys/bluetooth/bt_crypto/bt_crypto.c",
+        "subsys/bluetooth/bt_crypto/include/bt_crypto.h",
+        "subsys/bluetooth/host/Kconfig",
+        "subsys/bluetooth/host/smp.c"
+    ]
+}

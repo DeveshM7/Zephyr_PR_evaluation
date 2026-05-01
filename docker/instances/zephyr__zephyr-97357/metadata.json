@@ -1,0 +1,28 @@
+{
+    "instance_id": "zephyr__zephyr-97357",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "e83d8d957dac519cf0715ffa9def4777ba8b0734",
+    "fix_commit": "f02391af0bb3868bf5b00aeed7bdacefad31ec44",
+    "test_commit": "f02391af0bb3868bf5b00aeed7bdacefad31ec44",
+    "problem_statement": "PR #97357: posix: multi process: add support for times(). Fixes issue: Add POSIX times() support. Add support for the `times()` function, which can be used to get the number of ticks spent in \"system\" and \"user\" mode, and which returns the \"real time\" that has expired, since an arbitrary point in the past. The following invariant should always hold: ``` rtime <= stime + utime ``` The `times()` f",
+    "platform": "qemu_x86",
+    "test_path": "tests/posix/multi_process",
+    "test_scenario": "portability.posix.muti_process.minimal",
+    "build_command": "west build -b qemu_x86 tests/posix/multi_process",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-97357",
+    "fail_to_pass": [
+        "test_getpid",
+        "test_sleep",
+        "test_times",
+        "test_usleep"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/posix/sys/times.h",
+        "lib/posix/options/CMakeLists.txt",
+        "lib/posix/options/Kconfig.procN",
+        "lib/posix/options/multi_process.c"
+    ]
+}

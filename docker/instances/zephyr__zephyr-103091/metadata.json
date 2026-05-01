@@ -1,0 +1,24 @@
+{
+    "instance_id": "zephyr__zephyr-103091",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "4f3478391a3c5e555dcd629f9e829378c17b0d62",
+    "fix_commit": "2e19b49944a920584b3c8646917dfc4549da82d3",
+    "test_commit": "2e19b49944a920584b3c8646917dfc4549da82d3",
+    "problem_statement": "PR #103091: tests: posix: xsi_single_process: ensure tests pass in CI. Fixes issue: soc: sifive: Fails CI tests. Ensure that CI passes for `tests/posix/xsi_single_process` Fixes #102558 Testing Done: ```shell twister -c -T tests/posix/xsi_single_process/ Deleting output directory /home/cfriedt/zephyrproject/zephyr/twister-out INFO - Using Ninja.. INFO - Zephyr version: v4.3.0-4976-g6176d859d241 INFO - Using 'z",
+    "platform": "qemu_x86",
+    "test_path": "tests/posix/xsi_single_process",
+    "test_scenario": "portability.xsi.single_process",
+    "build_command": "west build -b qemu_x86 tests/posix/xsi_single_process",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-103091",
+    "fail_to_pass": [
+        "test_putenv"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        ".github/workflows/doxygen-coverage-delta.yml",
+        "include/zephyr/posix/posix_signal.h",
+        "include/zephyr/posix/posix_types.h"
+    ]
+}

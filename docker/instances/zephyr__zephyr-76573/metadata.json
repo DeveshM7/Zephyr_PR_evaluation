@@ -1,0 +1,35 @@
+{
+    "instance_id": "zephyr__zephyr-76573",
+    "project": "zephyr",
+    "repo": "https://github.com/zephyrproject-rtos/zephyr",
+    "base_commit": "52540d8412630edb2c64f4fcca1c1165bcce1ac3",
+    "fix_commit": "cd5a9f62bba6985d0d05a16edea6d5626a197aad",
+    "test_commit": "cd5a9f62bba6985d0d05a16edea6d5626a197aad",
+    "problem_statement": "PR #76573: LE Audio: Make CCID public. Fixes issue: LE Audio: Make bt_ccid_get_value public. Fixes https://github.com/zephyrproject-rtos/zephyr/issues/76105",
+    "platform": "qemu_x86",
+    "test_path": "tests/bluetooth/audio/ccid",
+    "test_scenario": "bluetooth.audio.ccid.test",
+    "build_command": "west build -b qemu_x86 tests/bluetooth/audio/ccid",
+    "run_command": "west build -t run",
+    "docker_image": "embedbench:zephyr-76573",
+    "fail_to_pass": [
+        "test_bt_ccid_alloc_value",
+        "test_bt_ccid_alloc_value_more_than_max",
+        "test_bt_ccid_alloc_value_all_allocated",
+        "test_bt_ccid_find_attr"
+    ],
+    "pass_to_pass": [],
+    "files_changed_by_fix": [
+        "include/zephyr/bluetooth/audio/ccid.h",
+        "subsys/bluetooth/audio/CMakeLists.txt",
+        "subsys/bluetooth/audio/Kconfig",
+        "subsys/bluetooth/audio/Kconfig.mcs",
+        "subsys/bluetooth/audio/Kconfig.mpl",
+        "subsys/bluetooth/audio/Kconfig.tbs",
+        "subsys/bluetooth/audio/cap_initiator.c",
+        "subsys/bluetooth/audio/ccid.c",
+        "subsys/bluetooth/audio/ccid_internal.h",
+        "subsys/bluetooth/audio/mpl.c",
+        "subsys/bluetooth/audio/tbs.c"
+    ]
+}

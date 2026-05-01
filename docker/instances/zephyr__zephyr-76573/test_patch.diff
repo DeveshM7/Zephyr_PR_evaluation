@@ -1,0 +1,177 @@
+diff --git a/tests/bluetooth/audio/ccid/CMakeLists.txt b/tests/bluetooth/audio/ccid/CMakeLists.txt
+new file mode 100644
+index 0000000000..c304cddfb8
+--- /dev/null
++++ b/tests/bluetooth/audio/ccid/CMakeLists.txt
+@@ -0,0 +1,17 @@
++# SPDX-License-Identifier: Apache-2.0
++
++cmake_minimum_required(VERSION 3.20.0)
++
++project(bluetooth_ccid)
++find_package(Zephyr COMPONENTS unittest HINTS $ENV{ZEPHYR_BASE})
++
++add_subdirectory(${ZEPHYR_BASE}/tests/bluetooth/audio/ccid/uut uut)
++
++target_link_libraries(testbinary PRIVATE uut)
++
++target_include_directories(testbinary PRIVATE include)
++
++target_sources(testbinary
++  PRIVATE
++    src/main.c
++)
+diff --git a/tests/bluetooth/audio/ccid/prj.conf b/tests/bluetooth/audio/ccid/prj.conf
+new file mode 100644
+index 0000000000..165ddccf90
+--- /dev/null
++++ b/tests/bluetooth/audio/ccid/prj.conf
+@@ -0,0 +1,10 @@
++CONFIG_ZTEST=y
++
++CONFIG_BT=y
++CONFIG_BT_GATT_DYNAMIC_DB=y
++CONFIG_BT_AUDIO=y
++
++CONFIG_ASSERT=y
++CONFIG_ASSERT_LEVEL=2
++CONFIG_ASSERT_VERBOSE=y
++CONFIG_ASSERT_ON_ERRORS=y
+diff --git a/tests/bluetooth/audio/ccid/src/main.c b/tests/bluetooth/audio/ccid/src/main.c
+new file mode 100644
+index 0000000000..63a95a5dd7
+--- /dev/null
++++ b/tests/bluetooth/audio/ccid/src/main.c
+@@ -0,0 +1,96 @@
++/* main.c - Application main entry point */
++
++/*
++ * Copyright (c) 2024 Nordic Semiconductor ASA
++ *
++ * SPDX-License-Identifier: Apache-2.0
++ */
++#include <errno.h>
++#include <stddef.h>
++#include <stdint.h>
++#include <sys/types.h>
++
++#include <zephyr/bluetooth/audio/ccid.h>
++#include <zephyr/bluetooth/conn.h>
++#include <zephyr/bluetooth/gatt.h>
++#include <zephyr/bluetooth/uuid.h>
++#include <zephyr/fff.h>
++#include <zephyr/sys/util.h>
++#include <zephyr/sys/util_macro.h>
++
++#include <zephyr/ztest_test.h>
++#include <zephyr/ztest_assert.h>
++
++DEFINE_FFF_GLOBALS;
++
++ZTEST_SUITE(audio_ccid_test_suite, NULL, NULL, NULL, NULL, NULL);
++
++#define MAX_CCID_CNT 256
++
++static ZTEST(audio_ccid_test_suite, test_bt_ccid_alloc_value)
++{
++	const int ret = bt_ccid_alloc_value();
++
++	zassert_true(ret >= 0 && ret <= UINT8_MAX, "Unexpected return value %d", ret);
++}
++
++static ZTEST(audio_ccid_test_suite, test_bt_ccid_alloc_value_more_than_max)
++{
++	/* Verify that we can allocate more than max CCID if they are not registered */
++	for (uint16_t i = 0U; i < MAX_CCID_CNT * 2; i++) {
++		const int ret = bt_ccid_alloc_value();
++
++		zassert_true(ret >= 0 && ret <= UINT8_MAX, "Unexpected return value %d", ret);
++	}
++}
++
++static ssize_t read_ccid(struct bt_conn *conn, const struct bt_gatt_attr *attr, void *buf,
++			 uint16_t len, uint16_t offset)
++{
++	const unsigned int ccid = POINTER_TO_UINT(attr->user_data);
++	const uint8_t ccid_u8 = (uint8_t)ccid;
++
++	zassert_true(ccid <= BT_CCID_MAX);
++
++	return bt_gatt_attr_read(conn, attr, buf, len, offset, &ccid_u8, sizeof(ccid_u8));
++}
++
++#define CCID_DEFINE(_n, ...)                                                                       \
++	BT_GATT_CHARACTERISTIC(BT_UUID_CCID, BT_GATT_CHRC_READ, BT_GATT_PERM_READ, read_ccid,      \
++			       NULL, UINT_TO_POINTER(_n))
++
++/* BT_GATT_PRIMARY_SERVICE only works in the global scope */
++static struct bt_gatt_attr test_attrs[] = {
++	BT_GATT_PRIMARY_SERVICE(BT_UUID_TBS),
++	LISTIFY(MAX_CCID_CNT, CCID_DEFINE, (,)),
++};
++
++static ZTEST(audio_ccid_test_suite, test_bt_ccid_alloc_value_all_allocated)
++{
++	struct bt_gatt_service test_svc = BT_GATT_SERVICE(test_attrs);
++	int ret;
++
++	zassert_ok(bt_gatt_service_register(&test_svc));
++
++	/* Verify that CCID allocation fails if we have 255 characterstics with it */
++	ret = bt_ccid_alloc_value();
++
++	zassert_ok(bt_gatt_service_unregister(&test_svc));
++
++	zassert_equal(ret, -ENOMEM, "Unexpected return value %d", ret);
++}
++
++static ZTEST(audio_ccid_test_suite, test_bt_ccid_find_attr)
++{
++	struct bt_gatt_service test_svc = BT_GATT_SERVICE(test_attrs);
++
++	/* Service not registered, shall fail */
++	zassert_is_null(bt_ccid_find_attr(0));
++
++	zassert_ok(bt_gatt_service_register(&test_svc));
++
++	/* Service registered, shall not fail */
++	zassert_not_null(bt_ccid_find_attr(0));
++
++	zassert_ok(bt_gatt_service_unregister(&test_svc));
++}
+diff --git a/tests/bluetooth/audio/ccid/testcase.yaml b/tests/bluetooth/audio/ccid/testcase.yaml
+new file mode 100644
+index 0000000000..b40f79c521
+--- /dev/null
++++ b/tests/bluetooth/audio/ccid/testcase.yaml
+@@ -0,0 +1,7 @@
++common:
++  tags:
++    - bluetooth
++    - bluetooth_audio
++tests:
++  bluetooth.audio.ccid.test:
++    type: unit
+diff --git a/tests/bluetooth/audio/ccid/uut/CMakeLists.txt b/tests/bluetooth/audio/ccid/uut/CMakeLists.txt
+new file mode 100644
+index 0000000000..727d5fa4a7
+--- /dev/null
++++ b/tests/bluetooth/audio/ccid/uut/CMakeLists.txt
+@@ -0,0 +1,17 @@
++#
++# Copyright (c) 2024 Nordic Semiconductor ASA
++#
++# SPDX-License-Identifier: Apache-2.0
++#
++# CMakeLists.txt file for creating of uut library.
++#
++
++add_library(uut STATIC
++  ${ZEPHYR_BASE}/subsys/bluetooth/audio/ccid.c
++)
++
++add_subdirectory(${ZEPHYR_BASE}/tests/bluetooth/audio/mocks mocks)
++
++target_link_libraries(uut PUBLIC test_interface mocks)
++
++target_compile_options(uut PRIVATE -std=c11 -include ztest.h)
