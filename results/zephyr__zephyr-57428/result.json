@@ -1,0 +1,9 @@
+{
+    "instance_id": "zephyr__zephyr-57428",
+    "pr_number": 57428,
+    "timestamp": "2026-04-05T01:26:01Z",
+    "duration_seconds": 1201,
+    "status": "wrong_test_path",
+    "pass_step_exit_code": 124,
+    "log": "/Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-57428/run.log"
+}

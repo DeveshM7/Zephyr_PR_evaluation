@@ -1,0 +1,921 @@
+=== Step 1: Generating test_patch.diff ===
+test_patch.diff:      909 lines
+
+=== Step 2: Base image ===
+Already exists, skipping.
+
+=== Step 3: Instance image ===
+Building (~30 min) ...
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.11kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/embedbench-zephyr-base:latest
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/embedbench-zephyr-base:latest@sha256:8acb8048a87fee586b0f4b1a8210057a78b0654c8767df050c0e536bcd6ea970
+#4 resolve docker.io/library/embedbench-zephyr-base:latest@sha256:8acb8048a87fee586b0f4b1a8210057a78b0654c8767df050c0e536bcd6ea970 0.0s done
+#4 DONE 0.0s
+
+#5 [ 2/10] WORKDIR /testbed
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 28.10kB done
+#6 DONE 0.0s
+
+#7 [ 3/10] RUN git clone --filter=blob:none https://github.com/zephyrproject-rtos/zephyr.git .     && git checkout 673f38f3d1ccbb8d66edce195805deae439272d4
+#7 0.326 Cloning into '.'...
+#7 37.52 Updating files:   0% (2/59503)Updating files:   1% (596/59503)Updating files:   2% (1191/59503)Updating files:   2% (1297/59503)Updating files:   3% (1786/59503)Updating files:   4% (2381/59503)Updating files:   5% (2976/59503)Updating files:   6% (3571/59503)Updating files:   7% (4166/59503)Updating files:   8% (4761/59503)Updating files:   9% (5356/59503)Updating files:  10% (5951/59503)Updating files:  11% (6546/59503)Updating files:  12% (7141/59503)Updating files:  13% (7736/59503)Updating files:  14% (8331/59503)Updating files:  15% (8926/59503)Updating files:  16% (9521/59503)Updating files:  17% (10116/59503)Updating files:  18% (10711/59503)Updating files:  19% (11306/59503)Updating files:  20% (11901/59503)Updating files:  21% (12496/59503)Updating files:  21% (12503/59503)Updating files:  22% (13091/59503)Updating files:  23% (13686/59503)Updating files:  24% (14281/59503)Updating files:  25% (14876/59503)Updating files:  26% (15471/59503)Updating files:  27% (16066/59503)Updating files:  28% (16661/59503)Updating files:  29% (17256/59503)Updating files:  30% (17851/59503)Updating files:  31% (18446/59503)Updating files:  32% (19041/59503)Updating files:  33% (19636/59503)Updating files:  34% (20232/59503)Updating files:  35% (20827/59503)Updating files:  36% (21422/59503)Updating files:  37% (22017/59503)Updating files:  38% (22612/59503)Updating files:  39% (23207/59503)Updating files:  40% (23802/59503)Updating files:  41% (24397/59503)Updating files:  41% (24828/59503)Updating files:  42% (24992/59503)Updating files:  43% (25587/59503)Updating files:  44% (26182/59503)Updating files:  45% (26777/59503)Updating files:  46% (27372/59503)Updating files:  47% (27967/59503)Updating files:  48% (28562/59503)Updating files:  49% (29157/59503)Updating files:  50% (29752/59503)Updating files:  51% (30347/59503)Updating files:  52% (30942/59503)Updating files:  53% (31537/59503)Updating files:  54% (32132/59503)Updating files:  55% (32727/59503)Updating files:  56% (33322/59503)Updating files:  57% (33917/59503)Updating files:  58% (34512/59503)Updating files:  59% (35107/59503)Updating files:  60% (35702/59503)Updating files:  61% (36297/59503)Updating files:  62% (36892/59503)Updating files:  63% (37487/59503)Updating files:  64% (38082/59503)Updating files:  65% (38677/59503)Updating files:  65% (38804/59503)Updating files:  66% (39272/59503)Updating files:  67% (39868/59503)Updating files:  68% (40463/59503)Updating files:  69% (41058/59503)Updating files:  70% (41653/59503)Updating files:  71% (42248/59503)Updating files:  72% (42843/59503)Updating files:  73% (43438/59503)Updating files:  74% (44033/59503)Updating files:  75% (44628/59503)Updating files:  76% (45223/59503)Updating files:  77% (45818/59503)Updating files:  78% (46413/59503)Updating files:  79% (47008/59503)Updating files:  80% (47603/59503)Updating files:  81% (48198/59503)Updating files:  82% (48793/59503)Updating files:  83% (49388/59503)Updating files:  84% (49983/59503)Updating files:  85% (50578/59503)Updating files:  86% (51173/59503)Updating files:  86% (51696/59503)Updating files:  87% (51768/59503)Updating files:  88% (52363/59503)Updating files:  89% (52958/59503)Updating files:  90% (53553/59503)Updating files:  91% (54148/59503)Updating files:  92% (54743/59503)Updating files:  93% (55338/59503)Updating files:  94% (55933/59503)Updating files:  95% (56528/59503)Updating files:  96% (57123/59503)Updating files:  97% (57718/59503)Updating files:  98% (58313/59503)Updating files:  99% (58908/59503)Updating files: 100% (59503/59503)Updating files: 100% (59503/59503), done.
+#7 50.12 Note: switching to '673f38f3d1ccbb8d66edce195805deae439272d4'.
+#7 50.12 
+#7 50.12 You are in 'detached HEAD' state. You can look around, make experimental
+#7 50.12 changes and commit them, and you can discard any commits you make in this
+#7 50.12 state without impacting any branches by switching back to a branch.
+#7 50.12 
+#7 50.12 If you want to create a new branch to retain commits you create, you may
+#7 50.12 do so (now or later) by using -c with the switch command. Example:
+#7 50.12 
+#7 50.12   git switch -c <new-branch-name>
+#7 50.12 
+#7 50.12 Or undo this operation with:
+#7 50.12 
+#7 50.12   git switch -
+#7 50.12 
+#7 50.12 Turn off this advice by setting config variable advice.detachedHead to false
+#7 50.12 
+#7 50.12 HEAD is now at 673f38f3d1c soc: arm: nxp_s32: s32k1: unselect CPU_HAS_xCACHE
+#7 DONE 51.6s
+
+#8 [ 4/10] RUN west init -l .     && west update --narrow -o=--depth=1     && west zephyr-export
+#8 0.708 === Initializing from existing manifest repository testbed
+#8 0.708 --- Creating /.west and local configuration file
+#8 0.710 === Initialized. Now run "west update" inside /.
+#8 0.982 === updating acpica (modules/lib/acpica):
+#8 0.982 --- acpica: initializing
+#8 0.991 Initialized empty Git repository in /modules/lib/acpica/.git/
+#8 0.999 --- acpica: fetching, need revision 10ae1038e51eb9306f73c3bbcfc4fde954bb9625
+#8 3.149 From https://github.com/zephyrproject-rtos/acpica
+#8 3.149  * branch            10ae1038e51eb9306f73c3bbcfc4fde954bb9625 -> FETCH_HEAD
+#8 3.437 HEAD is now at 10ae103 osal: zephyr: Fix write access for mapped memory
+#8 3.587 HEAD is now at 10ae103 osal: zephyr: Fix write access for mapped memory
+#8 3.587 === updating cmsis (modules/hal/cmsis):
+#8 3.588 --- cmsis: initializing
+#8 3.592 Initialized empty Git repository in /modules/hal/cmsis/.git/
+#8 3.599 --- cmsis: fetching, need revision 4b96cbb174678dcd3ca86e11e1f24bc5f8726da0
+#8 4.050 From https://github.com/zephyrproject-rtos/cmsis
+#8 4.050  * branch            4b96cbb174678dcd3ca86e11e1f24bc5f8726da0 -> FETCH_HEAD
+#8 4.082 HEAD is now at 4b96cbb doc: Update documentations for CMSIS 5.9.0
+#8 4.101 HEAD is now at 4b96cbb doc: Update documentations for CMSIS 5.9.0
+#8 4.102 === updating cmsis-dsp (modules/lib/cmsis-dsp):
+#8 4.102 --- cmsis-dsp: initializing
+#8 4.108 Initialized empty Git repository in /modules/lib/cmsis-dsp/.git/
+#8 4.113 --- cmsis-dsp: fetching, need revision ff7b5fd1ea5f094665c090c343ec44e74dc0b193
+#8 6.403 From https://github.com/zephyrproject-rtos/cmsis-dsp
+#8 6.403  * branch            ff7b5fd1ea5f094665c090c343ec44e74dc0b193 -> FETCH_HEAD
+#8 6.886 HEAD is now at ff7b5fd compute Library: fix inline function that is not static
+#8 7.188 HEAD is now at ff7b5fd compute Library: fix inline function that is not static
+#8 7.189 === updating cmsis-nn (modules/lib/cmsis-nn):
+#8 7.189 --- cmsis-nn: initializing
+#8 7.195 Initialized empty Git repository in /modules/lib/cmsis-nn/.git/
+#8 7.202 --- cmsis-nn: fetching, need revision 0c8669d81381ccf3b1a01d699f3b68b50134a99f
+#8 7.793 From https://github.com/zephyrproject-rtos/cmsis-nn
+#8 7.793  * branch            0c8669d81381ccf3b1a01d699f3b68b50134a99f -> FETCH_HEAD
+#8 7.891 HEAD is now at 0c8669d Merge pull request #1 from XenuIsWatching/zephyr
+#8 7.930 HEAD is now at 0c8669d Merge pull request #1 from XenuIsWatching/zephyr
+#8 7.931 === updating edtt (tools/edtt):
+#8 7.931 --- edtt: initializing
+#8 7.936 Initialized empty Git repository in /tools/edtt/.git/
+#8 7.942 --- edtt: fetching, need revision 64e5105ad82390164fb73fc654be3f73a608209a
+#8 8.371 From https://github.com/zephyrproject-rtos/edtt
+#8 8.371  * branch            64e5105ad82390164fb73fc654be3f73a608209a -> FETCH_HEAD
+#8 8.397 HEAD is now at 64e5105 edttt_bsim: Avoid infinite exception loop
+#8 8.411 HEAD is now at 64e5105 edttt_bsim: Avoid infinite exception loop
+#8 8.412 === updating fatfs (modules/fs/fatfs):
+#8 8.412 --- fatfs: initializing
+#8 8.418 Initialized empty Git repository in /modules/fs/fatfs/.git/
+#8 8.423 --- fatfs: fetching, need revision 427159bf95ea49b7680facffaa29ad506b42709b
+#8 8.961 From https://github.com/zephyrproject-rtos/fatfs
+#8 8.961  * branch            427159bf95ea49b7680facffaa29ad506b42709b -> FETCH_HEAD
+#8 8.989 HEAD is now at 427159b zephyr: fix ffconf.h override use of STRINGIZE
+#8 9.005 HEAD is now at 427159b zephyr: fix ffconf.h override use of STRINGIZE
+#8 9.006 === updating hal_altera (modules/hal/altera):
+#8 9.006 --- hal_altera: initializing
+#8 9.011 Initialized empty Git repository in /modules/hal/altera/.git/
+#8 9.016 --- hal_altera: fetching, need revision 0d225ddd314379b32355a00fb669eacf911e750d
+#8 9.386 From https://github.com/zephyrproject-rtos/hal_altera
+#8 9.386  * branch            0d225ddd314379b32355a00fb669eacf911e750d -> FETCH_HEAD
+#8 9.420 HEAD is now at 0d225dd zephyr: update include paths to use <zephyr/...>
+#8 9.432 HEAD is now at 0d225dd zephyr: update include paths to use <zephyr/...>
+#8 9.433 === updating hal_ambiq (modules/hal/ambiq):
+#8 9.433 --- hal_ambiq: initializing
+#8 9.437 Initialized empty Git repository in /modules/hal/ambiq/.git/
+#8 9.442 --- hal_ambiq: fetching, need revision 0c5ea5749245c8ff6ce7aefbf0aa9981943c2857
+#8 10.12 From https://github.com/zephyrproject-rtos/hal_ambiq
+#8 10.12  * branch            0c5ea5749245c8ff6ce7aefbf0aa9981943c2857 -> FETCH_HEAD
+#8 10.18 HEAD is now at 0c5ea57 Add MCUCTRL file.
+#8 10.25 HEAD is now at 0c5ea57 Add MCUCTRL file.
+#8 10.25 === updating hal_atmel (modules/hal/atmel):
+#8 10.25 --- hal_atmel: initializing
+#8 10.26 Initialized empty Git repository in /modules/hal/atmel/.git/
+#8 10.26 --- hal_atmel: fetching, need revision 942d664e48f7a2725933a93facc112b87b1de32b
+#8 12.05 From https://github.com/zephyrproject-rtos/hal_atmel
+#8 12.05  * branch            942d664e48f7a2725933a93facc112b87b1de32b -> FETCH_HEAD
+#8 12.29 HEAD is now at 942d664 sam: Add missing REG_RTC_WPMR register instances
+#8 12.41 HEAD is now at 942d664 sam: Add missing REG_RTC_WPMR register instances
+#8 12.41 === updating hal_espressif (modules/hal/espressif):
+#8 12.41 --- hal_espressif: initializing
+#8 12.42 Initialized empty Git repository in /modules/hal/espressif/.git/
+#8 12.42 --- hal_espressif: fetching, need revision eb7e415dc115e57afe96f552493b19d49dfc8c0e
+#8 18.24 From https://github.com/zephyrproject-rtos/hal_espressif
+#8 18.24  * branch            eb7e415dc115e57afe96f552493b19d49dfc8c0e -> FETCH_HEAD
+#8 19.45 HEAD is now at eb7e415 hal: esp32s3: add internal temperature sensor support
+#8 19.70 HEAD is now at eb7e415 hal: esp32s3: add internal temperature sensor support
+#8 19.70 === updating hal_ethos_u (modules/hal/ethos_u):
+#8 19.70 --- hal_ethos_u: initializing
+#8 19.70 Initialized empty Git repository in /modules/hal/ethos_u/.git/
+#8 19.71 --- hal_ethos_u: fetching, need revision 90ada2ea5681b2a2722a10d2898eac34c2510791
+#8 20.07 From https://github.com/zephyrproject-rtos/hal_ethos_u
+#8 20.07  * branch            90ada2ea5681b2a2722a10d2898eac34c2510791 -> FETCH_HEAD
+#8 20.09 HEAD is now at 90ada2e Clarify README regarding CPU choice
+#8 20.11 HEAD is now at 90ada2e Clarify README regarding CPU choice
+#8 20.11 === updating hal_gigadevice (modules/hal/gigadevice):
+#8 20.11 --- hal_gigadevice: initializing
+#8 20.12 Initialized empty Git repository in /modules/hal/gigadevice/.git/
+#8 20.12 --- hal_gigadevice: fetching, need revision 2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3
+#8 20.98 From https://github.com/zephyrproject-rtos/hal_gigadevice
+#8 20.98  * branch            2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3 -> FETCH_HEAD
+#8 21.06 HEAD is now at 2994b7d README.md: add pllmf and pack exception for gd32a50x
+#8 21.11 HEAD is now at 2994b7d README.md: add pllmf and pack exception for gd32a50x
+#8 21.11 === updating hal_infineon (modules/hal/infineon):
+#8 21.11 --- hal_infineon: initializing
+#8 21.12 Initialized empty Git repository in /modules/hal/infineon/.git/
+#8 21.13 --- hal_infineon: fetching, need revision 69c883d3bd9fac8a18dd8384624b8c472a68d06f
+#8 23.11 From https://github.com/zephyrproject-rtos/hal_infineon
+#8 23.11  * branch            69c883d3bd9fac8a18dd8384624b8c472a68d06f -> FETCH_HEAD
+#8 23.39 HEAD is now at 69c883d hal: infineon: update cyhal  to configure SDIO without using pins.
+#8 23.64 HEAD is now at 69c883d hal: infineon: update cyhal  to configure SDIO without using pins.
+#8 23.64 === updating hal_intel (modules/hal/intel):
+#8 23.64 --- hal_intel: initializing
+#8 23.64 Initialized empty Git repository in /modules/hal/intel/.git/
+#8 23.65 --- hal_intel: fetching, need revision 7b4c25669f1513b0d6d6ee78ee42340d91958884
+#8 24.03 From https://github.com/zephyrproject-rtos/hal_intel
+#8 24.03  * branch            7b4c25669f1513b0d6d6ee78ee42340d91958884 -> FETCH_HEAD
+#8 24.06 HEAD is now at 7b4c256 iut: add -Werror to make all warnings into errors
+#8 24.08 HEAD is now at 7b4c256 iut: add -Werror to make all warnings into errors
+#8 24.08 === updating hal_microchip (modules/hal/microchip):
+#8 24.08 --- hal_microchip: initializing
+#8 24.08 Initialized empty Git repository in /modules/hal/microchip/.git/
+#8 24.09 --- hal_microchip: fetching, need revision 5d079f1683a00b801373bbbbf5d181d4e33b30d5
+#8 24.59 From https://github.com/zephyrproject-rtos/hal_microchip
+#8 24.59  * branch            5d079f1683a00b801373bbbbf5d181d4e33b30d5 -> FETCH_HEAD
+#8 24.65 HEAD is now at 5d079f1 mpfs:CMakeLists.txt: Adding mss_gpio directory to build
+#8 24.69 HEAD is now at 5d079f1 mpfs:CMakeLists.txt: Adding mss_gpio directory to build
+#8 24.69 === updating hal_nordic (modules/hal/nordic):
+#8 24.69 --- hal_nordic: initializing
+#8 24.70 Initialized empty Git repository in /modules/hal/nordic/.git/
+#8 24.71 --- hal_nordic: fetching, need revision 56e0b052dff311c2f8eb08c6804e60fc79feb56f
+#8 26.85 From https://github.com/zephyrproject-rtos/hal_nordic
+#8 26.85  * branch            56e0b052dff311c2f8eb08c6804e60fc79feb56f -> FETCH_HEAD
+#8 27.05 HEAD is now at 56e0b05 nrfx_wdt: Remove incorrect assertion
+#8 27.23 HEAD is now at 56e0b05 nrfx_wdt: Remove incorrect assertion
+#8 27.23 === updating hal_nuvoton (modules/hal/nuvoton):
+#8 27.23 --- hal_nuvoton: initializing
+#8 27.24 Initialized empty Git repository in /modules/hal/nuvoton/.git/
+#8 27.24 --- hal_nuvoton: fetching, need revision 584190e131655de1046088bd0d0735d83429ec7c
+#8 28.00 From https://github.com/zephyrproject-rtos/hal_nuvoton
+#8 28.00  * branch            584190e131655de1046088bd0d0735d83429ec7c -> FETCH_HEAD
+#8 28.07 HEAD is now at 584190e hal: NuMaker M46x: modify M460 EMAC driver
+#8 28.13 HEAD is now at 584190e hal: NuMaker M46x: modify M460 EMAC driver
+#8 28.13 === updating hal_nxp (modules/hal/nxp):
+#8 28.13 --- hal_nxp: initializing
+#8 28.13 Initialized empty Git repository in /modules/hal/nxp/.git/
+#8 28.14 --- hal_nxp: fetching, need revision d0c424e1c6ef0acac3099a07280a46a24951a47a
+#8 43.22 From https://github.com/zephyrproject-rtos/hal_nxp
+#8 43.22  * branch              d0c424e1c6ef0acac3099a07280a46a24951a47a -> FETCH_HEAD
+#8 46.91 HEAD is now at d0c424e1 mcux: README: Update patch list
+#8 47.47 HEAD is now at d0c424e1 mcux: README: Update patch list
+#8 47.48 === updating hal_openisa (modules/hal/openisa):
+#8 47.48 --- hal_openisa: initializing
+#8 47.48 Initialized empty Git repository in /modules/hal/openisa/.git/
+#8 47.49 --- hal_openisa: fetching, need revision d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a
+#8 48.84 From https://github.com/zephyrproject-rtos/hal_openisa
+#8 48.84  * branch            d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a -> FETCH_HEAD
+#8 48.88 HEAD is now at d1e61c0 vega_sdk_riscv: Ignore GCC warning about potential uninitialized variable
+#8 48.91 HEAD is now at d1e61c0 vega_sdk_riscv: Ignore GCC warning about potential uninitialized variable
+#8 48.91 === updating hal_quicklogic (modules/hal/quicklogic):
+#8 48.91 --- hal_quicklogic: initializing
+#8 48.92 Initialized empty Git repository in /modules/hal/quicklogic/.git/
+#8 48.93 --- hal_quicklogic: fetching, need revision b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0
+#8 49.27 From https://github.com/zephyrproject-rtos/hal_quicklogic
+#8 49.27  * branch            b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0 -> FETCH_HEAD
+#8 49.30 HEAD is now at b3a66fe Remove references to FPGA IP core drivers
+#8 49.31 HEAD is now at b3a66fe Remove references to FPGA IP core drivers
+#8 49.31 === updating hal_renesas (modules/hal/renesas):
+#8 49.31 --- hal_renesas: initializing
+#8 49.32 Initialized empty Git repository in /modules/hal/renesas/.git/
+#8 49.33 --- hal_renesas: fetching, need revision 1471ed3cbf501434a5f3df2f9df520c3bd8e0258
+#8 49.69 From https://github.com/zephyrproject-rtos/hal_renesas
+#8 49.69  * branch            1471ed3cbf501434a5f3df2f9df520c3bd8e0258 -> FETCH_HEAD
+#8 49.71 HEAD is now at 1471ed3 hal: renesas: Remapped to physical address translation
+#8 49.73 HEAD is now at 1471ed3 hal: renesas: Remapped to physical address translation
+#8 49.73 === updating hal_rpi_pico (modules/hal/rpi_pico):
+#8 49.73 --- hal_rpi_pico: initializing
+#8 49.73 Initialized empty Git repository in /modules/hal/rpi_pico/.git/
+#8 49.74 --- hal_rpi_pico: fetching, need revision fba7162cc7bee06d0149622bbcaac4e41062d368
+#8 50.34 From https://github.com/zephyrproject-rtos/hal_rpi_pico
+#8 50.34  * branch            fba7162cc7bee06d0149622bbcaac4e41062d368 -> FETCH_HEAD
+#8 50.45 HEAD is now at fba7162 Merge pull request #5 from soburi/zephyr_timer_modification
+#8 50.49 HEAD is now at fba7162 Merge pull request #5 from soburi/zephyr_timer_modification
+#8 50.49 === updating hal_silabs (modules/hal/silabs):
+#8 50.49 --- hal_silabs: initializing
+#8 50.49 Initialized empty Git repository in /modules/hal/silabs/.git/
+#8 50.50 --- hal_silabs: fetching, need revision d191d981c4eb20c0c7445a4061fcdbcfa686113a
+#8 52.76 From https://github.com/zephyrproject-rtos/hal_silabs
+#8 52.76  * branch            d191d981c4eb20c0c7445a4061fcdbcfa686113a -> FETCH_HEAD
+#8 53.19 HEAD is now at d191d98 radio: Fix rail_chip_specific.h version
+#8 53.80 HEAD is now at d191d98 radio: Fix rail_chip_specific.h version
+#8 53.80 === updating hal_st (modules/hal/st):
+#8 53.80 --- hal_st: initializing
+#8 53.81 Initialized empty Git repository in /modules/hal/st/.git/
+#8 53.82 --- hal_st: fetching, need revision fb8e79d1a261fd02aadff7c142729f1954163cf3
+#8 55.02 From https://github.com/zephyrproject-rtos/hal_st
+#8 55.02  * branch            fb8e79d1a261fd02aadff7c142729f1954163cf3 -> FETCH_HEAD
+#8 55.11 HEAD is now at fb8e79d sensor/vl53l1x api/core call to VL53L1_GetTickCount function
+#8 55.17 HEAD is now at fb8e79d sensor/vl53l1x api/core call to VL53L1_GetTickCount function
+#8 55.17 === updating hal_stm32 (modules/hal/stm32):
+#8 55.17 --- hal_stm32: initializing
+#8 55.18 Initialized empty Git repository in /modules/hal/stm32/.git/
+#8 55.18 --- hal_stm32: fetching, need revision af2d314b6f7f87cfa8365009497132468ca3a686
+#8 67.34 From https://github.com/zephyrproject-rtos/hal_stm32
+#8 67.34  * branch            af2d314b6f7f87cfa8365009497132468ca3a686 -> FETCH_HEAD
+#8 68.76 HEAD is now at af2d314 stm32h5 README includes the change on stm32Cube driver
+#8 69.58 HEAD is now at af2d314 stm32h5 README includes the change on stm32Cube driver
+#8 69.58 === updating hal_telink (modules/hal/telink):
+#8 69.58 --- hal_telink: initializing
+#8 69.59 Initialized empty Git repository in /modules/hal/telink/.git/
+#8 69.59 --- hal_telink: fetching, need revision 38573af589173259801ae6c2b34b7d4c9e626746
+#8 70.78 From https://github.com/zephyrproject-rtos/hal_telink
+#8 70.78  * branch            38573af589173259801ae6c2b34b7d4c9e626746 -> FETCH_HEAD
+#8 70.81 HEAD is now at 38573af B91 ADC driver support
+#8 70.82 HEAD is now at 38573af B91 ADC driver support
+#8 70.83 === updating hal_ti (modules/hal/ti):
+#8 70.83 --- hal_ti: initializing
+#8 70.83 Initialized empty Git repository in /modules/hal/ti/.git/
+#8 70.84 --- hal_ti: fetching, need revision b85f86e51fc4d47c4c383d320d64d52d4d371ae4
+#8 71.99 From https://github.com/zephyrproject-rtos/hal_ti
+#8 71.99  * branch            b85f86e51fc4d47c4c383d320d64d52d4d371ae4 -> FETCH_HEAD
+#8 72.11 HEAD is now at b85f86e simplelink: slnetsock: fix sys/time.h include when sockets are enabled
+#8 72.21 HEAD is now at b85f86e simplelink: slnetsock: fix sys/time.h include when sockets are enabled
+#8 72.22 === updating hal_wurthelektronik (modules/hal/wurthelektronik):
+#8 72.22 --- hal_wurthelektronik: initializing
+#8 72.22 Initialized empty Git repository in /modules/hal/wurthelektronik/.git/
+#8 72.23 --- hal_wurthelektronik: fetching, need revision 24ca9873c3d608fad1fea0431836bc8f144c132e
+#8 72.54 From https://github.com/zephyrproject-rtos/hal_wurthelektronik
+#8 72.54  * branch            24ca9873c3d608fad1fea0431836bc8f144c132e -> FETCH_HEAD
+#8 72.56 HEAD is now at 24ca987 Initialized WE HAL module repository.
+#8 72.57 HEAD is now at 24ca987 Initialized WE HAL module repository.
+#8 72.57 === updating hal_xtensa (modules/hal/xtensa):
+#8 72.57 --- hal_xtensa: initializing
+#8 72.58 Initialized empty Git repository in /modules/hal/xtensa/.git/
+#8 72.58 --- hal_xtensa: fetching, need revision 08325d6fb7190a105f5382d35e64ed2812c57cf4
+#8 73.03 From https://github.com/zephyrproject-rtos/hal_xtensa
+#8 73.03  * branch            08325d6fb7190a105f5382d35e64ed2812c57cf4 -> FETCH_HEAD
+#8 73.07 HEAD is now at 08325d6 zephyr: change SoC overlay name from nxp_imx8 to nxp_imx_adsp
+#8 73.08 HEAD is now at 08325d6 zephyr: change SoC overlay name from nxp_imx8 to nxp_imx_adsp
+#8 73.09 === updating hostap (modules/lib/hostap):
+#8 73.09 --- hostap: initializing
+#8 73.09 Initialized empty Git repository in /modules/lib/hostap/.git/
+#8 73.10 --- hostap: fetching, need revision 7adaff26baa48e26a32c576125e0a749a5239b12
+#8 74.41 From https://github.com/zephyrproject-rtos/hostap
+#8 74.41  * branch            7adaff26baa48e26a32c576125e0a749a5239b12 -> FETCH_HEAD
+#8 74.58 HEAD is now at 7adaff2 zephyr: Add support for Zephyr RTOS
+#8 74.70 HEAD is now at 7adaff2 zephyr: Add support for Zephyr RTOS
+#8 74.70 === updating libmetal (modules/hal/libmetal):
+#8 74.70 --- libmetal: initializing
+#8 74.70 Initialized empty Git repository in /modules/hal/libmetal/.git/
+#8 74.71 --- libmetal: fetching, need revision 03140d7f4bd9ba474ebfbb6256e84a9089248e67
+#8 75.08 From https://github.com/zephyrproject-rtos/libmetal
+#8 75.08  * branch            03140d7f4bd9ba474ebfbb6256e84a9089248e67 -> FETCH_HEAD
+#8 75.11 HEAD is now at 03140d7 Zephyr integration: Add support for hosted test environment
+#8 75.12 HEAD is now at 03140d7 Zephyr integration: Add support for hosted test environment
+#8 75.12 === updating liblc3 (modules/lib/liblc3):
+#8 75.12 --- liblc3: initializing
+#8 75.13 Initialized empty Git repository in /modules/lib/liblc3/.git/
+#8 75.13 --- liblc3: fetching, need revision 448f3de31f49a838988a162ef1e23a89ddf2d2ed
+#8 75.54 From https://github.com/zephyrproject-rtos/liblc3
+#8 75.54  * branch            448f3de31f49a838988a162ef1e23a89ddf2d2ed -> FETCH_HEAD
+#8 75.56 HEAD is now at 448f3de Merge pull request #8 from carlescufi/rename
+#8 75.58 HEAD is now at 448f3de Merge pull request #8 from carlescufi/rename
+#8 75.58 === updating littlefs (modules/fs/littlefs):
+#8 75.58 --- littlefs: initializing
+#8 75.58 Initialized empty Git repository in /modules/fs/littlefs/.git/
+#8 75.59 --- littlefs: fetching, need revision ca583fd297ceb48bced3c2548600dc615d67af24
+#8 75.96 From https://github.com/zephyrproject-rtos/littlefs
+#8 75.96  * branch            ca583fd297ceb48bced3c2548600dc615d67af24 -> FETCH_HEAD
+#8 75.99 HEAD is now at ca583fd Merge tag 'v2.5.0' of https://github.com/littlefs-project/littlefs into zephyr
+#8 76.00 HEAD is now at ca583fd Merge tag 'v2.5.0' of https://github.com/littlefs-project/littlefs into zephyr
+#8 76.00 === updating loramac-node (modules/lib/loramac-node):
+#8 76.00 --- loramac-node: initializing
+#8 76.00 Initialized empty Git repository in /modules/lib/loramac-node/.git/
+#8 76.01 --- loramac-node: fetching, need revision 842413c5fb98707eb5f26e619e8e792453877897
+#8 76.86 From https://github.com/zephyrproject-rtos/loramac-node
+#8 76.86  * branch            842413c5fb98707eb5f26e619e8e792453877897 -> FETCH_HEAD
+#8 77.04 HEAD is now at 842413c utilities: fix one more shadowed variable
+#8 77.19 HEAD is now at 842413c utilities: fix one more shadowed variable
+#8 77.19 === updating lvgl (modules/lib/gui/lvgl):
+#8 77.19 --- lvgl: initializing
+#8 77.20 Initialized empty Git repository in /modules/lib/gui/lvgl/.git/
+#8 77.21 --- lvgl: fetching, need revision 7c61a4cec26402d20c845c95dcad0e39dcd319f8
+#8 81.30 From https://github.com/zephyrproject-rtos/lvgl
+#8 81.30  * branch            7c61a4cec26402d20c845c95dcad0e39dcd319f8 -> FETCH_HEAD
+#8 81.64 HEAD is now at 7c61a4c zephyr: Kconfig: Add guard checking for LVGL module
+#8 81.96 HEAD is now at 7c61a4c zephyr: Kconfig: Add guard checking for LVGL module
+#8 81.96 === updating mbedtls (modules/crypto/mbedtls):
+#8 81.96 --- mbedtls: initializing
+#8 81.96 Initialized empty Git repository in /modules/crypto/mbedtls/.git/
+#8 81.97 --- mbedtls: fetching, need revision 7053083b0cff8462464e3cbb826e87852fc03da6
+#8 83.57 From https://github.com/zephyrproject-rtos/mbedtls
+#8 83.57  * branch            7053083b0cff8462464e3cbb826e87852fc03da6 -> FETCH_HEAD
+#8 83.77 HEAD is now at 7053083 Merge pull request #45 from ceolin/mbedtls-3.4.1
+#8 83.91 HEAD is now at 7053083 Merge pull request #45 from ceolin/mbedtls-3.4.1
+#8 83.91 === updating mcuboot (bootloader/mcuboot):
+#8 83.91 --- mcuboot: initializing
+#8 83.92 Initialized empty Git repository in /bootloader/mcuboot/.git/
+#8 83.93 --- mcuboot: fetching, need revision 05d11942774fc15b90af101232ec5305051216ec
+#8 84.57 From https://github.com/zephyrproject-rtos/mcuboot
+#8 84.57  * branch            05d11942774fc15b90af101232ec5305051216ec -> FETCH_HEAD
+#8 84.66 HEAD is now at 05d1194 docs: release: Add note on firmware loader mode
+#8 84.69 HEAD is now at 05d1194 docs: release: Add note on firmware loader mode
+#8 84.69 === updating mipi-sys-t (modules/debug/mipi-sys-t):
+#8 84.69 --- mipi-sys-t: initializing
+#8 84.70 Initialized empty Git repository in /modules/debug/mipi-sys-t/.git/
+#8 84.71 --- mipi-sys-t: fetching, need revision a819419603a2dfcb47f7f39092e1bc112e45d1ef
+#8 85.12 From https://github.com/zephyrproject-rtos/mipi-sys-t
+#8 85.12  * branch            a819419603a2dfcb47f7f39092e1bc112e45d1ef -> FETCH_HEAD
+#8 85.15 HEAD is now at a819419 library: allow building without wchar support
+#8 85.17 HEAD is now at a819419 library: allow building without wchar support
+#8 85.17 === updating net-tools (tools/net-tools):
+#8 85.17 --- net-tools: initializing
+#8 85.17 Initialized empty Git repository in /tools/net-tools/.git/
+#8 85.18 --- net-tools: fetching, need revision 3a677d355cc7f73e444801a6280d0ccec80a1957
+#8 85.87 From https://github.com/zephyrproject-rtos/net-tools
+#8 85.87  * branch            3a677d355cc7f73e444801a6280d0ccec80a1957 -> FETCH_HEAD
+#8 85.98 HEAD is now at 3a677d3 docker: Use fixed milestone release for Leshan
+#8 86.04 HEAD is now at 3a677d3 docker: Use fixed milestone release for Leshan
+#8 86.04 === updating nrf_hw_models (modules/bsim_hw_models/nrf_hw_models):
+#8 86.04 --- nrf_hw_models: initializing
+#8 86.04 Initialized empty Git repository in /modules/bsim_hw_models/nrf_hw_models/.git/
+#8 86.05 --- nrf_hw_models: fetching, need revision 9b985ea6bc237b6ae06f48eb228f2ac7f6e3b96b
+#8 86.43 From https://github.com/zephyrproject-rtos/nrf_hw_models
+#8 86.43  * branch            9b985ea6bc237b6ae06f48eb228f2ac7f6e3b96b -> FETCH_HEAD
+#8 86.46 HEAD is now at 9b985ea nrf_ccm: Add RATEOVERRIDE subscribe support
+#8 86.47 HEAD is now at 9b985ea nrf_ccm: Add RATEOVERRIDE subscribe support
+#8 86.47 === updating open-amp (modules/lib/open-amp):
+#8 86.47 --- open-amp: initializing
+#8 86.48 Initialized empty Git repository in /modules/lib/open-amp/.git/
+#8 86.48 --- open-amp: fetching, need revision 214f9fc1539f8e5937c0474cb6ee29b6dcb2d4b8
+#8 86.93 From https://github.com/zephyrproject-rtos/open-amp
+#8 86.93  * branch            214f9fc1539f8e5937c0474cb6ee29b6dcb2d4b8 -> FETCH_HEAD
+#8 86.96 HEAD is now at 214f9fc cmake: Compile with WITH_DCACHE
+#8 86.97 HEAD is now at 214f9fc cmake: Compile with WITH_DCACHE
+#8 86.97 === updating openthread (modules/lib/openthread):
+#8 86.97 --- openthread: initializing
+#8 86.98 Initialized empty Git repository in /modules/lib/openthread/.git/
+#8 86.98 --- openthread: fetching, need revision 75694d2860282d216d7286f3956388e957c7cfb5
+#8 89.18 From https://github.com/zephyrproject-rtos/openthread
+#8 89.18  * branch            75694d2860282d216d7286f3956388e957c7cfb5 -> FETCH_HEAD
+#8 89.47 HEAD is now at 75694d2 [continuous-integration] fix bootstrap issue for ot-commissioner (#9643)
+#8 89.72 HEAD is now at 75694d2 [continuous-integration] fix bootstrap issue for ot-commissioner (#9643)
+#8 89.72 === updating percepio (modules/debug/percepio):
+#8 89.72 --- percepio: initializing
+#8 89.72 Initialized empty Git repository in /modules/debug/percepio/.git/
+#8 89.73 --- percepio: fetching, need revision 0fbc5b72aeab8a6434523a3a7bc8111c17f0bc73
+#8 90.15 From https://github.com/zephyrproject-rtos/percepio
+#8 90.15  * branch            0fbc5b72aeab8a6434523a3a7bc8111c17f0bc73 -> FETCH_HEAD
+#8 90.21 HEAD is now at 0fbc5b7 Merge pull request #9 from percepio/zephyr
+#8 90.24 HEAD is now at 0fbc5b7 Merge pull request #9 from percepio/zephyr
+#8 90.24 === updating picolibc (modules/lib/picolibc):
+#8 90.24 --- picolibc: initializing
+#8 90.25 Initialized empty Git repository in /modules/lib/picolibc/.git/
+#8 90.26 --- picolibc: fetching, need revision 1a5c603b9f8e228f9459bdafedad15ea28efc700
+#8 92.36 From https://github.com/zephyrproject-rtos/picolibc
+#8 92.36  * branch            1a5c603b9f8e228f9459bdafedad15ea28efc700 -> FETCH_HEAD
+#8 92.66 HEAD is now at 1a5c603 Version 1.8.5
+#8 92.84 HEAD is now at 1a5c603 Version 1.8.5
+#8 92.84 === updating segger (modules/debug/segger):
+#8 92.84 --- segger: initializing
+#8 92.85 Initialized empty Git repository in /modules/debug/segger/.git/
+#8 92.86 --- segger: fetching, need revision 9d0191285956cef43daf411edc2f1a7788346def
+#8 93.20 From https://github.com/zephyrproject-rtos/segger
+#8 93.20  * branch            9d0191285956cef43daf411edc2f1a7788346def -> FETCH_HEAD
+#8 93.22 HEAD is now at 9d01912 segger: config: RTT spinlock implementation
+#8 93.23 HEAD is now at 9d01912 segger: config: RTT spinlock implementation
+#8 93.23 === updating tinycrypt (modules/crypto/tinycrypt):
+#8 93.23 --- tinycrypt: initializing
+#8 93.24 Initialized empty Git repository in /modules/crypto/tinycrypt/.git/
+#8 93.25 --- tinycrypt: fetching, need revision 3e9a49d2672ec01435ffbf0d788db6d95ef28de0
+#8 93.55 From https://github.com/zephyrproject-rtos/tinycrypt
+#8 93.55  * branch            3e9a49d2672ec01435ffbf0d788db6d95ef28de0 -> FETCH_HEAD
+#8 93.57 HEAD is now at 3e9a49d cmake: Fix conditional in root CMakeLists.txt
+#8 93.58 HEAD is now at 3e9a49d cmake: Fix conditional in root CMakeLists.txt
+#8 93.58 === updating trusted-firmware-m (modules/tee/tf-m/trusted-firmware-m):
+#8 93.58 --- trusted-firmware-m: initializing
+#8 93.59 Initialized empty Git repository in /modules/tee/tf-m/trusted-firmware-m/.git/
+#8 93.60 --- trusted-firmware-m: fetching, need revision 33c0f47bcb19721a5c33e6fe1eee9225d00bb5bc
+#8 95.43 From https://github.com/zephyrproject-rtos/trusted-firmware-m
+#8 95.43  * branch            33c0f47bcb19721a5c33e6fe1eee9225d00bb5bc -> FETCH_HEAD
+#8 95.80 HEAD is now at 33c0f47 platform: ext: target: nordic_nrf: add builtin atomic macros to glue
+#8 96.20 HEAD is now at 33c0f47 platform: ext: target: nordic_nrf: add builtin atomic macros to glue
+#8 96.20 === updating trusted-firmware-a (modules/tee/tf-a/trusted-firmware-a):
+#8 96.21 --- trusted-firmware-a: initializing
+#8 96.21 Initialized empty Git repository in /modules/tee/tf-a/trusted-firmware-a/.git/
+#8 96.22 --- trusted-firmware-a: fetching, need revision 421dc050278287839f5c70019bd6aec617f2bbdb
+#8 97.55 From https://github.com/zephyrproject-rtos/trusted-firmware-a
+#8 97.55  * branch            421dc050278287839f5c70019bd6aec617f2bbdb -> FETCH_HEAD
+#8 97.98 HEAD is now at 421dc05 Merge pull request #3 from SgrrZhf/topics/huizha01/2.9.0-updates
+#8 98.13 HEAD is now at 421dc05 Merge pull request #3 from SgrrZhf/topics/huizha01/2.9.0-updates
+#8 98.13 === updating uoscore-uedhoc (modules/lib/uoscore-uedhoc):
+#8 98.13 --- uoscore-uedhoc: initializing
+#8 98.13 Initialized empty Git repository in /modules/lib/uoscore-uedhoc/.git/
+#8 98.14 --- uoscore-uedhoc: fetching, need revision 5fe2cb613bd7e4590bd1b00c2adf181ac0229379
+#8 98.59 From https://github.com/zephyrproject-rtos/uoscore-uedhoc
+#8 98.59  * branch            5fe2cb613bd7e4590bd1b00c2adf181ac0229379 -> FETCH_HEAD
+#8 98.63 HEAD is now at 5fe2cb6 2.2.1
+#8 98.65 HEAD is now at 5fe2cb6 2.2.1
+#8 98.65 === updating zcbor (modules/lib/zcbor):
+#8 98.65 --- zcbor: initializing
+#8 98.65 Initialized empty Git repository in /modules/lib/zcbor/.git/
+#8 98.66 --- zcbor: fetching, need revision 67fd8bb88d3136738661fa8bb5f9989103f4599e
+#8 99.18 From https://github.com/zephyrproject-rtos/zcbor
+#8 99.18  * branch            67fd8bb88d3136738661fa8bb5f9989103f4599e -> FETCH_HEAD
+#8 99.22 HEAD is now at 67fd8bb Update version from 0.6.99 to 0.7.0
+#8 99.23 HEAD is now at 67fd8bb Update version from 0.6.99 to 0.7.0
+#8 99.54 Zephyr (/testbed/share/zephyr-package/cmake)
+#8 99.54 has been added to the user package registry in:
+#8 99.54 ~/.cmake/packages/Zephyr
+#8 99.54 
+#8 99.57 ZephyrUnittest (/testbed/share/zephyrunittest-package/cmake)
+#8 99.57 has been added to the user package registry in:
+#8 99.57 ~/.cmake/packages/ZephyrUnittest
+#8 99.57 
+#8 DONE 100.4s
+
+#9 [ 5/10] RUN ARCH=$(uname -m)     && SDK_ARCHIVE="zephyr-sdk-0.16.8_linux-${ARCH}.tar.xz"     && wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.8/${SDK_ARCHIVE}"     && tar -xf "${SDK_ARCHIVE}" -C /opt     && rm "${SDK_ARCHIVE}"     && /opt/zephyr-sdk-0.16.8/setup.sh -t x86_64-zephyr-elf -h -c
+#9 219.5 Zephyr SDK 0.16.8 Setup
+#9 219.5 
+#9 219.5 Installing host tools ...
+#9 225.5 
+#9 225.5 Registering Zephyr SDK CMake package ...
+#9 225.6 Zephyr-sdk (/opt/zephyr-sdk-0.16.8/cmake)
+#9 225.6 has been added to the user package registry in:
+#9 225.6 ~/.cmake/packages/Zephyr-sdk
+#9 225.6 
+#9 225.6 
+#9 225.6 All done.
+#9 DONE 225.9s
+
+#10 [ 6/10] RUN west packages pip --install 2>/dev/null     || pip install -r scripts/requirements.txt
+#10 1.640 Ignoring windows-curses: markers 'sys_platform == "win32"' don't match your environment
+#10 1.640 Ignoring python-magic-bin: markers 'sys_platform == "win32"' don't match your environment
+#10 1.776 Collecting pyelftools>=0.27 (from -r scripts/requirements-base.txt (line 7))
+#10 1.872   Downloading pyelftools-0.32-py3-none-any.whl.metadata (372 bytes)
+#10 1.883 Requirement already satisfied: PyYAML>=5.1 in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 11)) (6.0.3)
+#10 1.884 Requirement already satisfied: pykwalify in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 14)) (1.8.0)
+#10 1.930 Collecting canopen (from -r scripts/requirements-base.txt (line 17))
+#10 1.947   Downloading canopen-2.4.1-py3-none-any.whl.metadata (7.0 kB)
+#10 1.957 Requirement already satisfied: packaging in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 18)) (26.0)
+#10 1.988 Collecting progress (from -r scripts/requirements-base.txt (line 19))
+#10 2.004   Downloading progress-1.6.1-py3-none-any.whl.metadata (4.3 kB)
+#10 2.184 Collecting psutil (from -r scripts/requirements-base.txt (line 20))
+#10 2.201   Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+#10 2.255 Collecting pylink-square (from -r scripts/requirements-base.txt (line 21))
+#10 2.272   Downloading pylink_square-2.0.1-py3-none-any.whl.metadata (5.9 kB)
+#10 2.313 Collecting pyserial (from -r scripts/requirements-base.txt (line 22))
+#10 2.326   Downloading pyserial-3.5-py2.py3-none-any.whl.metadata (1.6 kB)
+#10 2.394 Collecting requests (from -r scripts/requirements-base.txt (line 23))
+#10 2.409   Downloading requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+#10 2.458 Collecting anytree (from -r scripts/requirements-base.txt (line 26))
+#10 2.474   Downloading anytree-2.13.0-py3-none-any.whl.metadata (8.0 kB)
+#10 2.513 Collecting intelhex (from -r scripts/requirements-base.txt (line 29))
+#10 2.526   Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+#10 2.536 Requirement already satisfied: west>=0.14.0 in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 33)) (1.5.0)
+#10 2.538 Requirement already satisfied: colorama in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-build-test.txt (line 7)) (0.4.6)
+#10 2.566 Collecting ply>=3.10 (from -r scripts/requirements-build-test.txt (line 10))
+#10 2.579   Downloading ply-3.11-py2.py3-none-any.whl.metadata (844 bytes)
+#10 2.626 Collecting gcovr>=6.0 (from -r scripts/requirements-build-test.txt (line 13))
+#10 2.645   Downloading gcovr-8.6-py3-none-any.whl.metadata (12 kB)
+#10 3.324 Collecting coverage (from -r scripts/requirements-build-test.txt (line 14))
+#10 3.346   Downloading coverage-7.13.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.5 kB)
+#10 3.472 Collecting pytest (from -r scripts/requirements-build-test.txt (line 17))
+#10 3.487   Downloading pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+#10 3.695 Collecting mypy (from -r scripts/requirements-build-test.txt (line 18))
+#10 3.710   Downloading mypy-1.20.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.3 kB)
+#10 3.756 Collecting mock>=4.0.1 (from -r scripts/requirements-build-test.txt (line 21))
+#10 3.771   Downloading mock-5.2.0-py3-none-any.whl.metadata (3.1 kB)
+#10 3.840 Collecting pyocd>=0.35.0 (from -r scripts/requirements-run-test.txt (line 6))
+#10 3.856   Downloading pyocd-0.44.0-py3-none-any.whl.metadata (11 kB)
+#10 3.899 Collecting tabulate (from -r scripts/requirements-run-test.txt (line 9))
+#10 3.913   Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+#10 3.922      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 kB 5.5 MB/s eta 0:00:00
+#10 3.982 Collecting natsort (from -r scripts/requirements-run-test.txt (line 10))
+#10 3.996   Downloading natsort-8.4.0-py3-none-any.whl.metadata (21 kB)
+#10 4.038 Collecting cbor>=1.0.0 (from -r scripts/requirements-run-test.txt (line 13))
+#10 4.053   Downloading cbor-1.0.0.tar.gz (20 kB)
+#10 4.066   Installing build dependencies: started
+#10 5.596   Installing build dependencies: finished with status 'done'
+#10 5.599   Getting requirements to build wheel: started
+#10 5.804   Getting requirements to build wheel: finished with status 'done'
+#10 5.806   Preparing metadata (pyproject.toml): started
+#10 5.999   Preparing metadata (pyproject.toml): finished with status 'done'
+#10 6.063 Collecting gitlint (from -r scripts/requirements-extras.txt (line 7))
+#10 6.080   Downloading gitlint-0.19.1-py3-none-any.whl.metadata (3.1 kB)
+#10 6.126 Collecting junit2html (from -r scripts/requirements-extras.txt (line 10))
+#10 6.141   Downloading junit2html-31.0.5-py3-none-any.whl.metadata (423 bytes)
+#10 6.260 Collecting clang-format>=15.0.0 (from -r scripts/requirements-extras.txt (line 13))
+#10 6.276   Downloading clang_format-22.1.2-py2.py3-none-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (4.7 kB)
+#10 6.315 Collecting lpc_checksum (from -r scripts/requirements-extras.txt (line 16))
+#10 6.337   Downloading lpc_checksum-3.0.0-py3-none-any.whl.metadata (2.5 kB)
+#10 6.678 Collecting Pillow>=10.0 (from -r scripts/requirements-extras.txt (line 19))
+#10 6.700   Downloading pillow-12.2.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+#10 6.754 Collecting imgtool>=1.9 (from -r scripts/requirements-extras.txt (line 22))
+#10 6.768   Downloading imgtool-2.3.0-py3-none-any.whl.metadata (614 bytes)
+#10 7.713 Collecting grpcio-tools>=1.47.0 (from -r scripts/requirements-extras.txt (line 25))
+#10 7.734   Downloading grpcio_tools-1.80.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.3 kB)
+#10 8.034 Collecting protobuf>=3.20.3 (from -r scripts/requirements-extras.txt (line 26))
+#10 8.094   Downloading protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+#10 8.163 Collecting PyGithub (from -r scripts/requirements-extras.txt (line 29))
+#10 8.178   Downloading pygithub-2.9.0-py3-none-any.whl.metadata (3.9 kB)
+#10 8.237 Collecting graphviz (from -r scripts/requirements-extras.txt (line 32))
+#10 8.253   Downloading graphviz-0.21-py3-none-any.whl.metadata (12 kB)
+#10 8.321 Collecting zcbor>=0.6.0 (from -r scripts/requirements-extras.txt (line 35))
+#10 8.336   Downloading zcbor-0.9.1-py3-none-any.whl.metadata (2.0 kB)
+#10 8.389 Collecting python-magic (from -r scripts/requirements-compliance.txt (line 4))
+#10 8.403   Downloading python_magic-0.4.27-py2.py3-none-any.whl.metadata (5.8 kB)
+#10 8.807 Collecting lxml (from -r scripts/requirements-compliance.txt (line 6))
+#10 8.829   Downloading lxml-6.0.2-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+#10 8.883 Collecting junitparser>=2 (from -r scripts/requirements-compliance.txt (line 7))
+#10 8.899   Downloading junitparser-5.0.0-py3-none-any.whl.metadata (9.6 kB)
+#10 8.997 Collecting pylint (from -r scripts/requirements-compliance.txt (line 8))
+#10 9.011   Downloading pylint-4.0.5-py3-none-any.whl.metadata (12 kB)
+#10 9.061 Collecting yamllint (from -r scripts/requirements-compliance.txt (line 9))
+#10 9.077   Downloading yamllint-1.38.0-py3-none-any.whl.metadata (4.2 kB)
+#10 9.092 Requirement already satisfied: docopt>=0.6.2 in /opt/zephyr-venv/lib/python3.12/site-packages (from pykwalify->-r scripts/requirements-base.txt (line 14)) (0.6.2)
+#10 9.094 Requirement already satisfied: python-dateutil>=2.8.0 in /opt/zephyr-venv/lib/python3.12/site-packages (from pykwalify->-r scripts/requirements-base.txt (line 14)) (2.9.0.post0)
+#10 9.096 Requirement already satisfied: ruamel.yaml>=0.16.0 in /opt/zephyr-venv/lib/python3.12/site-packages (from pykwalify->-r scripts/requirements-base.txt (line 14)) (0.19.1)
+#10 9.154 Collecting python-can>=3.0.0 (from canopen->-r scripts/requirements-base.txt (line 17))
+#10 9.169   Downloading python_can-4.6.1-py3-none-any.whl.metadata (8.6 kB)
+#10 9.229 Requirement already satisfied: six in /opt/zephyr-venv/lib/python3.12/site-packages (from pylink-square->-r scripts/requirements-base.txt (line 21)) (1.17.0)
+#10 9.453 Collecting charset_normalizer<4,>=2 (from requests->-r scripts/requirements-base.txt (line 23))
+#10 9.468   Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#10 9.476      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 6.4 MB/s eta 0:00:00
+#10 9.524 Collecting idna<4,>=2.5 (from requests->-r scripts/requirements-base.txt (line 23))
+#10 9.541   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+#10 9.625 Collecting urllib3<3,>=1.26 (from requests->-r scripts/requirements-base.txt (line 23))
+#10 9.639   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+#10 9.700 Collecting certifi>=2023.5.7 (from requests->-r scripts/requirements-base.txt (line 23))
+#10 9.716   Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+#10 9.813 Collecting colorlog (from gcovr>=6.0->-r scripts/requirements-build-test.txt (line 13))
+#10 9.827   Downloading colorlog-6.10.1-py3-none-any.whl.metadata (11 kB)
+#10 9.877 Collecting jinja2 (from gcovr>=6.0->-r scripts/requirements-build-test.txt (line 13))
+#10 9.891   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#10 9.952 Collecting pygments>=2.13.0 (from gcovr>=6.0->-r scripts/requirements-build-test.txt (line 13))
+#10 9.966   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+#10 10.02 Collecting iniconfig>=1.0.1 (from pytest->-r scripts/requirements-build-test.txt (line 17))
+#10 10.04   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+#10 10.09 Collecting pluggy<2,>=1.5 (from pytest->-r scripts/requirements-build-test.txt (line 17))
+#10 10.10   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#10 10.18 Collecting typing_extensions>=4.6.0 (from mypy->-r scripts/requirements-build-test.txt (line 18))
+#10 10.20   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#10 10.24 Collecting mypy_extensions>=1.0.0 (from mypy->-r scripts/requirements-build-test.txt (line 18))
+#10 10.25   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+#10 10.30 Collecting pathspec>=1.0.0 (from mypy->-r scripts/requirements-build-test.txt (line 18))
+#10 10.31   Downloading pathspec-1.0.4-py3-none-any.whl.metadata (13 kB)
+#10 10.50 Collecting librt>=0.8.0 (from mypy->-r scripts/requirements-build-test.txt (line 18))
+#10 10.52   Downloading librt-0.8.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.3 kB)
+#10 10.71 Collecting capstone<6.0,>=5.0 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 10.73   Downloading capstone-5.0.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.3 kB)
+#10 10.78 Collecting cmsis-pack-manager<1.0,>=0.5.2 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 10.80   Downloading cmsis_pack_manager-0.6.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+#10 10.90 Collecting importlib_metadata>=3.6 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 10.92   Downloading importlib_metadata-9.0.0-py3-none-any.whl.metadata (4.5 kB)
+#10 11.00 Collecting importlib_resources (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.02   Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+#10 11.06 Collecting intervaltree<4.0,>=3.0.2 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.08   Downloading intervaltree-3.2.1-py2.py3-none-any.whl.metadata (12 kB)
+#10 11.12 Collecting lark<2.0,>=1.1.5 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.13   Downloading lark-1.3.1-py3-none-any.whl.metadata (1.8 kB)
+#10 11.22 Collecting libusb-package<2.0,>=1.0 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.23   Downloading libusb_package-1.0.26.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.2 kB)
+#10 11.30 Collecting prettytable<4.0,>=2.0 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.31   Downloading prettytable-3.17.0-py3-none-any.whl.metadata (34 kB)
+#10 11.34 Collecting pylink-square (from -r scripts/requirements-base.txt (line 21))
+#10 11.35   Downloading pylink_square-1.7.0-py2.py3-none-any.whl.metadata (5.8 kB)
+#10 11.39 Collecting pyusb<2.0,>=1.2.1 (from pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 11.41   Downloading pyusb-1.3.1-py3-none-any.whl.metadata (2.5 kB)
+#10 11.52 Collecting gitlint-core==0.19.1 (from gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.53   Downloading gitlint_core-0.19.1-py3-none-any.whl.metadata (3.5 kB)
+#10 11.60 Collecting arrow>=1 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.62   Downloading arrow-1.4.0-py3-none-any.whl.metadata (7.7 kB)
+#10 11.68 Collecting click>=8 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.69   Downloading click-8.3.2-py3-none-any.whl.metadata (2.6 kB)
+#10 11.74 Collecting sh>=1.13.0 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.76   Downloading sh-2.2.2-py3-none-any.whl.metadata (3.7 kB)
+#10 11.79 Collecting arrow>=1 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.81   Downloading arrow-1.2.3-py3-none-any.whl.metadata (6.9 kB)
+#10 11.83 Collecting click>=8 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.84   Downloading click-8.1.3-py3-none-any.whl.metadata (3.2 kB)
+#10 11.86 Collecting sh>=1.13.0 (from gitlint-core==0.19.1->gitlint-core[trusted-deps]==0.19.1->gitlint->-r scripts/requirements-extras.txt (line 7))
+#10 11.88   Downloading sh-1.14.3.tar.gz (62 kB)
+#10 11.88      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.9/62.9 kB 10.2 MB/s eta 0:00:00
+#10 11.89   Installing build dependencies: started
+#10 13.36   Installing build dependencies: finished with status 'done'
+#10 13.36   Getting requirements to build wheel: started
+#10 13.58   Getting requirements to build wheel: finished with status 'done'
+#10 13.58   Preparing metadata (pyproject.toml): started
+#10 13.78   Preparing metadata (pyproject.toml): finished with status 'done'
+#10 13.95 Collecting cbor2 (from imgtool>=1.9->-r scripts/requirements-extras.txt (line 22))
+#10 13.97   Downloading cbor2-5.9.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+#10 14.34 Collecting cryptography>=40.0.0 (from imgtool>=1.9->-r scripts/requirements-extras.txt (line 22))
+#10 14.36   Downloading cryptography-46.0.6-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+#10 14.40 Collecting protobuf>=3.20.3 (from -r scripts/requirements-extras.txt (line 26))
+#10 14.41   Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+#10 15.38 Collecting grpcio>=1.80.0 (from grpcio-tools>=1.47.0->-r scripts/requirements-extras.txt (line 25))
+#10 15.40   Downloading grpcio-1.80.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+#10 15.71 Collecting setuptools>=77.0.1 (from grpcio-tools>=1.47.0->-r scripts/requirements-extras.txt (line 25))
+#10 15.71   Using cached setuptools-82.0.1-py3-none-any.whl.metadata (6.5 kB)
+#10 15.79 Collecting pynacl>=1.4.0 (from PyGithub->-r scripts/requirements-extras.txt (line 29))
+#10 15.81   Downloading pynacl-1.6.2-cp38-abi3-manylinux_2_34_x86_64.whl.metadata (10.0 kB)
+#10 15.89 Collecting pyjwt>=2.4.0 (from pyjwt[crypto]>=2.4.0->PyGithub->-r scripts/requirements-extras.txt (line 29))
+#10 15.90   Downloading pyjwt-2.12.1-py3-none-any.whl.metadata (4.1 kB)
+#10 16.71 Collecting regex>=2022.3.15 (from zcbor>=0.6.0->-r scripts/requirements-extras.txt (line 35))
+#10 16.73   Downloading regex-2026.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#10 16.74      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.4/40.4 kB 5.2 MB/s eta 0:00:00
+#10 16.90 Collecting astroid<=4.1.dev0,>=4.0.2 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 16.91   Downloading astroid-4.0.4-py3-none-any.whl.metadata (4.4 kB)
+#10 16.96 Collecting dill>=0.3.6 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 16.98   Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+#10 17.09 Collecting isort!=5.13,<9,>=5 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 17.11   Downloading isort-8.0.1-py3-none-any.whl.metadata (11 kB)
+#10 17.15 Collecting mccabe<0.8,>=0.6 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 17.17   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+#10 17.23 Collecting platformdirs>=2.2 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 17.25   Downloading platformdirs-4.9.4-py3-none-any.whl.metadata (4.7 kB)
+#10 17.31 Collecting tomlkit>=0.10.1 (from pylint->-r scripts/requirements-compliance.txt (line 8))
+#10 17.33   Downloading tomlkit-0.14.0-py3-none-any.whl.metadata (2.8 kB)
+#10 17.42 Collecting appdirs<2.0,>=1.4 (from cmsis-pack-manager<1.0,>=0.5.2->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 17.44   Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+#10 17.62 Collecting cffi (from cmsis-pack-manager<1.0,>=0.5.2->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 17.63   Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+#10 17.80 Collecting zipp>=3.20 (from importlib_metadata>=3.6->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 17.81   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+#10 17.88 Collecting sortedcontainers (from intervaltree<4.0,>=3.0.2->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 17.91   Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+#10 18.05 Collecting MarkupSafe>=2.0 (from jinja2->gcovr>=6.0->-r scripts/requirements-build-test.txt (line 13))
+#10 18.07   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#10 18.22 Collecting wcwidth (from prettytable<4.0,>=2.0->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 18.24   Downloading wcwidth-0.6.0-py3-none-any.whl.metadata (30 kB)
+#10 18.69 Collecting wrapt~=1.10 (from python-can>=3.0.0->canopen->-r scripts/requirements-base.txt (line 17))
+#10 18.71   Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+#10 18.99 Collecting pycparser (from cffi->cmsis-pack-manager<1.0,>=0.5.2->pyocd>=0.35.0->-r scripts/requirements-run-test.txt (line 6))
+#10 19.00   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#10 19.13 Downloading pyelftools-0.32-py3-none-any.whl (188 kB)
+#10 19.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.5/188.5 kB 8.6 MB/s eta 0:00:00
+#10 19.17 Downloading canopen-2.4.1-py3-none-any.whl (67 kB)
+#10 19.18    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.2/67.2 kB 10.8 MB/s eta 0:00:00
+#10 19.20 Downloading progress-1.6.1-py3-none-any.whl (9.8 kB)
+#10 19.22 Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+#10 19.23    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 20.6 MB/s eta 0:00:00
+#10 19.25 Downloading pyserial-3.5-py2.py3-none-any.whl (90 kB)
+#10 19.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 14.1 MB/s eta 0:00:00
+#10 19.27 Downloading requests-2.33.1-py3-none-any.whl (64 kB)
+#10 19.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.9/64.9 kB 9.6 MB/s eta 0:00:00
+#10 19.29 Downloading anytree-2.13.0-py3-none-any.whl (45 kB)
+#10 19.30    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.1/45.1 kB 7.7 MB/s eta 0:00:00
+#10 19.31 Downloading intelhex-2.3.0-py2.py3-none-any.whl (50 kB)
+#10 19.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.9/50.9 kB 9.2 MB/s eta 0:00:00
+#10 19.34 Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+#10 19.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 49.6/49.6 kB 7.7 MB/s eta 0:00:00
+#10 19.36 Downloading gcovr-8.6-py3-none-any.whl (254 kB)
+#10 19.37    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 254.6/254.6 kB 26.0 MB/s eta 0:00:00
+#10 19.39 Downloading coverage-7.13.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (254 kB)
+#10 19.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 254.2/254.2 kB 32.5 MB/s eta 0:00:00
+#10 19.41 Downloading pytest-9.0.2-py3-none-any.whl (374 kB)
+#10 19.50    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 374.8/374.8 kB 4.7 MB/s eta 0:00:00
+#10 19.51 Downloading mypy-1.20.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (14.7 MB)
+#10 20.15    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.7/14.7 MB 22.1 MB/s eta 0:00:00
+#10 20.16 Downloading mock-5.2.0-py3-none-any.whl (31 kB)
+#10 20.19 Downloading pyocd-0.44.0-py3-none-any.whl (14.8 MB)
+#10 20.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 19.0 MB/s eta 0:00:00
+#10 20.98 Downloading pylink_square-1.7.0-py2.py3-none-any.whl (86 kB)
+#10 20.98    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.9/86.9 kB 14.6 MB/s eta 0:00:00
+#10 21.00 Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+#10 21.02 Downloading natsort-8.4.0-py3-none-any.whl (38 kB)
+#10 21.04 Downloading gitlint-0.19.1-py3-none-any.whl (2.6 kB)
+#10 21.06 Downloading gitlint_core-0.19.1-py3-none-any.whl (44 kB)
+#10 21.07    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.2/44.2 kB 6.4 MB/s eta 0:00:00
+#10 21.08 Downloading arrow-1.2.3-py3-none-any.whl (66 kB)
+#10 21.09    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 10.3 MB/s eta 0:00:00
+#10 21.10 Downloading click-8.1.3-py3-none-any.whl (96 kB)
+#10 21.11    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 kB 14.1 MB/s eta 0:00:00
+#10 21.13 Downloading junit2html-31.0.5-py3-none-any.whl (21 kB)
+#10 21.16 Downloading clang_format-22.1.2-py2.py3-none-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+#10 21.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 18.1 MB/s eta 0:00:00
+#10 21.27 Downloading lpc_checksum-3.0.0-py3-none-any.whl (5.1 kB)
+#10 21.29 Downloading pillow-12.2.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+#10 21.68    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 18.2 MB/s eta 0:00:00
+#10 21.70 Downloading imgtool-2.3.0-py3-none-any.whl (35 kB)
+#10 21.72 Downloading grpcio_tools-1.80.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.7 MB)
+#10 21.86    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 19.9 MB/s eta 0:00:00
+#10 21.87 Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+#10 21.89    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 323.4/323.4 kB 20.2 MB/s eta 0:00:00
+#10 21.90 Downloading pygithub-2.9.0-py3-none-any.whl (449 kB)
+#10 21.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 449.7/449.7 kB 17.9 MB/s eta 0:00:00
+#10 21.95 Downloading graphviz-0.21-py3-none-any.whl (47 kB)
+#10 21.95    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.3/47.3 kB 8.0 MB/s eta 0:00:00
+#10 21.97 Downloading zcbor-0.9.1-py3-none-any.whl (74 kB)
+#10 21.98    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.5/74.5 kB 4.5 MB/s eta 0:00:00
+#10 22.00 Downloading python_magic-0.4.27-py2.py3-none-any.whl (13 kB)
+#10 22.02 Downloading lxml-6.0.2-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.3 MB)
+#10 22.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 16.3 MB/s eta 0:00:00
+#10 22.36 Downloading junitparser-5.0.0-py3-none-any.whl (14 kB)
+#10 22.37 Downloading pylint-4.0.5-py3-none-any.whl (536 kB)
+#10 22.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.7/536.7 kB 21.9 MB/s eta 0:00:00
+#10 22.42 Downloading yamllint-1.38.0-py3-none-any.whl (68 kB)
+#10 22.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 68.9/68.9 kB 12.3 MB/s eta 0:00:00
+#10 22.44 Downloading astroid-4.0.4-py3-none-any.whl (276 kB)
+#10 22.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 276.4/276.4 kB 21.0 MB/s eta 0:00:00
+#10 22.47 Downloading capstone-5.0.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.5 MB)
+#10 22.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 20.7 MB/s eta 0:00:00
+#10 22.56 Downloading cbor2-5.9.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (288 kB)
+#10 22.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 288.2/288.2 kB 25.1 MB/s eta 0:00:00
+#10 22.58 Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+#10 22.60    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 153.7/153.7 kB 11.4 MB/s eta 0:00:00
+#10 22.61 Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (216 kB)
+#10 22.63    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.6/216.6 kB 18.5 MB/s eta 0:00:00
+#10 22.65 Downloading cmsis_pack_manager-0.6.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.7 MB)
+#10 22.84    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 19.2 MB/s eta 0:00:00
+#10 22.86 Downloading cryptography-46.0.6-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+#10 23.15    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 15.4 MB/s eta 0:00:00
+#10 23.16 Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+#10 23.17    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.0/120.0 kB 17.8 MB/s eta 0:00:00
+#10 23.18 Downloading grpcio-1.80.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.8 MB)
+#10 23.76    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.8/6.8 MB 11.8 MB/s eta 0:00:00
+#10 23.77 Downloading idna-3.11-py3-none-any.whl (71 kB)
+#10 23.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 8.9 MB/s eta 0:00:00
+#10 23.80 Downloading importlib_metadata-9.0.0-py3-none-any.whl (27 kB)
+#10 23.82 Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+#10 23.84 Downloading intervaltree-3.2.1-py2.py3-none-any.whl (25 kB)
+#10 23.86 Downloading isort-8.0.1-py3-none-any.whl (89 kB)
+#10 23.87    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 89.7/89.7 kB 12.1 MB/s eta 0:00:00
+#10 23.89 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#10 23.90    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 16.6 MB/s eta 0:00:00
+#10 23.91 Downloading lark-1.3.1-py3-none-any.whl (113 kB)
+#10 23.92    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.2/113.2 kB 13.9 MB/s eta 0:00:00
+#10 23.94 Downloading librt-0.8.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (224 kB)
+#10 23.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.5/224.5 kB 14.9 MB/s eta 0:00:00
+#10 23.97 Downloading libusb_package-1.0.26.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (70 kB)
+#10 23.98    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.7/70.7 kB 11.7 MB/s eta 0:00:00
+#10 23.99 Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+#10 24.01 Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+#10 24.03 Downloading pathspec-1.0.4-py3-none-any.whl (55 kB)
+#10 24.04    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 55.2/55.2 kB 9.0 MB/s eta 0:00:00
+#10 24.05 Downloading platformdirs-4.9.4-py3-none-any.whl (21 kB)
+#10 24.07 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#10 24.09 Downloading prettytable-3.17.0-py3-none-any.whl (34 kB)
+#10 24.12 Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+#10 24.20    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 16.5 MB/s eta 0:00:00
+#10 24.21 Downloading pyjwt-2.12.1-py3-none-any.whl (29 kB)
+#10 24.23 Downloading pynacl-1.6.2-cp38-abi3-manylinux_2_34_x86_64.whl (1.4 MB)
+#10 24.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 11.3 MB/s eta 0:00:00
+#10 24.37 Downloading python_can-4.6.1-py3-none-any.whl (276 kB)
+#10 24.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 277.0/277.0 kB 14.9 MB/s eta 0:00:00
+#10 24.41 Downloading pyusb-1.3.1-py3-none-any.whl (58 kB)
+#10 24.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.5/58.5 kB 9.5 MB/s eta 0:00:00
+#10 24.43 Downloading regex-2026.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+#10 24.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.1/801.1 kB 14.3 MB/s eta 0:00:00
+#10 24.49 Using cached setuptools-82.0.1-py3-none-any.whl (1.0 MB)
+#10 24.51 Downloading tomlkit-0.14.0-py3-none-any.whl (39 kB)
+#10 24.53 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#10 24.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 3.4 MB/s eta 0:00:00
+#10 24.56 Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+#10 24.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.6/131.6 kB 15.2 MB/s eta 0:00:00
+#10 24.58 Downloading colorlog-6.10.1-py3-none-any.whl (11 kB)
+#10 24.60 Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+#10 24.62 Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+#10 24.64 Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+#10 24.66    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.6/219.6 kB 13.2 MB/s eta 0:00:00
+#10 24.67 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#10 24.70 Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (88 kB)
+#10 24.71    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.0/88.0 kB 14.3 MB/s eta 0:00:00
+#10 24.72 Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+#10 24.74 Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+#10 24.77 Downloading wcwidth-0.6.0-py3-none-any.whl (94 kB)
+#10 24.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.2/94.2 kB 14.8 MB/s eta 0:00:00
+#10 24.79 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#10 24.80    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 9.8 MB/s eta 0:00:00
+#10 25.06 Building wheels for collected packages: cbor, sh
+#10 25.07   Building wheel for cbor (pyproject.toml): started
+#10 25.95   Building wheel for cbor (pyproject.toml): finished with status 'done'
+#10 25.96   Created wheel for cbor: filename=cbor-1.0.0-cp312-cp312-linux_x86_64.whl size=54838 sha256=fe4501dceb9b55370539efdd27c8f01246534ddb06ea44185940aa54d2c0ff98
+#10 25.96   Stored in directory: /root/.cache/pip/wheels/44/3e/21/a739cbcc331a1ab45c326d6edbdac6118de4402f6076e30ff1
+#10 25.96   Building wheel for sh (pyproject.toml): started
+#10 26.16   Building wheel for sh (pyproject.toml): finished with status 'done'
+#10 26.17   Created wheel for sh: filename=sh-1.14.3-py2.py3-none-any.whl size=39724 sha256=aa0d6327f503b9d3aa0193780a8a05927c1971700a7a2b8d2646f9c3ff47e42f
+#10 26.17   Stored in directory: /root/.cache/pip/wheels/f9/15/01/d0af473c9096854dafe2fa208b478897a1ae0aa543423ee64c
+#10 26.17 Successfully built cbor sh
+#10 26.60 Installing collected packages: sortedcontainers, sh, pyserial, pyelftools, ply, intelhex, clang-format, cbor, appdirs, zipp, wrapt, wcwidth, urllib3, typing_extensions, tomlkit, tabulate, setuptools, regex, pyusb, python-magic, pyjwt, pygments, pycparser, psutil, protobuf, progress, pluggy, platformdirs, Pillow, pathspec, natsort, mypy_extensions, mock, mccabe, MarkupSafe, lxml, lpc_checksum, librt, lark, junitparser, isort, intervaltree, iniconfig, importlib_resources, idna, graphviz, dill, coverage, colorlog, click, charset_normalizer, certifi, cbor2, capstone, astroid, anytree, zcbor, yamllint, requests, python-can, pytest, pylint, pylink-square, prettytable, mypy, libusb-package, jinja2, importlib_metadata, grpcio, cffi, arrow, pynacl, junit2html, grpcio-tools, gitlint-core, gcovr, cryptography, cmsis-pack-manager, canopen, pyocd, imgtool, PyGithub, gitlint
+#10 36.17 Successfully installed MarkupSafe-3.0.3 Pillow-12.2.0 PyGithub-2.9.0 anytree-2.13.0 appdirs-1.4.4 arrow-1.2.3 astroid-4.0.4 canopen-2.4.1 capstone-5.0.7 cbor-1.0.0 cbor2-5.9.0 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.7 clang-format-22.1.2 click-8.1.3 cmsis-pack-manager-0.6.0 colorlog-6.10.1 coverage-7.13.5 cryptography-46.0.6 dill-0.4.1 gcovr-8.6 gitlint-0.19.1 gitlint-core-0.19.1 graphviz-0.21 grpcio-1.80.0 grpcio-tools-1.80.0 idna-3.11 imgtool-2.3.0 importlib_metadata-9.0.0 importlib_resources-6.5.2 iniconfig-2.3.0 intelhex-2.3.0 intervaltree-3.2.1 isort-8.0.1 jinja2-3.1.6 junit2html-31.0.5 junitparser-5.0.0 lark-1.3.1 librt-0.8.1 libusb-package-1.0.26.3 lpc_checksum-3.0.0 lxml-6.0.2 mccabe-0.7.0 mock-5.2.0 mypy-1.20.0 mypy_extensions-1.1.0 natsort-8.4.0 pathspec-1.0.4 platformdirs-4.9.4 pluggy-1.6.0 ply-3.11 prettytable-3.17.0 progress-1.6.1 protobuf-6.33.6 psutil-7.2.2 pycparser-3.0 pyelftools-0.32 pygments-2.20.0 pyjwt-2.12.1 pylink-square-1.7.0 pylint-4.0.5 pynacl-1.6.2 pyocd-0.44.0 pyserial-3.5 pytest-9.0.2 python-can-4.6.1 python-magic-0.4.27 pyusb-1.3.1 regex-2026.4.4 requests-2.33.1 setuptools-82.0.1 sh-1.14.3 sortedcontainers-2.4.0 tabulate-0.10.0 tomlkit-0.14.0 typing_extensions-4.15.0 urllib3-2.6.3 wcwidth-0.6.0 wrapt-1.17.3 yamllint-1.38.0 zcbor-0.9.1 zipp-3.23.0
+#10 DONE 37.8s
+
+#11 [ 7/10] COPY test_patch.diff /tmp/
+#11 DONE 0.1s
+
+#12 [ 8/10] RUN git apply /tmp/test_patch.diff
+#12 DONE 0.3s
+
+#13 [ 9/10] RUN west build -b qemu_x86 tests/bluetooth/audio/bap_base || true
+#13 0.431 -- west build: generating a build system
+#13 0.535 -- The C compiler identification is GNU 13.3.0
+#13 0.643 -- The CXX compiler identification is unknown
+#13 0.672 -- Detecting C compiler ABI info
+#13 0.751 -- Detecting C compiler ABI info - done
+#13 0.764 -- Check for working C compiler: /usr/bin/cc - skipped
+#13 0.765 -- Detecting C compile features
+#13 0.766 -- Detecting C compile features - done
+#13 0.767 CMake Error at CMakeLists.txt:5 (project):
+#13 0.767   No CMAKE_CXX_COMPILER could be found.
+#13 0.767 
+#13 0.767   Tell CMake where to find the compiler by setting either the environment
+#13 0.767   variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+#13 0.767   to the compiler, or to the compiler name if it is in the PATH.
+#13 0.767 
+#13 0.767 
+#13 0.769 -- Configuring incomplete, errors occurred!
+#13 0.778 FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -DBOARD=qemu_x86 -S/testbed/tests/bluetooth/audio/bap_base
+#13 DONE 0.8s
+
+#14 [10/10] RUN ctags -R --languages=C,C++ --exclude=build -f /testbed/tags .
+#14 DONE 5.8s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 319.8s done
+#15 exporting manifest sha256:8d49540469e524661b40823c8da66710ef88c13e831f17b22b4e30ff74e520d3 0.0s done
+#15 exporting config sha256:a5169379d545b006e3f6117bb5410d3504c64a67e136eeb8468c24823efab878 0.0s done
+#15 exporting attestation manifest sha256:28ad2b93fa34e41273b1b76c7577111d4f979a491c3ec8fbb26077347f0461f3 0.0s done
+#15 exporting manifest list sha256:9377fe33e4a631a3104620369407295ca21ea008841855a14d4547dee27217e7 0.0s done
+#15 naming to docker.io/library/embedbench:zephyr-64123 done
+#15 unpacking to docker.io/library/embedbench:zephyr-64123
+#15 unpacking to docker.io/library/embedbench:zephyr-64123 95.5s done
+#15 DONE 415.4s
+
+=== Step 4a: Verifying tests FAIL on broken code ===
+-- west build: generating a build system
+-- The CXX compiler identification is unknown
+CMake Error at CMakeLists.txt:5 (project):
+  No CMAKE_CXX_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -DBOARD=qemu_x86 -S/testbed/tests/bluetooth/audio/bap_base
+WARNING: This looks like a fresh build and BOARD is unknown; so it probably won't work. To fix, use --board=<your-board>.
+Note: to silence the above message, run 'west config build.board_warn false'
+-- west build: generating a build system
+CMake Error: The source "/testbed/CMakeLists.txt" does not match the source "/testbed/tests/bluetooth/audio/bap_base/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -S/testbed
+
+=== Step 4b: Applying fix and verifying tests PASS ===
+fix_patch.diff:     1964 lines
+-- west build: generating a build system
+-- The CXX compiler identification is unknown
+CMake Error at CMakeLists.txt:5 (project):
+  No CMAKE_CXX_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -DBOARD=qemu_x86 -S/testbed/tests/bluetooth/audio/bap_base
+WARNING: This looks like a fresh build and BOARD is unknown; so it probably won't work. To fix, use --board=<your-board>.
+Note: to silence the above message, run 'west config build.board_warn false'
+-- west build: generating a build system
+CMake Error: The source "/testbed/CMakeLists.txt" does not match the source "/testbed/tests/bluetooth/audio/bap_base/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -S/testbed
+
+=== FAIL: pass step exited with code 1 — check /Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-64123/run.log ===
+Stopping container...
+
+Result: error (written to /Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-64123/result.json)

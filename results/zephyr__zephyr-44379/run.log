@@ -1,0 +1,587 @@
+=== Step 1: Generating test_patch.diff ===
+test_patch.diff:      264 lines
+
+=== Step 2: Base image ===
+Already exists, skipping.
+
+=== Step 3: Instance image ===
+Building (~30 min) ...
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.12kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/embedbench-zephyr-base:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/embedbench-zephyr-base:latest@sha256:08d45dd1e2de5ed393e2db3407f032905352f23b99e7343eb190627f8906c8bb
+#4 resolve docker.io/library/embedbench-zephyr-base:latest@sha256:08d45dd1e2de5ed393e2db3407f032905352f23b99e7343eb190627f8906c8bb 0.0s done
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 8.12kB done
+#5 DONE 0.0s
+
+#6 [ 2/10] WORKDIR /testbed
+#6 DONE 0.0s
+
+#7 [ 3/10] RUN git clone --filter=blob:none https://github.com/zephyrproject-rtos/zephyr.git .     && git checkout 7fba7d395750ba565ddc4064d32944f174ec3860
+#7 0.179 Cloning into '.'...
+#7 45.66 Updating files:   0% (2/59503)Updating files:   1% (596/59503)Updating files:   2% (1191/59503)Updating files:   3% (1786/59503)Updating files:   4% (2381/59503)Updating files:   5% (2976/59503)Updating files:   6% (3571/59503)Updating files:   6% (3900/59503)Updating files:   7% (4166/59503)Updating files:   8% (4761/59503)Updating files:   9% (5356/59503)Updating files:  10% (5951/59503)Updating files:  11% (6546/59503)Updating files:  12% (7141/59503)Updating files:  13% (7736/59503)Updating files:  14% (8331/59503)Updating files:  15% (8926/59503)Updating files:  16% (9521/59503)Updating files:  17% (10116/59503)Updating files:  18% (10711/59503)Updating files:  19% (11306/59503)Updating files:  20% (11901/59503)Updating files:  21% (12496/59503)Updating files:  22% (13091/59503)Updating files:  22% (13136/59503)Updating files:  23% (13686/59503)Updating files:  24% (14281/59503)Updating files:  25% (14876/59503)Updating files:  26% (15471/59503)Updating files:  27% (16066/59503)Updating files:  28% (16661/59503)Updating files:  29% (17256/59503)Updating files:  30% (17851/59503)Updating files:  31% (18446/59503)Updating files:  32% (19041/59503)Updating files:  33% (19636/59503)Updating files:  34% (20232/59503)Updating files:  35% (20827/59503)Updating files:  36% (21422/59503)Updating files:  36% (21695/59503)Updating files:  37% (22017/59503)Updating files:  38% (22612/59503)Updating files:  39% (23207/59503)Updating files:  40% (23802/59503)Updating files:  41% (24397/59503)Updating files:  42% (24992/59503)Updating files:  43% (25587/59503)Updating files:  44% (26182/59503)Updating files:  45% (26777/59503)Updating files:  46% (27372/59503)Updating files:  47% (27967/59503)Updating files:  48% (28562/59503)Updating files:  49% (29157/59503)Updating files:  50% (29752/59503)Updating files:  51% (30347/59503)Updating files:  52% (30942/59503)Updating files:  52% (31188/59503)Updating files:  53% (31537/59503)Updating files:  54% (32132/59503)Updating files:  55% (32727/59503)Updating files:  56% (33322/59503)Updating files:  57% (33917/59503)Updating files:  58% (34512/59503)Updating files:  59% (35107/59503)Updating files:  60% (35702/59503)Updating files:  61% (36297/59503)Updating files:  62% (36892/59503)Updating files:  62% (37031/59503)Updating files:  63% (37487/59503)Updating files:  64% (38082/59503)Updating files:  65% (38677/59503)Updating files:  66% (39272/59503)Updating files:  67% (39868/59503)Updating files:  68% (40463/59503)Updating files:  69% (41058/59503)Updating files:  70% (41653/59503)Updating files:  70% (41890/59503)Updating files:  71% (42248/59503)Updating files:  72% (42843/59503)Updating files:  73% (43438/59503)Updating files:  74% (44033/59503)Updating files:  75% (44628/59503)Updating files:  76% (45223/59503)Updating files:  77% (45818/59503)Updating files:  77% (46268/59503)Updating files:  78% (46413/59503)Updating files:  79% (47008/59503)Updating files:  80% (47603/59503)Updating files:  81% (48198/59503)Updating files:  82% (48793/59503)Updating files:  83% (49388/59503)Updating files:  84% (49983/59503)Updating files:  85% (50578/59503)Updating files:  86% (51173/59503)Updating files:  87% (51768/59503)Updating files:  88% (52363/59503)Updating files:  88% (52710/59503)Updating files:  89% (52958/59503)Updating files:  90% (53553/59503)Updating files:  91% (54148/59503)Updating files:  92% (54743/59503)Updating files:  93% (55338/59503)Updating files:  94% (55933/59503)Updating files:  95% (56528/59503)Updating files:  96% (57123/59503)Updating files:  97% (57718/59503)Updating files:  98% (58313/59503)Updating files:  99% (58908/59503)Updating files:  99% (59216/59503)Updating files: 100% (59503/59503)Updating files: 100% (59503/59503), done.
+#7 67.12 Note: switching to '7fba7d395750ba565ddc4064d32944f174ec3860'.
+#7 67.12 
+#7 67.12 You are in 'detached HEAD' state. You can look around, make experimental
+#7 67.12 changes and commit them, and you can discard any commits you make in this
+#7 67.12 state without impacting any branches by switching back to a branch.
+#7 67.12 
+#7 67.12 If you want to create a new branch to retain commits you create, you may
+#7 67.12 do so (now or later) by using -c with the switch command. Example:
+#7 67.12 
+#7 67.12   git switch -c <new-branch-name>
+#7 67.12 
+#7 67.12 Or undo this operation with:
+#7 67.12 
+#7 67.12   git switch -
+#7 67.12 
+#7 67.12 Turn off this advice by setting config variable advice.detachedHead to false
+#7 67.12 
+#7 67.12 HEAD is now at 7fba7d39575 shell: mqtt: fix uint32_t compared against 0
+#7 DONE 67.8s
+
+#8 [ 4/10] RUN west init -l .     && west update --narrow -o=--depth=1     && west zephyr-export
+#8 0.624 === Initializing from existing manifest repository testbed
+#8 0.624 --- Creating /.west and local configuration file
+#8 0.626 === Initialized. Now run "west update" inside /.
+#8 0.842 === updating acpica (modules/lib/acpica):
+#8 0.842 --- acpica: initializing
+#8 0.851 Initialized empty Git repository in /modules/lib/acpica/.git/
+#8 0.857 --- acpica: fetching, need revision f16a0b4d0f0edd7b78a332fcf507be2187fac21e
+#8 3.211 From https://github.com/zephyrproject-rtos/acpica
+#8 3.211  * branch            f16a0b4d0f0edd7b78a332fcf507be2187fac21e -> FETCH_HEAD
+#8 3.459 HEAD is now at f16a0b4 Update version to 20230628
+#8 3.628 HEAD is now at f16a0b4 Update version to 20230628
+#8 3.629 === updating canopennode (modules/lib/canopennode):
+#8 3.629 --- canopennode: initializing
+#8 3.634 Initialized empty Git repository in /modules/lib/canopennode/.git/
+#8 3.639 --- canopennode: fetching, need revision dec12fa3f0d790cafa8414a4c2930ea71ab72ffd
+#8 4.074 From https://github.com/zephyrproject-rtos/canopennode
+#8 4.074  * branch            dec12fa3f0d790cafa8414a4c2930ea71ab72ffd -> FETCH_HEAD
+#8 4.101 HEAD is now at dec12fa stack: map CANopenNode crc16_ccitt() to Zephyr crc16_itu_t()
+#8 4.112 HEAD is now at dec12fa stack: map CANopenNode crc16_ccitt() to Zephyr crc16_itu_t()
+#8 4.113 === updating chre (modules/lib/chre):
+#8 4.113 --- chre: initializing
+#8 4.118 Initialized empty Git repository in /modules/lib/chre/.git/
+#8 4.122 --- chre: fetching, need revision b7955c27e50485b7dafdc3888d7d6afdc2ac6d96
+#8 4.818 From https://github.com/zephyrproject-rtos/chre
+#8 4.818  * branch            b7955c27e50485b7dafdc3888d7d6afdc2ac6d96 -> FETCH_HEAD
+#8 4.927 HEAD is now at b7955c2 Merge pull request #7 from stephanosio/require_full_libcpp
+#8 4.947 HEAD is now at b7955c2 Merge pull request #7 from stephanosio/require_full_libcpp
+#8 4.947 === updating cmsis (modules/hal/cmsis):
+#8 4.947 --- cmsis: initializing
+#8 4.953 Initialized empty Git repository in /modules/hal/cmsis/.git/
+#8 4.958 --- cmsis: fetching, need revision 74981bf893e8b10931464b9945e2143d99a3f0a3
+#8 5.962 From https://github.com/zephyrproject-rtos/cmsis
+#8 5.962  * branch            74981bf893e8b10931464b9945e2143d99a3f0a3 -> FETCH_HEAD
+#8 6.045 HEAD is now at 74981bf Update DSP library for additional platforms
+#8 6.101 HEAD is now at 74981bf Update DSP library for additional platforms
+#8 6.102 === updating edtt (tools/edtt):
+#8 6.102 --- edtt: initializing
+#8 6.107 Initialized empty Git repository in /tools/edtt/.git/
+#8 6.112 --- edtt: fetching, need revision 64e5105ad82390164fb73fc654be3f73a608209a
+#8 6.549 From https://github.com/zephyrproject-rtos/edtt
+#8 6.549  * branch            64e5105ad82390164fb73fc654be3f73a608209a -> FETCH_HEAD
+#8 6.573 HEAD is now at 64e5105 edttt_bsim: Avoid infinite exception loop
+#8 6.585 HEAD is now at 64e5105 edttt_bsim: Avoid infinite exception loop
+#8 6.585 === updating fatfs (modules/fs/fatfs):
+#8 6.585 --- fatfs: initializing
+#8 6.590 Initialized empty Git repository in /modules/fs/fatfs/.git/
+#8 6.594 --- fatfs: fetching, need revision 427159bf95ea49b7680facffaa29ad506b42709b
+#8 7.114 From https://github.com/zephyrproject-rtos/fatfs
+#8 7.114  * branch            427159bf95ea49b7680facffaa29ad506b42709b -> FETCH_HEAD
+#8 7.137 HEAD is now at 427159b zephyr: fix ffconf.h override use of STRINGIZE
+#8 7.150 HEAD is now at 427159b zephyr: fix ffconf.h override use of STRINGIZE
+#8 7.151 === updating hal_altera (modules/hal/altera):
+#8 7.151 --- hal_altera: initializing
+#8 7.156 Initialized empty Git repository in /modules/hal/altera/.git/
+#8 7.160 --- hal_altera: fetching, need revision 0d225ddd314379b32355a00fb669eacf911e750d
+#8 7.564 From https://github.com/zephyrproject-rtos/hal_altera
+#8 7.564  * branch            0d225ddd314379b32355a00fb669eacf911e750d -> FETCH_HEAD
+#8 7.600 HEAD is now at 0d225dd zephyr: update include paths to use <zephyr/...>
+#8 7.611 HEAD is now at 0d225dd zephyr: update include paths to use <zephyr/...>
+#8 7.611 === updating hal_atmel (modules/hal/atmel):
+#8 7.611 --- hal_atmel: initializing
+#8 7.616 Initialized empty Git repository in /modules/hal/atmel/.git/
+#8 7.620 --- hal_atmel: fetching, need revision 5ab43007eda3f380c125f957f03638d2e8d1144d
+#8 9.455 From https://github.com/zephyrproject-rtos/hal_atmel
+#8 9.455  * branch            5ab43007eda3f380c125f957f03638d2e8d1144d -> FETCH_HEAD
+#8 9.664 HEAD is now at 5ab4300 Remove LITTLE_ENDIAN and __LITTLE_ENDIAN defines
+#8 9.943 HEAD is now at 5ab4300 Remove LITTLE_ENDIAN and __LITTLE_ENDIAN defines
+#8 9.944 === updating hal_espressif (modules/hal/espressif):
+#8 9.944 --- hal_espressif: initializing
+#8 9.949 Initialized empty Git repository in /modules/hal/espressif/.git/
+#8 9.954 --- hal_espressif: fetching, need revision 9531c1c17873aa4935f85864ebafd20c02062a8f
+#8 17.58 From https://github.com/zephyrproject-rtos/hal_espressif
+#8 17.58  * branch            9531c1c17873aa4935f85864ebafd20c02062a8f -> FETCH_HEAD
+#8 19.24 HEAD is now at 9531c1c hal: flash: avoid lock in ISR
+#8 19.47 HEAD is now at 9531c1c hal: flash: avoid lock in ISR
+#8 19.47 === updating hal_ethos_u (modules/hal/ethos_u):
+#8 19.47 --- hal_ethos_u: initializing
+#8 19.48 Initialized empty Git repository in /modules/hal/ethos_u/.git/
+#8 19.48 --- hal_ethos_u: fetching, need revision 90ada2ea5681b2a2722a10d2898eac34c2510791
+#8 20.06 From https://github.com/zephyrproject-rtos/hal_ethos_u
+#8 20.06  * branch            90ada2ea5681b2a2722a10d2898eac34c2510791 -> FETCH_HEAD
+#8 20.08 HEAD is now at 90ada2e Clarify README regarding CPU choice
+#8 20.10 HEAD is now at 90ada2e Clarify README regarding CPU choice
+#8 20.10 === updating hal_gigadevice (modules/hal/gigadevice):
+#8 20.10 --- hal_gigadevice: initializing
+#8 20.10 Initialized empty Git repository in /modules/hal/gigadevice/.git/
+#8 20.11 --- hal_gigadevice: fetching, need revision 2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3
+#8 21.64 From https://github.com/zephyrproject-rtos/hal_gigadevice
+#8 21.64  * branch            2994b7dde8b0b0fa9b9c0ccb13474b6a486cddc3 -> FETCH_HEAD
+#8 21.71 HEAD is now at 2994b7d README.md: add pllmf and pack exception for gd32a50x
+#8 21.76 HEAD is now at 2994b7d README.md: add pllmf and pack exception for gd32a50x
+#8 21.76 === updating hal_infineon (modules/hal/infineon):
+#8 21.76 --- hal_infineon: initializing
+#8 21.77 Initialized empty Git repository in /modules/hal/infineon/.git/
+#8 21.77 --- hal_infineon: fetching, need revision 0bebc14d8bd1a249ee7fbc70b37db6f01f72544f
+#8 23.37 From https://github.com/zephyrproject-rtos/hal_infineon
+#8 23.37  * branch            0bebc14d8bd1a249ee7fbc70b37db6f01f72544f -> FETCH_HEAD
+#8 23.90 HEAD is now at 0bebc14 hal: infineon: Add blob support for BLESS
+#8 23.92 HEAD is now at 0bebc14 hal: infineon: Add blob support for BLESS
+#8 23.92 === updating hal_microchip (modules/hal/microchip):
+#8 23.92 --- hal_microchip: initializing
+#8 23.93 Initialized empty Git repository in /modules/hal/microchip/.git/
+#8 23.93 --- hal_microchip: fetching, need revision 5d079f1683a00b801373bbbbf5d181d4e33b30d5
+#8 24.82 From https://github.com/zephyrproject-rtos/hal_microchip
+#8 24.82  * branch            5d079f1683a00b801373bbbbf5d181d4e33b30d5 -> FETCH_HEAD
+#8 24.90 HEAD is now at 5d079f1 mpfs:CMakeLists.txt: Adding mss_gpio directory to build
+#8 24.92 HEAD is now at 5d079f1 mpfs:CMakeLists.txt: Adding mss_gpio directory to build
+#8 24.92 === updating hal_nordic (modules/hal/nordic):
+#8 24.92 --- hal_nordic: initializing
+#8 24.93 Initialized empty Git repository in /modules/hal/nordic/.git/
+#8 24.94 --- hal_nordic: fetching, need revision a1c3e0fbaafda091139b8744becd4853ada2f747
+#8 28.44 From https://github.com/zephyrproject-rtos/hal_nordic
+#8 28.44  * branch            a1c3e0fbaafda091139b8744becd4853ada2f747 -> FETCH_HEAD
+#8 28.87 HEAD is now at a1c3e0f nrf_ccm: Fix events and tasks for nRF51 SoCs
+#8 29.11 HEAD is now at a1c3e0f nrf_ccm: Fix events and tasks for nRF51 SoCs
+#8 29.12 === updating hal_nuvoton (modules/hal/nuvoton):
+#8 29.12 --- hal_nuvoton: initializing
+#8 29.12 Initialized empty Git repository in /modules/hal/nuvoton/.git/
+#8 29.13 --- hal_nuvoton: fetching, need revision 8a2b5de1670b59fcacd20d7495cb1c0f26fbe7bd
+#8 30.04 From https://github.com/zephyrproject-rtos/hal_nuvoton
+#8 30.04  * branch            8a2b5de1670b59fcacd20d7495cb1c0f26fbe7bd -> FETCH_HEAD
+#8 30.16 HEAD is now at 8a2b5de hal: NuMaker M46x: fix warnings of M467 StdDriver
+#8 30.23 HEAD is now at 8a2b5de hal: NuMaker M46x: fix warnings of M467 StdDriver
+#8 30.23 === updating hal_nxp (modules/hal/nxp):
+#8 30.23 --- hal_nxp: initializing
+#8 30.24 Initialized empty Git repository in /modules/hal/nxp/.git/
+#8 30.24 --- hal_nxp: fetching, need revision e0116b8eae46c2d90f2c1b23baef73bb082d00bd
+#8 37.49 From https://github.com/zephyrproject-rtos/hal_nxp
+#8 37.49  * branch            e0116b8eae46c2d90f2c1b23baef73bb082d00bd -> FETCH_HEAD
+#8 41.18 HEAD is now at e0116b8 s32k3: remove CONFIG_NXP_S32_PM
+#8 41.37 HEAD is now at e0116b8 s32k3: remove CONFIG_NXP_S32_PM
+#8 41.37 === updating hal_openisa (modules/hal/openisa):
+#8 41.37 --- hal_openisa: initializing
+#8 41.38 Initialized empty Git repository in /modules/hal/openisa/.git/
+#8 41.39 --- hal_openisa: fetching, need revision d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a
+#8 42.75 From https://github.com/zephyrproject-rtos/hal_openisa
+#8 42.75  * branch            d1e61c0c654d8ca9e73d27fca3a7eb3b7881cb6a -> FETCH_HEAD
+#8 42.81 HEAD is now at d1e61c0 vega_sdk_riscv: Ignore GCC warning about potential uninitialized variable
+#8 42.85 HEAD is now at d1e61c0 vega_sdk_riscv: Ignore GCC warning about potential uninitialized variable
+#8 42.85 === updating hal_quicklogic (modules/hal/quicklogic):
+#8 42.85 --- hal_quicklogic: initializing
+#8 42.86 Initialized empty Git repository in /modules/hal/quicklogic/.git/
+#8 42.87 --- hal_quicklogic: fetching, need revision b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0
+#8 43.49 From https://github.com/zephyrproject-rtos/hal_quicklogic
+#8 43.49  * branch            b3a66fe6d04d87fd1533a5c8de51d0599fcd08d0 -> FETCH_HEAD
+#8 43.53 HEAD is now at b3a66fe Remove references to FPGA IP core drivers
+#8 43.55 HEAD is now at b3a66fe Remove references to FPGA IP core drivers
+#8 43.55 === updating hal_renesas (modules/hal/renesas):
+#8 43.55 --- hal_renesas: initializing
+#8 43.56 Initialized empty Git repository in /modules/hal/renesas/.git/
+#8 43.57 --- hal_renesas: fetching, need revision f2d791d28cd8fdbc5861652b863822632c91f690
+#8 44.02 From https://github.com/zephyrproject-rtos/hal_renesas
+#8 44.02  * branch            f2d791d28cd8fdbc5861652b863822632c91f690 -> FETCH_HEAD
+#8 44.05 HEAD is now at f2d791d Add da1469x_hal
+#8 44.07 HEAD is now at f2d791d Add da1469x_hal
+#8 44.07 === updating hal_rpi_pico (modules/hal/rpi_pico):
+#8 44.07 --- hal_rpi_pico: initializing
+#8 44.09 Initialized empty Git repository in /modules/hal/rpi_pico/.git/
+#8 44.10 --- hal_rpi_pico: fetching, need revision b7801e4db6a62ea2d37bbef7880c3d056530c9bf
+#8 44.98 From https://github.com/zephyrproject-rtos/hal_rpi_pico
+#8 44.98  * branch            b7801e4db6a62ea2d37bbef7880c3d056530c9bf -> FETCH_HEAD
+#8 45.12 HEAD is now at b7801e4 Merge pull request #4 from soburi/update-1.5.0
+#8 45.19 HEAD is now at b7801e4 Merge pull request #4 from soburi/update-1.5.0
+#8 45.19 === updating hal_silabs (modules/hal/silabs):
+#8 45.19 --- hal_silabs: initializing
+#8 45.20 Initialized empty Git repository in /modules/hal/silabs/.git/
+#8 45.21 --- hal_silabs: fetching, need revision a143f03e846eb1b7b3135f3c8192820ce1b6d9c4
+#8 47.55 From https://github.com/zephyrproject-rtos/hal_silabs
+#8 47.55  * branch            a143f03e846eb1b7b3135f3c8192820ce1b6d9c4 -> FETCH_HEAD
+#8 48.00 HEAD is now at a143f03 gecko: add pa-conversions for efr32xg27
+#8 48.09 HEAD is now at a143f03 gecko: add pa-conversions for efr32xg27
+#8 48.09 === updating hal_st (modules/hal/st):
+#8 48.09 --- hal_st: initializing
+#8 48.10 Initialized empty Git repository in /modules/hal/st/.git/
+#8 48.10 --- hal_st: fetching, need revision 5948f7b3304f1628a45ee928cd607619a7f53bbb
+#8 49.43 From https://github.com/zephyrproject-rtos/hal_st
+#8 49.43  * branch            5948f7b3304f1628a45ee928cd607619a7f53bbb -> FETCH_HEAD
+#8 49.51 HEAD is now at 5948f7b sensor/stmemsc: Align stmemsc i/f to v2.02
+#8 49.56 HEAD is now at 5948f7b sensor/stmemsc: Align stmemsc i/f to v2.02
+#8 49.56 === updating hal_stm32 (modules/hal/stm32):
+#8 49.56 --- hal_stm32: initializing
+#8 49.57 Initialized empty Git repository in /modules/hal/stm32/.git/
+#8 49.57 --- hal_stm32: fetching, need revision 65b641345a5bfccd93de1fc21103d69c4a9ff1d6
+#8 62.14 From https://github.com/zephyrproject-rtos/hal_stm32
+#8 62.14  * branch            65b641345a5bfccd93de1fc21103d69c4a9ff1d6 -> FETCH_HEAD
+#8 66.09 HEAD is now at 65b6413 dts: st: wba: generate stm32wba*-pinctrl.dtsi wba addition
+#8 66.25 HEAD is now at 65b6413 dts: st: wba: generate stm32wba*-pinctrl.dtsi wba addition
+#8 66.25 === updating hal_telink (modules/hal/telink):
+#8 66.25 --- hal_telink: initializing
+#8 66.26 Initialized empty Git repository in /modules/hal/telink/.git/
+#8 66.26 --- hal_telink: fetching, need revision 38573af589173259801ae6c2b34b7d4c9e626746
+#8 66.95 From https://github.com/zephyrproject-rtos/hal_telink
+#8 66.95  * branch            38573af589173259801ae6c2b34b7d4c9e626746 -> FETCH_HEAD
+#8 66.99 HEAD is now at 38573af B91 ADC driver support
+#8 67.00 HEAD is now at 38573af B91 ADC driver support
+#8 67.00 === updating hal_ti (modules/hal/ti):
+#8 67.00 --- hal_ti: initializing
+#8 67.01 Initialized empty Git repository in /modules/hal/ti/.git/
+#8 67.01 --- hal_ti: fetching, need revision ae1db23f32dde779cdfc4afaa9a60ea219310a64
+#8 68.29 From https://github.com/zephyrproject-rtos/hal_ti
+#8 68.29  * branch            ae1db23f32dde779cdfc4afaa9a60ea219310a64 -> FETCH_HEAD
+#8 68.43 HEAD is now at ae1db23 zephyr: update SYS_INIT calls
+#8 68.54 HEAD is now at ae1db23 zephyr: update SYS_INIT calls
+#8 68.54 === updating hal_wurthelektronik (modules/hal/wurthelektronik):
+#8 68.54 --- hal_wurthelektronik: initializing
+#8 68.54 Initialized empty Git repository in /modules/hal/wurthelektronik/.git/
+#8 68.55 --- hal_wurthelektronik: fetching, need revision 24ca9873c3d608fad1fea0431836bc8f144c132e
+#8 68.87 From https://github.com/zephyrproject-rtos/hal_wurthelektronik
+#8 68.87  * branch            24ca9873c3d608fad1fea0431836bc8f144c132e -> FETCH_HEAD
+#8 68.89 HEAD is now at 24ca987 Initialized WE HAL module repository.
+#8 68.90 HEAD is now at 24ca987 Initialized WE HAL module repository.
+#8 68.90 === updating hal_xtensa (modules/hal/xtensa):
+#8 68.90 --- hal_xtensa: initializing
+#8 68.91 Initialized empty Git repository in /modules/hal/xtensa/.git/
+#8 68.91 --- hal_xtensa: fetching, need revision 41a631d4aeeeaedc0daece21eecc338807296ad7
+#8 69.39 From https://github.com/zephyrproject-rtos/hal_xtensa
+#8 69.39  * branch            41a631d4aeeeaedc0daece21eecc338807296ad7 -> FETCH_HEAD
+#8 69.43 HEAD is now at 41a631d cmake: enable using SOC_TOOLCHAIN_NAME for SoC overlay
+#8 69.44 HEAD is now at 41a631d cmake: enable using SOC_TOOLCHAIN_NAME for SoC overlay
+#8 69.44 === updating libmetal (modules/hal/libmetal):
+#8 69.44 --- libmetal: initializing
+#8 69.45 Initialized empty Git repository in /modules/hal/libmetal/.git/
+#8 69.46 --- libmetal: fetching, need revision b91611a6f47dd29fb24c46e5621e797557f80ec6
+#8 71.22 From https://github.com/zephyrproject-rtos/libmetal
+#8 71.22  * branch            b91611a6f47dd29fb24c46e5621e797557f80ec6 -> FETCH_HEAD
+#8 71.26 HEAD is now at b91611a lib: update libmetal to release v2023.04.0
+#8 71.27 HEAD is now at b91611a lib: update libmetal to release v2023.04.0
+#8 71.27 === updating liblc3 (modules/lib/liblc3):
+#8 71.27 --- liblc3: initializing
+#8 71.28 Initialized empty Git repository in /modules/lib/liblc3/.git/
+#8 71.28 --- liblc3: fetching, need revision 448f3de31f49a838988a162ef1e23a89ddf2d2ed
+#8 71.79 From https://github.com/zephyrproject-rtos/liblc3
+#8 71.79  * branch            448f3de31f49a838988a162ef1e23a89ddf2d2ed -> FETCH_HEAD
+#8 71.82 HEAD is now at 448f3de Merge pull request #8 from carlescufi/rename
+#8 71.83 HEAD is now at 448f3de Merge pull request #8 from carlescufi/rename
+#8 71.83 === updating littlefs (modules/fs/littlefs):
+#8 71.83 --- littlefs: initializing
+#8 71.84 Initialized empty Git repository in /modules/fs/littlefs/.git/
+#8 71.84 --- littlefs: fetching, need revision ca583fd297ceb48bced3c2548600dc615d67af24
+#8 72.30 From https://github.com/zephyrproject-rtos/littlefs
+#8 72.30  * branch            ca583fd297ceb48bced3c2548600dc615d67af24 -> FETCH_HEAD
+#8 72.33 HEAD is now at ca583fd Merge tag 'v2.5.0' of https://github.com/littlefs-project/littlefs into zephyr
+#8 72.34 HEAD is now at ca583fd Merge tag 'v2.5.0' of https://github.com/littlefs-project/littlefs into zephyr
+#8 72.34 === updating loramac-node (modules/lib/loramac-node):
+#8 72.34 --- loramac-node: initializing
+#8 72.35 Initialized empty Git repository in /modules/lib/loramac-node/.git/
+#8 72.35 --- loramac-node: fetching, need revision ce57712f3e426bbbb13acaec97b45369f716f43a
+#8 73.43 From https://github.com/zephyrproject-rtos/loramac-node
+#8 73.43  * branch            ce57712f3e426bbbb13acaec97b45369f716f43a -> FETCH_HEAD
+#8 73.59 HEAD is now at ce57712 Don't memset the TXRX buffer when radio is set to receive mode (#1345)
+#8 73.74 HEAD is now at ce57712 Don't memset the TXRX buffer when radio is set to receive mode (#1345)
+#8 73.74 === updating lvgl (modules/lib/gui/lvgl):
+#8 73.74 --- lvgl: initializing
+#8 73.74 Initialized empty Git repository in /modules/lib/gui/lvgl/.git/
+#8 73.75 --- lvgl: fetching, need revision f7cf01d413aa9e76f376e25aa7b5c08dfdbc3c24
+#8 80.34 From https://github.com/zephyrproject-rtos/lvgl
+#8 80.34  * branch            f7cf01d413aa9e76f376e25aa7b5c08dfdbc3c24 -> FETCH_HEAD
+#8 80.78 HEAD is now at f7cf01d Merge pull request #41 from faxe1008/update_8.3.7
+#8 81.08 HEAD is now at f7cf01d Merge pull request #41 from faxe1008/update_8.3.7
+#8 81.08 === updating lz4 (modules/lib/lz4):
+#8 81.08 --- lz4: initializing
+#8 81.09 Initialized empty Git repository in /modules/lib/lz4/.git/
+#8 81.09 --- lz4: fetching, need revision 8e303c264fc21c2116dc612658003a22e933124d
+#8 81.67 From https://github.com/zephyrproject-rtos/lz4
+#8 81.67  * branch            8e303c264fc21c2116dc612658003a22e933124d -> FETCH_HEAD
+#8 81.71 HEAD is now at 8e303c2 zephyr: make this repo a zephyr module
+#8 81.72 HEAD is now at 8e303c2 zephyr: make this repo a zephyr module
+#8 81.72 === updating mbedtls (modules/crypto/mbedtls):
+#8 81.72 --- mbedtls: initializing
+#8 81.73 Initialized empty Git repository in /modules/crypto/mbedtls/.git/
+#8 81.73 --- mbedtls: fetching, need revision 6e7841e5a08eb5da3c82dbc8b6b6d82ae4b7d2a0
+#8 83.42 From https://github.com/zephyrproject-rtos/mbedtls
+#8 83.42  * branch            6e7841e5a08eb5da3c82dbc8b6b6d82ae4b7d2a0 -> FETCH_HEAD
+#8 83.62 HEAD is now at 6e7841e Move the implication of MBEDTLS_PSA_CRYPTO_CLIENT where it belongs
+#8 83.74 HEAD is now at 6e7841e Move the implication of MBEDTLS_PSA_CRYPTO_CLIENT where it belongs
+#8 83.74 === updating mcuboot (bootloader/mcuboot):
+#8 83.74 --- mcuboot: initializing
+#8 83.74 Initialized empty Git repository in /bootloader/mcuboot/.git/
+#8 83.75 --- mcuboot: fetching, need revision 6a8746d7acd75ff81fb6888d7776f412663f7897
+#8 84.51 From https://github.com/zephyrproject-rtos/mcuboot
+#8 84.51  * branch            6a8746d7acd75ff81fb6888d7776f412663f7897 -> FETCH_HEAD
+#8 84.61 HEAD is now at 6a8746d boot_serial: fix image number handle in image upload request
+#8 84.64 HEAD is now at 6a8746d boot_serial: fix image number handle in image upload request
+#8 84.64 === updating mipi-sys-t (modules/debug/mipi-sys-t):
+#8 84.64 --- mipi-sys-t: initializing
+#8 84.64 Initialized empty Git repository in /modules/debug/mipi-sys-t/.git/
+#8 84.65 --- mipi-sys-t: fetching, need revision a819419603a2dfcb47f7f39092e1bc112e45d1ef
+#8 85.10 From https://github.com/zephyrproject-rtos/mipi-sys-t
+#8 85.10  * branch            a819419603a2dfcb47f7f39092e1bc112e45d1ef -> FETCH_HEAD
+#8 85.14 HEAD is now at a819419 library: allow building without wchar support
+#8 85.15 HEAD is now at a819419 library: allow building without wchar support
+#8 85.15 === updating nanopb (modules/lib/nanopb):
+#8 85.15 --- nanopb: initializing
+#8 85.16 Initialized empty Git repository in /modules/lib/nanopb/.git/
+#8 85.16 --- nanopb: fetching, need revision 42fa8b211e946b90b9d968523fce7b1cfe27617e
+#8 86.84 From https://github.com/zephyrproject-rtos/nanopb
+#8 86.84  * branch            42fa8b211e946b90b9d968523fce7b1cfe27617e -> FETCH_HEAD
+#8 86.91 HEAD is now at 42fa8b2 Merge pull request #2 from pdgendt/zephyr
+#8 86.92 HEAD is now at 42fa8b2 Merge pull request #2 from pdgendt/zephyr
+#8 86.92 === updating net-tools (tools/net-tools):
+#8 86.92 --- net-tools: initializing
+#8 86.93 Initialized empty Git repository in /tools/net-tools/.git/
+#8 86.93 --- net-tools: fetching, need revision e0828aa9629b533644dc96ff6d1295c939bd713c
+#8 87.71 From https://github.com/zephyrproject-rtos/net-tools
+#8 87.71  * branch            e0828aa9629b533644dc96ff6d1295c939bd713c -> FETCH_HEAD
+#8 87.91 HEAD is now at e0828aa net-setup: Add instructions for NAT and routing
+#8 87.93 HEAD is now at e0828aa net-setup: Add instructions for NAT and routing
+#8 87.93 === updating nrf_hw_models (modules/bsim_hw_models/nrf_hw_models):
+#8 87.93 --- nrf_hw_models: initializing
+#8 87.93 Initialized empty Git repository in /modules/bsim_hw_models/nrf_hw_models/.git/
+#8 87.94 --- nrf_hw_models: fetching, need revision 33b999d50093da88cf935383da2bdac70ffd9456
+#8 88.42 From https://github.com/zephyrproject-rtos/nrf_hw_models
+#8 88.42  * branch            33b999d50093da88cf935383da2bdac70ffd9456 -> FETCH_HEAD
+#8 88.44 HEAD is now at 33b999d GPIO: Fix bug during initialization
+#8 88.45 HEAD is now at 33b999d GPIO: Fix bug during initialization
+#8 88.45 === updating open-amp (modules/lib/open-amp):
+#8 88.45 --- open-amp: initializing
+#8 88.46 Initialized empty Git repository in /modules/lib/open-amp/.git/
+#8 88.46 --- open-amp: fetching, need revision c904a01d4a882bcbb39987e0e2ce5308f49ac7ad
+#8 89.06 From https://github.com/zephyrproject-rtos/open-amp
+#8 89.06  * branch            c904a01d4a882bcbb39987e0e2ce5308f49ac7ad -> FETCH_HEAD
+#8 89.10 HEAD is now at c904a01 lib: update open-amp lib to release v2023.04.0
+#8 89.11 HEAD is now at c904a01 lib: update open-amp lib to release v2023.04.0
+#8 89.11 === updating openthread (modules/lib/openthread):
+#8 89.11 --- openthread: initializing
+#8 89.12 Initialized empty Git repository in /modules/lib/openthread/.git/
+#8 89.12 --- openthread: fetching, need revision 37fb77098982d17555dd7a3f58832714bb9df56e
+#8 91.24 From https://github.com/zephyrproject-rtos/openthread
+#8 91.24  * branch            37fb77098982d17555dd7a3f58832714bb9df56e -> FETCH_HEAD
+#8 91.61 HEAD is now at 37fb770 [cli] fix `childsupervision` commands documentation (#9201)
+#8 91.85 HEAD is now at 37fb770 [cli] fix `childsupervision` commands documentation (#9201)
+#8 91.85 === updating picolibc (modules/lib/picolibc):
+#8 91.85 --- picolibc: initializing
+#8 91.86 Initialized empty Git repository in /modules/lib/picolibc/.git/
+#8 91.86 --- picolibc: fetching, need revision d07c38ff051386f8e09a143ea0a6c1d6d66dd1d8
+#8 93.59 From https://github.com/zephyrproject-rtos/picolibc
+#8 93.59  * branch            d07c38ff051386f8e09a143ea0a6c1d6d66dd1d8 -> FETCH_HEAD
+#8 93.91 HEAD is now at d07c38f Version 1.8.2
+#8 93.94 HEAD is now at d07c38f Version 1.8.2
+#8 93.94 === updating segger (modules/debug/segger):
+#8 93.94 --- segger: initializing
+#8 93.94 Initialized empty Git repository in /modules/debug/segger/.git/
+#8 93.95 --- segger: fetching, need revision 5792675a2470d0f3857de1e77bff57b38c28de3b
+#8 94.34 From https://github.com/zephyrproject-rtos/segger
+#8 94.34  * branch            5792675a2470d0f3857de1e77bff57b38c28de3b -> FETCH_HEAD
+#8 94.36 HEAD is now at 5792675 segger: update to 3.40
+#8 94.37 HEAD is now at 5792675 segger: update to 3.40
+#8 94.37 === updating sof (modules/audio/sof):
+#8 94.37 --- sof: initializing
+#8 94.38 Initialized empty Git repository in /modules/audio/sof/.git/
+#8 94.38 --- sof: fetching, need revision ffbf9c2a6ea2930b0ac7e3a37c7cd7f5c417d090
+#8 95.57 From https://github.com/zephyrproject-rtos/sof
+#8 95.57  * branch            ffbf9c2a6ea2930b0ac7e3a37c7cd7f5c417d090 -> FETCH_HEAD
+#8 95.81 HEAD is now at ffbf9c2 Merge pull request #27 from nashif/cache_api
+#8 95.89 HEAD is now at ffbf9c2 Merge pull request #27 from nashif/cache_api
+#8 95.89 === updating tflite-micro (modules/lib/tflite-micro):
+#8 95.89 --- tflite-micro: initializing
+#8 95.90 Initialized empty Git repository in /modules/lib/tflite-micro/.git/
+#8 95.91 --- tflite-micro: fetching, need revision 9156d050927012da87079064db59d07f03b8baf6
+#8 96.74 From https://github.com/zephyrproject-rtos/tflite-micro
+#8 96.74  * branch            9156d050927012da87079064db59d07f03b8baf6 -> FETCH_HEAD
+#8 96.87 HEAD is now at 9156d05 tflite-micro: fix module name
+#8 96.94 HEAD is now at 9156d05 tflite-micro: fix module name
+#8 96.94 === updating tinycrypt (modules/crypto/tinycrypt):
+#8 96.94 --- tinycrypt: initializing
+#8 96.94 Initialized empty Git repository in /modules/crypto/tinycrypt/.git/
+#8 96.95 --- tinycrypt: fetching, need revision 3e9a49d2672ec01435ffbf0d788db6d95ef28de0
+#8 97.29 From https://github.com/zephyrproject-rtos/tinycrypt
+#8 97.29  * branch            3e9a49d2672ec01435ffbf0d788db6d95ef28de0 -> FETCH_HEAD
+#8 97.32 HEAD is now at 3e9a49d cmake: Fix conditional in root CMakeLists.txt
+#8 97.33 HEAD is now at 3e9a49d cmake: Fix conditional in root CMakeLists.txt
+#8 97.33 === updating TraceRecorderSource (modules/debug/TraceRecorder):
+#8 97.33 --- TraceRecorderSource: initializing
+#8 97.33 Initialized empty Git repository in /modules/debug/TraceRecorder/.git/
+#8 97.34 --- TraceRecorderSource: fetching, need revision bc839bf94904bcdb91b33760e918afbef82e3ab4
+#8 97.99 From https://github.com/zephyrproject-rtos/TraceRecorderSource
+#8 97.99  * branch            bc839bf94904bcdb91b33760e918afbef82e3ab4 -> FETCH_HEAD
+#8 98.03 HEAD is now at bc839bf zephyr: update SYS_INIT calls
+#8 98.05 HEAD is now at bc839bf zephyr: update SYS_INIT calls
+#8 98.05 === updating trusted-firmware-m (modules/tee/tf-m/trusted-firmware-m):
+#8 98.05 --- trusted-firmware-m: initializing
+#8 98.06 Initialized empty Git repository in /modules/tee/tf-m/trusted-firmware-m/.git/
+#8 98.06 --- trusted-firmware-m: fetching, need revision 79a6115d3a8d0e04864ae8156c1dc8532b750f5a
+#8 100.1 From https://github.com/zephyrproject-rtos/trusted-firmware-m
+#8 100.1  * branch            79a6115d3a8d0e04864ae8156c1dc8532b750f5a -> FETCH_HEAD
+#8 100.6 HEAD is now at 79a6115 Build: Install crypto_platform.h for Crypto service
+#8 101.0 HEAD is now at 79a6115 Build: Install crypto_platform.h for Crypto service
+#8 101.0 === updating trusted-firmware-a (modules/tee/tf-a/trusted-firmware-a):
+#8 101.0 --- trusted-firmware-a: initializing
+#8 101.0 Initialized empty Git repository in /modules/tee/tf-a/trusted-firmware-a/.git/
+#8 101.0 --- trusted-firmware-a: fetching, need revision 421dc050278287839f5c70019bd6aec617f2bbdb
+#8 102.8 From https://github.com/zephyrproject-rtos/trusted-firmware-a
+#8 102.8  * branch            421dc050278287839f5c70019bd6aec617f2bbdb -> FETCH_HEAD
+#8 104.2 HEAD is now at 421dc05 Merge pull request #3 from SgrrZhf/topics/huizha01/2.9.0-updates
+#8 104.2 HEAD is now at 421dc05 Merge pull request #3 from SgrrZhf/topics/huizha01/2.9.0-updates
+#8 104.2 === updating tf-m-tests (modules/tee/tf-m/tf-m-tests):
+#8 104.2 --- tf-m-tests: initializing
+#8 104.2 Initialized empty Git repository in /modules/tee/tf-m/tf-m-tests/.git/
+#8 104.2 --- tf-m-tests: fetching, need revision 0f80a65193ddbbe3f0ac38b33b07b26138c11fa7
+#8 105.2 From https://github.com/zephyrproject-rtos/tf-m-tests
+#8 105.2  * branch            0f80a65193ddbbe3f0ac38b33b07b26138c11fa7 -> FETCH_HEAD
+#8 105.3 HEAD is now at 0f80a65 Merge pull request #6 from microbuilder/tfm17_limit_attestation
+#8 105.4 HEAD is now at 0f80a65 Merge pull request #6 from microbuilder/tfm17_limit_attestation
+#8 105.4 === updating psa-arch-tests (modules/tee/tf-m/psa-arch-tests):
+#8 105.4 --- psa-arch-tests: initializing
+#8 105.4 Initialized empty Git repository in /modules/tee/tf-m/psa-arch-tests/.git/
+#8 105.4 --- psa-arch-tests: fetching, need revision 6a17330e0dfb5f319730f974d5b05f7b7f04757b
+#8 106.2 From https://github.com/zephyrproject-rtos/psa-arch-tests
+#8 106.2  * branch            6a17330e0dfb5f319730f974d5b05f7b7f04757b -> FETCH_HEAD
+#8 106.4 HEAD is now at 6a17330 dev-apis: platform: Increase timeout for nRF devs
+#8 106.4 HEAD is now at 6a17330 dev-apis: platform: Increase timeout for nRF devs
+#8 106.4 === updating uoscore-uedhoc (modules/lib/uoscore-uedhoc):
+#8 106.4 --- uoscore-uedhoc: initializing
+#8 106.5 Initialized empty Git repository in /modules/lib/uoscore-uedhoc/.git/
+#8 106.5 --- uoscore-uedhoc: fetching, need revision e8920192b66db4f909eb9cd3f155d5245c1ae825
+#8 107.0 From https://github.com/zephyrproject-rtos/uoscore-uedhoc
+#8 107.0  * branch            e8920192b66db4f909eb9cd3f155d5245c1ae825 -> FETCH_HEAD
+#8 107.0 HEAD is now at e892019 Merge pull request #11 from rlubos/zephyr-integration
+#8 107.0 HEAD is now at e892019 Merge pull request #11 from rlubos/zephyr-integration
+#8 107.0 === updating zcbor (modules/lib/zcbor):
+#8 107.0 --- zcbor: initializing
+#8 107.0 Initialized empty Git repository in /modules/lib/zcbor/.git/
+#8 107.0 --- zcbor: fetching, need revision 67fd8bb88d3136738661fa8bb5f9989103f4599e
+#8 107.6 From https://github.com/zephyrproject-rtos/zcbor
+#8 107.6  * branch            67fd8bb88d3136738661fa8bb5f9989103f4599e -> FETCH_HEAD
+#8 107.6 HEAD is now at 67fd8bb Update version from 0.6.99 to 0.7.0
+#8 107.7 HEAD is now at 67fd8bb Update version from 0.6.99 to 0.7.0
+#8 107.7 === updating zscilib (modules/lib/zscilib):
+#8 107.7 --- zscilib: initializing
+#8 107.7 Initialized empty Git repository in /modules/lib/zscilib/.git/
+#8 107.7 --- zscilib: fetching, need revision 34c3432e81085bb717e4871d21ca419ae0058ec5
+#8 108.2 From https://github.com/zephyrproject-rtos/zscilib
+#8 108.2  * branch            34c3432e81085bb717e4871d21ca419ae0058ec5 -> FETCH_HEAD
+#8 108.2 HEAD is now at 34c3432 Merge pull request #50 from microbuilder/ztest_fixes
+#8 108.2 HEAD is now at 34c3432 Merge pull request #50 from microbuilder/ztest_fixes
+#8 108.2 === updating thrift (modules/lib/thrift):
+#8 108.2 --- thrift: initializing
+#8 108.2 Initialized empty Git repository in /modules/lib/thrift/.git/
+#8 108.2 --- thrift: fetching, need revision 10023645a0e6cb7ce23fcd7fd3dbac9f18df6234
+#8 110.1 From https://github.com/zephyrproject-rtos/thrift
+#8 110.1  * branch            10023645a0e6cb7ce23fcd7fd3dbac9f18df6234 -> FETCH_HEAD
+#8 110.4 HEAD is now at 1002364 Merge pull request #1 from zephyrproject-rtos/add-zephyr-module-dir
+#8 110.5 HEAD is now at 1002364 Merge pull request #1 from zephyrproject-rtos/add-zephyr-module-dir
+#8 111.0 Zephyr (/testbed/share/zephyr-package/cmake)
+#8 111.0 has been added to the user package registry in:
+#8 111.0 ~/.cmake/packages/Zephyr
+#8 111.0 
+#8 111.0 ZephyrUnittest (/testbed/share/zephyrunittest-package/cmake)
+#8 111.0 has been added to the user package registry in:
+#8 111.0 ~/.cmake/packages/ZephyrUnittest
+#8 111.0 
+#8 DONE 111.5s
+
+#9 [ 5/10] RUN ARCH=$(uname -m)     && SDK_ARCHIVE="zephyr-sdk-0.16.8_linux-${ARCH}.tar.xz"     && wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.8/${SDK_ARCHIVE}"     && tar -xf "${SDK_ARCHIVE}" -C /opt     && rm "${SDK_ARCHIVE}"     && /opt/zephyr-sdk-0.16.8/setup.sh -t x86_64-zephyr-elf -h -c
+#9 275.3 Zephyr SDK 0.16.8 Setup
+#9 275.3 
+#9 275.3 Installing host tools ...
+#9 282.3 
+#9 282.3 Registering Zephyr SDK CMake package ...
+#9 282.3 Zephyr-sdk (/opt/zephyr-sdk-0.16.8/cmake)
+#9 282.3 has been added to the user package registry in:
+#9 282.3 ~/.cmake/packages/Zephyr-sdk
+#9 282.3 
+#9 282.3 
+#9 282.3 All done.
+#9 DONE 283.6s
+
+#10 [ 6/10] RUN west packages pip --install 2>/dev/null     || pip install -r scripts/requirements.txt
+#10 1.938 Ignoring windows-curses: markers 'sys_platform == "win32"' don't match your environment
+#10 1.939 Ignoring python-magic-bin: markers 'sys_platform == "win32"' don't match your environment
+#10 2.070 Collecting pyelftools>=0.27 (from -r scripts/requirements-base.txt (line 7))
+#10 2.198   Downloading pyelftools-0.32-py3-none-any.whl.metadata (372 bytes)
+#10 2.208 Requirement already satisfied: PyYAML>=5.1 in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 11)) (6.0.3)
+#10 2.210 Requirement already satisfied: pykwalify in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 14)) (1.8.0)
+#10 2.250 Collecting canopen (from -r scripts/requirements-base.txt (line 17))
+#10 2.349   Downloading canopen-2.4.1-py3-none-any.whl.metadata (7.0 kB)
+#10 2.362 Requirement already satisfied: packaging in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 18)) (26.0)
+#10 2.404 Collecting progress (from -r scripts/requirements-base.txt (line 19))
+#10 2.492   Downloading progress-1.6.1-py3-none-any.whl.metadata (4.3 kB)
+#10 2.912 Collecting psutil (from -r scripts/requirements-base.txt (line 20))
+#10 3.015   Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+#10 3.076 Collecting pylink-square (from -r scripts/requirements-base.txt (line 21))
+#10 3.103   Downloading pylink_square-2.0.1-py3-none-any.whl.metadata (5.9 kB)
+#10 3.230 Collecting pyserial (from -r scripts/requirements-base.txt (line 22))
+#10 3.246   Downloading pyserial-3.5-py2.py3-none-any.whl.metadata (1.6 kB)
+#10 3.326 Collecting requests (from -r scripts/requirements-base.txt (line 23))
+#10 3.344   Downloading requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+#10 3.395 Collecting anytree (from -r scripts/requirements-base.txt (line 26))
+#10 3.412   Downloading anytree-2.13.0-py3-none-any.whl.metadata (8.0 kB)
+#10 3.547 Collecting intelhex (from -r scripts/requirements-base.txt (line 29))
+#10 3.566   Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+#10 3.579 Requirement already satisfied: west>=0.14.0 in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-base.txt (line 33)) (1.5.0)
+#10 3.581 Requirement already satisfied: colorama in /opt/zephyr-venv/lib/python3.12/site-packages (from -r scripts/requirements-build-test.txt (line 7)) (0.4.6)
+#10 3.613 Collecting ply>=3.10 (from -r scripts/requirements-build-test.txt (line 10))
+#10 3.628   Downloading ply-3.11-py2.py3-none-any.whl.metadata (844 bytes)
+#10 3.765 Collecting gcovr>=4.2 (from -r scripts/requirements-build-test.txt (line 13))
+#10 3.787   Downloading gcovr-8.6-py3-none-any.whl.metadata (12 kB)
+#10 4.560 Collecting coverage (from -r scripts/requirements-build-test.txt (line 14))
+#10 4.595   Downloading coverage-7.13.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.5 kB)
+#10 4.756 Collecting pytest (from -r scripts/requirements-build-test.txt (line 17))
+#10 4.784   Downloading pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+#10 5.071 Collecting mypy (from -r scripts/requirements-build-test.txt (line 18))
+#10 5.112   Downloading mypy-1.20.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.3 kB)
+#10 5.159 Collecting mock>=4.0.1 (from -r scripts/requirements-build-test.txt (line 21))
+#10 5.174   Downloading mock-5.2.0-py3-none-any.whl.metadata (3.1 kB)
+#10 5.392 ERROR: Could not find a version that satisfies the requirement docleaf==0.8.0 (from versions: none)
+#10 5.392 ERROR: No matching distribution found for docleaf==0.8.0
+#10 ERROR: process "/bin/sh -c west packages pip --install 2>/dev/null     || pip install -r scripts/requirements.txt" did not complete successfully: exit code: 1
+------
+ > [ 6/10] RUN west packages pip --install 2>/dev/null     || pip install -r scripts/requirements.txt:
+4.560 Collecting coverage (from -r scripts/requirements-build-test.txt (line 14))
+4.595   Downloading coverage-7.13.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.5 kB)
+4.756 Collecting pytest (from -r scripts/requirements-build-test.txt (line 17))
+4.784   Downloading pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+5.071 Collecting mypy (from -r scripts/requirements-build-test.txt (line 18))
+5.112   Downloading mypy-1.20.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.3 kB)
+5.159 Collecting mock>=4.0.1 (from -r scripts/requirements-build-test.txt (line 21))
+5.174   Downloading mock-5.2.0-py3-none-any.whl.metadata (3.1 kB)
+5.392 ERROR: Could not find a version that satisfies the requirement docleaf==0.8.0 (from versions: none)
+5.392 ERROR: No matching distribution found for docleaf==0.8.0
+------
+Dockerfile:21
+--------------------
+  20 |     
+  21 | >>> RUN west packages pip --install 2>/dev/null \
+  22 | >>>     || pip install -r scripts/requirements.txt
+  23 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c west packages pip --install 2>/dev/null     || pip install -r scripts/requirements.txt" did not complete successfully: exit code: 1
+
+Result: error (written to /Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-44379/result.json)

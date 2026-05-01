@@ -1,0 +1,411 @@
+=== Step 1: Generating test_patch.diff ===
+test_patch.diff:      316 lines
+
+=== Step 2: Base image ===
+Building embedbench-zephyr-base:latest ...
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from zephyr.Dockerfile
+#1 transferring dockerfile: 885B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/library/ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c
+#4 resolve docker.io/library/ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c 0.0s done
+#4 DONE 0.0s
+
+#5 [2/4] RUN apt-get update && apt-get install -y --no-install-recommends     git cmake ninja-build gperf ccache dfu-util device-tree-compiler wget     python3-dev python3-pip python3-venv python3-tk     xz-utils file make gcc libsdl2-dev libmagic1t64     universal-ctags cscope     && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/4] RUN python3 -m venv /opt/zephyr-venv
+#6 CACHED
+
+#7 [4/4] RUN pip install west
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:ab05b5511868b627bfe3babe4bc8f40d31cc87dd5bce3077daaf2b91394d5304 done
+#8 exporting config sha256:ca8cfaa0b5ab296bd7dff457203faaac7a4036806be78d79c29da678a6863827 done
+#8 exporting attestation manifest sha256:ea61db03591c2b3d5f27da430b0d60d69b305c9c2a362873f99655f20f6759a3 0.0s done
+#8 exporting manifest list sha256:08d45dd1e2de5ed393e2db3407f032905352f23b99e7343eb190627f8906c8bb done
+#8 naming to docker.io/library/embedbench-zephyr-base:latest done
+#8 unpacking to docker.io/library/embedbench-zephyr-base:latest done
+#8 DONE 0.1s
+
+=== Step 3: Instance image ===
+Already exists, skipping.
+
+=== Step 4a: Verifying tests FAIL on broken code ===
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base (cached)).
+-- Application: /testbed/tests/kernel/ipi_cascade
+-- CMake version: 3.28.3
+-- Cache files will be written to: /root/.cache/zephyr
+-- Zephyr version: 3.6.99 (/testbed)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: qemu_x86, qualifiers: atom
+-- Found host-tools: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found toolchain: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found BOARD.dts: /testbed/boards/qemu/x86/qemu_x86.dts
+-- Generated zephyr.dts: /testbed/build/zephyr/zephyr.dts
+-- Generated devicetree_generated.h: /testbed/build/zephyr/include/generated/zephyr/devicetree_generated.h
+-- Including generated dts.cmake file: /testbed/build/zephyr/dts.cmake
+
+warning: SMP (defined at soc/nxp/imxrt/imxrt5xx/Kconfig.defconfig:75,
+soc/nxp/imx/imx8/Kconfig.defconfig:23, soc/nxp/imx/imx8m/Kconfig.defconfig.mimx8ml8_adsp:23,
+soc/nxp/imx/imx8ulp/Kconfig.defconfig:23, soc/nxp/imx/imx8x/Kconfig.defconfig:23,
+soc/intel/intel_adsp/ace/Kconfig.defconfig.series:6,
+soc/intel/intel_adsp/cavs/Kconfig.defconfig.series:22, kernel/Kconfig.smp:6) was assigned the value
+'y' but got the value 'n'. Check these unsatisfied dependencies: ((SOC_MIMXRT595S_F1 &&
+SOC_FAMILY_NXP_IMXRT) || (SOC_MIMX8QM6_ADSP && SOC_SERIES_IMX8 && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8ML8_ADSP && SOC_SERIES_IMX8M && SOC_SERIES_IMX8M && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8UD7_ADSP && SOC_SERIES_IMX8ULP && SOC_FAMILY_NXP_IMX) || (SOC_MIMX8QX6_ADSP &&
+SOC_SERIES_IMX8X && SOC_FAMILY_NXP_IMX) || (SOC_SERIES_INTEL_ADSP_ACE && SOC_FAMILY_INTEL_ADSP) ||
+(SOC_SERIES_INTEL_ADSP_CAVS && SOC_FAMILY_INTEL_ADSP) || (USE_SWITCH && !ATOMIC_OPERATIONS_C)) (=n).
+See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SMP and/or look up SMP in the
+menuconfig/guiconfig interface. The Application Development Primer, Setting Configuration Values,
+and Kconfig - Tips and Best Practices sections of the manual might be helpful too.
+
+
+warning: SCHED_CPU_MASK (defined at soc/espressif/esp32/Kconfig.defconfig:17, kernel/Kconfig:121)
+was assigned the value 'y' but got the value 'n'. Check these unsatisfied dependencies: ((SMP &&
+SOC_SERIES_ESP32 && SOC_FAMILY_ESPRESSIF_ESP32) || SCHED_DUMB) (=n). See
+http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SCHED_CPU_MASK and/or look up
+SCHED_CPU_MASK in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+warning: IPI_OPTIMIZE (defined at kernel/Kconfig.smp:75) was assigned the value 'y' but got the
+value 'n'. Check these unsatisfied dependencies: SCHED_IPI_SUPPORTED (=n), (MP_MAX_NUM_CPUS > 1)
+(=n). See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_IPI_OPTIMIZE and/or look up
+IPI_OPTIMIZE in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+/testbed/tests/kernel/ipi_cascade/prj.conf:4: warning: attempt to assign the value 'y' to the undefined symbol SCHED_IPI_CASCADE
+Parsing /testbed/Kconfig
+Loaded configuration '/testbed/boards/qemu/x86/qemu_x86_defconfig'
+Merged configuration '/testbed/tests/kernel/ipi_cascade/prj.conf'
+
+error: Aborting due to Kconfig warnings
+
+CMake Error at /testbed/cmake/modules/kconfig.cmake:389 (message):
+  command failed with return code: 1
+Call Stack (most recent call first):
+  /testbed/cmake/modules/zephyr_default.cmake:132 (include)
+  /testbed/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /testbed/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)
+  CMakeLists.txt:4 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -S/testbed/tests/kernel/ipi_cascade
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base (cached)).
+-- Application: /testbed/tests/kernel/ipi_cascade
+-- CMake version: 3.28.3
+-- Cache files will be written to: /root/.cache/zephyr
+-- Zephyr version: 3.6.99 (/testbed)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: qemu_x86, qualifiers: atom
+-- Found host-tools: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found toolchain: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found BOARD.dts: /testbed/boards/qemu/x86/qemu_x86.dts
+-- Generated zephyr.dts: /testbed/build/zephyr/zephyr.dts
+-- Generated devicetree_generated.h: /testbed/build/zephyr/include/generated/zephyr/devicetree_generated.h
+-- Including generated dts.cmake file: /testbed/build/zephyr/dts.cmake
+
+warning: SMP (defined at soc/nxp/imxrt/imxrt5xx/Kconfig.defconfig:75,
+soc/nxp/imx/imx8/Kconfig.defconfig:23, soc/nxp/imx/imx8m/Kconfig.defconfig.mimx8ml8_adsp:23,
+soc/nxp/imx/imx8ulp/Kconfig.defconfig:23, soc/nxp/imx/imx8x/Kconfig.defconfig:23,
+soc/intel/intel_adsp/ace/Kconfig.defconfig.series:6,
+soc/intel/intel_adsp/cavs/Kconfig.defconfig.series:22, kernel/Kconfig.smp:6) was assigned the value
+'y' but got the value 'n'. Check these unsatisfied dependencies: ((SOC_MIMXRT595S_F1 &&
+SOC_FAMILY_NXP_IMXRT) || (SOC_MIMX8QM6_ADSP && SOC_SERIES_IMX8 && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8ML8_ADSP && SOC_SERIES_IMX8M && SOC_SERIES_IMX8M && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8UD7_ADSP && SOC_SERIES_IMX8ULP && SOC_FAMILY_NXP_IMX) || (SOC_MIMX8QX6_ADSP &&
+SOC_SERIES_IMX8X && SOC_FAMILY_NXP_IMX) || (SOC_SERIES_INTEL_ADSP_ACE && SOC_FAMILY_INTEL_ADSP) ||
+(SOC_SERIES_INTEL_ADSP_CAVS && SOC_FAMILY_INTEL_ADSP) || (USE_SWITCH && !ATOMIC_OPERATIONS_C)) (=n).
+See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SMP and/or look up SMP in the
+menuconfig/guiconfig interface. The Application Development Primer, Setting Configuration Values,
+and Kconfig - Tips and Best Practices sections of the manual might be helpful too.
+
+
+warning: SCHED_CPU_MASK (defined at soc/espressif/esp32/Kconfig.defconfig:17, kernel/Kconfig:121)
+was assigned the value 'y' but got the value 'n'. Check these unsatisfied dependencies: ((SMP &&
+SOC_SERIES_ESP32 && SOC_FAMILY_ESPRESSIF_ESP32) || SCHED_DUMB) (=n). See
+http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SCHED_CPU_MASK and/or look up
+SCHED_CPU_MASK in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+warning: IPI_OPTIMIZE (defined at kernel/Kconfig.smp:75) was assigned the value 'y' but got the
+value 'n'. Check these unsatisfied dependencies: SCHED_IPI_SUPPORTED (=n), (MP_MAX_NUM_CPUS > 1)
+(=n). See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_IPI_OPTIMIZE and/or look up
+IPI_OPTIMIZE in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+/testbed/tests/kernel/ipi_cascade/prj.conf:4: warning: attempt to assign the value 'y' to the undefined symbol SCHED_IPI_CASCADE
+Parsing /testbed/Kconfig
+Loaded configuration '/testbed/boards/qemu/x86/qemu_x86_defconfig'
+Merged configuration '/testbed/tests/kernel/ipi_cascade/prj.conf'
+
+error: Aborting due to Kconfig warnings
+
+CMake Error at /testbed/cmake/modules/kconfig.cmake:389 (message):
+  command failed with return code: 1
+Call Stack (most recent call first):
+  /testbed/cmake/modules/zephyr_default.cmake:132 (include)
+  /testbed/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /testbed/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)
+  CMakeLists.txt:4 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/opt/zephyr-venv/bin/python3 -B/testbed/build -GNinja -S/testbed/tests/kernel/ipi_cascade
+
+=== Step 4b: Applying fix and verifying tests PASS ===
+fix_patch.diff:       67 lines
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base (cached)).
+-- Application: /testbed/tests/kernel/ipi_cascade
+-- CMake version: 3.28.3
+-- Cache files will be written to: /root/.cache/zephyr
+-- Zephyr version: 3.6.99 (/testbed)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: qemu_x86, qualifiers: atom
+-- Found host-tools: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found toolchain: zephyr 0.16.8 (/opt/zephyr-sdk-0.16.8)
+-- Found BOARD.dts: /testbed/boards/qemu/x86/qemu_x86.dts
+-- Generated zephyr.dts: /testbed/build/zephyr/zephyr.dts
+-- Generated devicetree_generated.h: /testbed/build/zephyr/include/generated/zephyr/devicetree_generated.h
+-- Including generated dts.cmake file: /testbed/build/zephyr/dts.cmake
+
+warning: SMP (defined at soc/nxp/imxrt/imxrt5xx/Kconfig.defconfig:75,
+soc/nxp/imx/imx8/Kconfig.defconfig:23, soc/nxp/imx/imx8m/Kconfig.defconfig.mimx8ml8_adsp:23,
+soc/nxp/imx/imx8ulp/Kconfig.defconfig:23, soc/nxp/imx/imx8x/Kconfig.defconfig:23,
+soc/intel/intel_adsp/ace/Kconfig.defconfig.series:6,
+soc/intel/intel_adsp/cavs/Kconfig.defconfig.series:22, kernel/Kconfig.smp:6) was assigned the value
+'y' but got the value 'n'. Check these unsatisfied dependencies: ((SOC_MIMXRT595S_F1 &&
+SOC_FAMILY_NXP_IMXRT) || (SOC_MIMX8QM6_ADSP && SOC_SERIES_IMX8 && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8ML8_ADSP && SOC_SERIES_IMX8M && SOC_SERIES_IMX8M && SOC_FAMILY_NXP_IMX) ||
+(SOC_MIMX8UD7_ADSP && SOC_SERIES_IMX8ULP && SOC_FAMILY_NXP_IMX) || (SOC_MIMX8QX6_ADSP &&
+SOC_SERIES_IMX8X && SOC_FAMILY_NXP_IMX) || (SOC_SERIES_INTEL_ADSP_ACE && SOC_FAMILY_INTEL_ADSP) ||
+(SOC_SERIES_INTEL_ADSP_CAVS && SOC_FAMILY_INTEL_ADSP) || (USE_SWITCH && !ATOMIC_OPERATIONS_C)) (=n).
+See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SMP and/or look up SMP in the
+menuconfig/guiconfig interface. The Application Development Primer, Setting Configuration Values,
+and Kconfig - Tips and Best Practices sections of the manual might be helpful too.
+
+
+warning: SCHED_CPU_MASK (defined at soc/espressif/esp32/Kconfig.defconfig:17, kernel/Kconfig:121)
+was assigned the value 'y' but got the value 'n'. Check these unsatisfied dependencies: ((SMP &&
+SOC_SERIES_ESP32 && SOC_FAMILY_ESPRESSIF_ESP32) || SCHED_DUMB) (=n). See
+http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SCHED_CPU_MASK and/or look up
+SCHED_CPU_MASK in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+warning: SCHED_IPI_CASCADE (defined at kernel/Kconfig.smp:66) was assigned the value 'y' but got the
+value 'n'. Check these unsatisfied dependencies: SCHED_CPU_MASK (=n). See
+http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_SCHED_IPI_CASCADE and/or look up
+SCHED_IPI_CASCADE in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+
+warning: IPI_OPTIMIZE (defined at kernel/Kconfig.smp:87) was assigned the value 'y' but got the
+value 'n'. Check these unsatisfied dependencies: SCHED_IPI_SUPPORTED (=n), (MP_MAX_NUM_CPUS > 1)
+(=n). See http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_IPI_OPTIMIZE and/or look up
+IPI_OPTIMIZE in the menuconfig/guiconfig interface. The Application Development Primer, Setting
+Configuration Values, and Kconfig - Tips and Best Practices sections of the manual might be helpful
+too.
+
+Parsing /testbed/Kconfig
+Loaded configuration '/testbed/boards/qemu/x86/qemu_x86_defconfig'
+Merged configuration '/testbed/tests/kernel/ipi_cascade/prj.conf'
+Configuration saved to '/testbed/build/zephyr/.config'
+Kconfig header saved to '/testbed/build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/x86_64-zephyr-elf/bin/ld.bfd (found version "2.38") 
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/bin/x86_64-zephyr-elf-gcc
+CMake Warning at /testbed/subsys/random/CMakeLists.txt:12 (message):
+  
+
+      Warning: CONFIG_TIMER_RANDOM_GENERATOR is not a truly random generator.
+      This capability is not secure and it is provided for testing purposes only.
+      Use it carefully.
+
+
+-- Using ccache: /usr/bin/ccache
+-- Configuring done (6.7s)
+-- Generating done (0.1s)
+-- Build files have been written to: /testbed/build
+-- west build: building application
+[1/117] Preparing syscall dependency handling
+
+[2/117] Generating misc/generated/syscalls_subdirs.trigger
+[3/117] Generating include/generated/zephyr/version.h
+-- Zephyr version: 3.6.99 (/testbed), build: v3.6.0-6330-gfe05606630f8
+[4/117] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/117] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_list.h
+[6/117] Generating include/generated/zephyr/driver-validation.h
+[7/117] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[8/117] Building C object zephyr/CMakeFiles/offsets.dir/arch/x86/core/offsets/offsets.c.obj
+[9/117] Generating include/generated/zephyr/offsets.h
+[10/117] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[11/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[12/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[13/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[14/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[15/117] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[16/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[17/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[18/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[19/117] Building C object CMakeFiles/app.dir/src/main.c.obj
+FAILED: CMakeFiles/app.dir/src/main.c.obj 
+ccache /opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/bin/x86_64-zephyr-elf-gcc -DKERNEL -DK_HEAP_MEM_POOL_SIZE=0 -DPICOLIBC_LONG_LONG_PRINTF_SCANF -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/testbed/kernel/include -I/testbed/arch/x86/include -I/testbed/build/zephyr/include/generated/zephyr -I/testbed/include -I/testbed/build/zephyr/include/generated -I/testbed/soc/intel/atom -I/testbed/soc/intel/atom/. -I/testbed/subsys/testsuite/include -I/testbed/subsys/testsuite/coverage -I/testbed/subsys/testsuite/ztest/include -isystem /testbed/lib/libc/common/include -m32  -fno-strict-aliasing -Os -imacros /testbed/build/zephyr/include/generated/zephyr/autoconf.h -fno-printf-return-value -fno-common -g -gdwarf-4 -fdiagnostics-color=always -m32 -msoft-float -Wa,--divide --sysroot=/opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/x86_64-zephyr-elf -imacros /testbed/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -ftls-model=local-exec -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/testbed/tests/kernel/ipi_cascade=CMAKE_SOURCE_DIR -fmacro-prefix-map=/testbed=ZEPHYR_BASE -fmacro-prefix-map=/=WEST_TOPDIR -ffunction-sections -fdata-sections -mpreferred-stack-boundary=2 -mno-mmx -mno-sse --specs=picolibc.specs -std=c99 -MD -MT CMakeFiles/app.dir/src/main.c.obj -MF CMakeFiles/app.dir/src/main.c.obj.d -o CMakeFiles/app.dir/src/main.c.obj -c /testbed/tests/kernel/ipi_cascade/src/main.c
+/testbed/tests/kernel/ipi_cascade/src/main.c:41:2: error: #error "This test must have CONFIG_MP_MAX_NUM_CPUS=2"
+   41 | #error "This test must have CONFIG_MP_MAX_NUM_CPUS=2"
+      |  ^~~~~
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread3_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:119:32: error: 'struct _thread_base' has no member named 'cpu'
+  119 |         cpu_t3 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread4_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:139:32: error: 'struct _thread_base' has no member named 'cpu'
+  139 |         cpu_t4 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread2_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:168:32: error: 'struct _thread_base' has no member named 'cpu'
+  168 |         cpu_t2 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'ipi_cascade_test_ipi_cascade':
+/testbed/tests/kernel/ipi_cascade/src/main.c:208:32: error: 'struct _thread_base' has no member named 'cpu'
+  208 |         cpu_t1 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c:209:18: warning: implicit declaration of function 'k_thread_cpu_pin'; did you mean 'k_thread_suspend'? [-Wimplicit-function-declaration]
+  209 |         status = k_thread_cpu_pin(&thread3, cpu_t1);
+      |                  ^~~~~~~~~~~~~~~~
+      |                  k_thread_suspend
+In file included from /testbed/subsys/testsuite/ztest/include/zephyr/ztest.h:42,
+                 from /testbed/tests/kernel/ipi_cascade/src/main.c:34:
+/testbed/tests/kernel/ipi_cascade/src/main.c:252:46: error: 'struct _thread_base' has no member named 'cpu'
+  252 |         zassert_true(cpu_t1 != _current->base.cpu,
+      |                                              ^
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:175:39: note: in definition of macro '_zassert_base'
+  175 |                 bool _ret = z_zassert(cond, _msg ? ("(" default_msg ")") : (default_msg), __FILE__,\
+      |                                       ^~~~
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:189:9: note: in expansion of macro '_zassert_va'
+  189 |         _zassert_va(cond, default_msg, COND_CODE_1(__VA_OPT__(1), (__VA_ARGS__), (NULL)))
+      |         ^~~~~~~~~~~
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:269:33: note: in expansion of macro 'zassert'
+  269 | #define zassert_true(cond, ...) zassert(cond, #cond " is false", ##__VA_ARGS__)
+      |                                 ^~~~~~~
+/testbed/tests/kernel/ipi_cascade/src/main.c:252:9: note: in expansion of macro 'zassert_true'
+  252 |         zassert_true(cpu_t1 != _current->base.cpu,
+      |         ^~~~~~~~~~~~
+[20/117] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/logging/log_minimal.c.obj
+[21/117] Generating linker_zephyr_pre0.cmd
+[22/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/cpuhalt.c.obj
+[23/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/prep_c.c.obj
+[24/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/spec_ctrl.c.obj
+[25/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/memmap.c.obj
+[26/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/cpuid.c.obj
+[27/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[28/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[29/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[30/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[31/117] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[32/117] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/fatal.c.obj
+ninja: build stopped: subcommand failed.
+FATAL ERROR: command exited with status 1: /usr/bin/cmake --build /testbed/build
+-- west build: running target run
+[1/87] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[2/87] Building ASM object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/crt0.S.obj
+[3/87] Building ASM object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/intstub.S.obj
+[4/87] Building ASM object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/swap.S.obj
+[5/87] Linking C static library zephyr/libzephyr.a
+[6/87] Building ASM object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/excstub.S.obj
+[7/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/tls.c.obj
+[8/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/thread.c.obj
+[9/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/multiboot.c.obj
+[10/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/tls.c.obj
+[11/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/irq_manage.c.obj
+[12/87] Building C object CMakeFiles/app.dir/src/main.c.obj
+FAILED: CMakeFiles/app.dir/src/main.c.obj 
+ccache /opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/bin/x86_64-zephyr-elf-gcc -DKERNEL -DK_HEAP_MEM_POOL_SIZE=0 -DPICOLIBC_LONG_LONG_PRINTF_SCANF -D__LINUX_ERRNO_EXTENSIONS__ -D__ZEPHYR__=1 -I/testbed/kernel/include -I/testbed/arch/x86/include -I/testbed/build/zephyr/include/generated/zephyr -I/testbed/include -I/testbed/build/zephyr/include/generated -I/testbed/soc/intel/atom -I/testbed/soc/intel/atom/. -I/testbed/subsys/testsuite/include -I/testbed/subsys/testsuite/coverage -I/testbed/subsys/testsuite/ztest/include -isystem /testbed/lib/libc/common/include -m32  -fno-strict-aliasing -Os -imacros /testbed/build/zephyr/include/generated/zephyr/autoconf.h -fno-printf-return-value -fno-common -g -gdwarf-4 -fdiagnostics-color=always -m32 -msoft-float -Wa,--divide --sysroot=/opt/zephyr-sdk-0.16.8/x86_64-zephyr-elf/x86_64-zephyr-elf -imacros /testbed/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -ftls-model=local-exec -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=/testbed/tests/kernel/ipi_cascade=CMAKE_SOURCE_DIR -fmacro-prefix-map=/testbed=ZEPHYR_BASE -fmacro-prefix-map=/=WEST_TOPDIR -ffunction-sections -fdata-sections -mpreferred-stack-boundary=2 -mno-mmx -mno-sse --specs=picolibc.specs -std=c99 -MD -MT CMakeFiles/app.dir/src/main.c.obj -MF CMakeFiles/app.dir/src/main.c.obj.d -o CMakeFiles/app.dir/src/main.c.obj -c /testbed/tests/kernel/ipi_cascade/src/main.c
+/testbed/tests/kernel/ipi_cascade/src/main.c:41:2: error: #error "This test must have CONFIG_MP_MAX_NUM_CPUS=2"
+   41 | #error "This test must have CONFIG_MP_MAX_NUM_CPUS=2"
+      |  ^~~~~
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread3_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:119:32: error: 'struct _thread_base' has no member named 'cpu'
+  119 |         cpu_t3 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread4_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:139:32: error: 'struct _thread_base' has no member named 'cpu'
+  139 |         cpu_t4 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'thread2_entry':
+/testbed/tests/kernel/ipi_cascade/src/main.c:168:32: error: 'struct _thread_base' has no member named 'cpu'
+  168 |         cpu_t2 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c: In function 'ipi_cascade_test_ipi_cascade':
+/testbed/tests/kernel/ipi_cascade/src/main.c:208:32: error: 'struct _thread_base' has no member named 'cpu'
+  208 |         cpu_t1 = _current->base.cpu;
+      |                                ^
+/testbed/tests/kernel/ipi_cascade/src/main.c:209:18: warning: implicit declaration of function 'k_thread_cpu_pin'; did you mean 'k_thread_suspend'? [-Wimplicit-function-declaration]
+  209 |         status = k_thread_cpu_pin(&thread3, cpu_t1);
+      |                  ^~~~~~~~~~~~~~~~
+      |                  k_thread_suspend
+In file included from /testbed/subsys/testsuite/ztest/include/zephyr/ztest.h:42,
+                 from /testbed/tests/kernel/ipi_cascade/src/main.c:34:
+/testbed/tests/kernel/ipi_cascade/src/main.c:252:46: error: 'struct _thread_base' has no member named 'cpu'
+  252 |         zassert_true(cpu_t1 != _current->base.cpu,
+      |                                              ^
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:175:39: note: in definition of macro '_zassert_base'
+  175 |                 bool _ret = z_zassert(cond, _msg ? ("(" default_msg ")") : (default_msg), __FILE__,\
+      |                                       ^~~~
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:189:9: note: in expansion of macro '_zassert_va'
+  189 |         _zassert_va(cond, default_msg, COND_CODE_1(__VA_OPT__(1), (__VA_ARGS__), (NULL)))
+      |         ^~~~~~~~~~~
+/testbed/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:269:33: note: in expansion of macro 'zassert'
+  269 | #define zassert_true(cond, ...) zassert(cond, #cond " is false", ##__VA_ARGS__)
+      |                                 ^~~~~~~
+/testbed/tests/kernel/ipi_cascade/src/main.c:252:9: note: in expansion of macro 'zassert_true'
+  252 |         zassert_true(cpu_t1 != _current->base.cpu,
+      |         ^~~~~~~~~~~~
+[13/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/early_serial.c.obj
+[14/87] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[15/87] Building C object zephyr/subsys/random/CMakeFiles/subsys__random.dir/random_timer.c.obj
+[16/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/fatal.c.obj
+[17/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/ia32/soft_float_stubs.c.obj
+[18/87] Building C object zephyr/subsys/testsuite/ztest/CMakeFiles/subsys__testsuite__ztest.dir/src/ztest_rules.c.obj
+[19/87] Building C object zephyr/subsys/testsuite/ztest/CMakeFiles/subsys__testsuite__ztest.dir/src/ztest_error_hook.c.obj
+[20/87] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/libc-hooks.c.obj
+[21/87] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[22/87] Building C object zephyr/drivers/interrupt_controller/CMakeFiles/drivers__interrupt_controller.dir/intc_ioapic.c.obj
+[23/87] Building C object zephyr/subsys/testsuite/ztest/CMakeFiles/subsys__testsuite__ztest.dir/src/ztest_defaults.c.obj
+[24/87] Building C object zephyr/subsys/testsuite/ztest/CMakeFiles/subsys__testsuite__ztest.dir/src/ztest.c.obj
+[25/87] Building C object zephyr/arch/arch/x86/core/CMakeFiles/arch__x86__core.dir/x86_mmu.c.obj
+ninja: build stopped: subcommand failed.
+FATAL ERROR: command exited with status 1: /usr/bin/cmake --build /testbed/build --target run
+
+=== FAIL: pass step exited with code 1 — check /Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-73884/run.log ===
+Stopping container...
+
+Result: error (written to /Users/deveshmaheshwari/Documents/Classes/Spring2026/VIP/PR_testing_arch/EmbedEval/results/zephyr__zephyr-73884/result.json)
